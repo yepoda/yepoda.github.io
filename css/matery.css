@@ -1173,7 +1173,9 @@ article .article-tags .chip {
 }
 
 #articleContent a {
-    padding: 0 2px;
+    /* 因为使用hexo-douban-card插件不美观，修改属性*/
+    /* padding: 0 2px; */
+    padding: 0px;
     color: #42b983;
     font-weight: 500;
     text-decoration: underline;
