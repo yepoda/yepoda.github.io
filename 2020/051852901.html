@@ -95,16 +95,8 @@
 }
 </style><!-- hexo injector head_begin end -->
     <meta charset="utf-8">
-    <meta name="keywords" content="豆瓣卡片测试, 梅园小径">
-    <meta name="description" content="
-    
-        
-        
-            
-            我看过这部电视剧2023-02-16
-        
-        
-            电影名: 你是我的春天너는나의봄(2021)">
+    <meta name="keywords" content="web自动化测试（python+selenium）, 梅园小径">
+    <meta name="description" content=" 简要介绍入门学习web自动化测试，需要有一定的web基础，比如xml语言，html语言，这也是我总结自己的学习笔记，持续更新...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -116,7 +108,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>豆瓣卡片测试 | 梅园小径</title>
+    <title>web自动化测试（python+selenium） | 梅园小径</title>
     <link rel="icon" type="image/png" href="/favicon_ay.png">
     
 
@@ -536,12 +528,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.selenium.dev/images/selenium_4_logo.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">豆瓣卡片测试</h1>
+                    <h1 class="description center-align post-title">web自动化测试（python+selenium）</h1>
                 </div>
             </div>
         </div>
@@ -563,12 +555,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">自动化测试</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/selenium/">
+                                <span class="chip bg-color">selenium</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                技术
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -577,28 +590,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-26
+                    2020-05-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-26
+                    2023-03-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    78
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -621,40 +634,185 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <div class="douban-card-block">
-    <a class="douban-card" target="_blank" rel="noopener" href="https://movie.douban.com/subject/35205065">
-        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2662972263.jpg');"></div>
-        <div class="douban-card-left">
-            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2662972263.jpg');"></div>
-            <div class="douban-card-status">我看过这部电视剧2023-02-16</div>
-        </div>
-        <div class="douban-card-right">
-            <div class="douban-card-item"><span>电影名: </span><strong>你是我的春天너는나의봄(2021)</strong></div>
-            <div class="douban-card-item"><span>导演: </span><span>郑志贤</span></div>
-            <div class="douban-card-item"><span>主演: </span><span>徐玄振/金东旭</span></div>
-            <div class="douban-card-item"><span>上映时间: </span><span>2021-07-05(韩国)</span></div>
-            <div class="douban-card-item"><span>评分: </span><span>7.4</span></div>
-        </div>
-    </a>
-</div>
+                <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Python安装"><a href="#Python安装" class="headerlink" title="Python安装"></a>Python安装</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p><a target="_blank" rel="noopener" href="https://www.python.org/">https://www.python.org/</a></p>
+<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><h5 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<div class="douban-card-block">
-    <a class="douban-card" target="_blank" rel="noopener" href="https://book.douban.com/subject/1226200">
-        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/subject/s/public/s5717852.jpg');">
-        </div>
-        <div class="douban-card-left">
-            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/subject/s/public/s5717852.jpg');">
-            </div>
-            <div class="douban-card-status">我读过这本书</div>
-        </div>
-        <div class="douban-card-right" style="line-height: 1.7;">
-            <div class="douban-card-item"><span>书名: </span><strong>极地冰河历险记</strong></div>
-            <div class="douban-card-item"><span>作者: </span><span>崔德熙</span></div>
-            <div class="douban-card-item"><span>出版年份: </span><span>2005-2</span></div>
-            <div class="douban-card-item"><span>评分: </span><span>9.1</span></div>
-        </div>
-    </a>
-</div>
+<h5 id="进行安装"><a href="#进行安装" class="headerlink" title="进行安装"></a>进行安装</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">　　　　<span class="token function">tar</span> xf Python-3.7.1.tar.xz
+　　　　<span class="token builtin class-name">cd</span> Python-3.7.1
+　　　　yum <span class="token parameter variable">-y</span> <span class="token function">install</span> gcc-* openssl-* libffi-devel sqlite-devel
+　　　　./configure --enable-optimizations --with-openssl<span class="token operator">=</span>/usr/bin/openssl
+　　　　<span class="token function">make</span> <span class="token parameter variable">-j4</span>
+　　　　<span class="token function">make</span> <span class="token function">install</span>
+　　　　默认安装路径：/usr/local/lib/python3.7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h5 id="更改安装源"><a href="#更改安装源" class="headerlink" title="更改安装源"></a>更改安装源</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip3 config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="升级pip"><a href="#升级pip" class="headerlink" title="升级pip"></a>升级pip</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip3 <span class="token function">install</span> <span class="token parameter variable">--upgrade</span> pip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="安装虚拟环境工具"><a href="#安装虚拟环境工具" class="headerlink" title="安装虚拟环境工具"></a>安装虚拟环境工具</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip3 <span class="token function">install</span> virtualenv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">virtualenv web01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="切换到虚拟环境"><a href="#切换到虚拟环境" class="headerlink" title="切换到虚拟环境"></a>切换到虚拟环境</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> web01/bin/activate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h5><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">　　　deactivate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h3><h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p>打开dos窗口输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>正常应显示以下内容：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Usage:
+  pip <span class="token operator">&lt;</span>command<span class="token operator">></span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>
+
+Commands:
+  <span class="token function">install</span>                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages <span class="token keyword">in</span> requirements format.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage <span class="token builtin class-name">local</span> and global configuration.
+  search                      Search PyPI <span class="token keyword">for</span> packages.
+  wheel                       Build wheels from your requirements.
+  <span class="token builtin class-name">hash</span>                        Compute hashes of package archives.
+  completion                  A helper <span class="token builtin class-name">command</span> used <span class="token keyword">for</span> <span class="token builtin class-name">command</span> completion.
+  <span class="token builtin class-name">help</span>                        Show <span class="token builtin class-name">help</span> <span class="token keyword">for</span> commands.
+
+General Options:
+  -h, <span class="token parameter variable">--help</span>                  Show help.
+  <span class="token parameter variable">--isolated</span>                  Run pip <span class="token keyword">in</span> an isolated mode, ignoring environment variables and user configuration.
+  -v, <span class="token parameter variable">--verbose</span>               Give <span class="token function">more</span> output. Option is additive, and can be used up to <span class="token number">3</span> times.
+  -V, <span class="token parameter variable">--version</span>               Show version and exit.
+  -q, <span class="token parameter variable">--quiet</span>                 Give <span class="token function">less</span> output. Option is additive, and can be used up to <span class="token number">3</span> <span class="token builtin class-name">times</span> <span class="token punctuation">(</span>corresponding to
+                              WARNING, ERROR, and CRITICAL logging levels<span class="token punctuation">)</span>.
+  <span class="token parameter variable">--log</span> <span class="token operator">&lt;</span>path<span class="token operator">></span>                Path to a verbose appending log.
+  <span class="token parameter variable">--proxy</span> <span class="token operator">&lt;</span>proxy<span class="token operator">></span>             Specify a proxy <span class="token keyword">in</span> the form <span class="token punctuation">[</span>user:passwd@<span class="token punctuation">]</span>proxy.server:port.
+  <span class="token parameter variable">--retries</span> <span class="token operator">&lt;</span>retries<span class="token operator">></span>         Maximum number of retries each connection should attempt <span class="token punctuation">(</span>default <span class="token number">5</span> <span class="token builtin class-name">times</span><span class="token punctuation">)</span>.
+  <span class="token parameter variable">--timeout</span> <span class="token operator">&lt;</span>sec<span class="token operator">></span>             Set the socket <span class="token function">timeout</span> <span class="token punctuation">(</span>default <span class="token number">15</span> seconds<span class="token punctuation">)</span>.
+  --exists-action <span class="token operator">&lt;</span>action<span class="token operator">></span>    Default action when a path already exists: <span class="token punctuation">(</span>s<span class="token punctuation">)</span>witch, <span class="token punctuation">(</span>i<span class="token punctuation">)</span>gnore, <span class="token punctuation">(</span>w<span class="token punctuation">)</span>ipe, <span class="token punctuation">(</span>b<span class="token punctuation">)</span>ackup,
+                              <span class="token punctuation">(</span>a<span class="token punctuation">)</span>bort<span class="token punctuation">)</span>.
+  --trusted-host <span class="token operator">&lt;</span>hostname<span class="token operator">></span>   Mark this <span class="token function">host</span> as trusted, even though it does not have valid or any HTTPS.
+  <span class="token parameter variable">--cert</span> <span class="token operator">&lt;</span>path<span class="token operator">></span>               Path to alternate CA bundle.
+  --client-cert <span class="token operator">&lt;</span>path<span class="token operator">></span>        Path to SSL client certificate, a single <span class="token function">file</span> containing the private key and the
+                              certificate <span class="token keyword">in</span> PEM format.
+  --cache-dir <span class="token operator">&lt;</span>dir<span class="token operator">></span>           Store the cache data <span class="token keyword">in</span> <span class="token operator">&lt;</span>dir<span class="token operator">></span>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is available <span class="token keyword">for</span>
+                              download. Implied with --no-index.
+  --no-color                  Suppress colored output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>dos输入在线安装selenium指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">selenium</span><span class="token operator">==</span><span class="token number">2.53</span>.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><p>确保已经安装Firefox&#x2F;Chrome&#x2F;Ie浏览器中的一个</p>
+<p>以Firefox为例（Firefox请安装46以下的版本），打开dos窗口输入指令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python
+from selenium <span class="token function">import</span> webdriver
+webdriver.Firefox<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>如果Firefox浏览器被调用启动，则表示selenium安装成功，其他浏览器请查阅“浏览器驱动”</p>
+<h4 id="浏览器驱动"><a href="#浏览器驱动" class="headerlink" title="浏览器驱动"></a>浏览器驱动</h4><h5 id="Firefox"><a href="#Firefox" class="headerlink" title="Firefox"></a>Firefox</h5><p>请勿安装47以上的版本（selenium2不兼容47以上版本）</p>
+<p>firefox历年版本的官方镜像地址：<br><a target="_blank" rel="noopener" href="https://download-installer.cdn.mozilla.net/pub/firefox/releases/">https://download-installer.cdn.mozilla.net/pub/firefox/releases/</a></p>
+<h5 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h5><p>selenium启动Chrome浏览器需要安装驱动包，不同的Chrome浏览器版本号对应的驱动文件版本号也不同，若不匹配，则无法启动。</p>
+<p>查看Chrome版本号？</p>
+<p>浏览器内：设置-&gt;关于-&gt;版本号</p>
+<p>浏览器外：打开Chrome安装文件夹</p>
+<p>Chrome浏览器chromedriver各版本驱动大全，下载地址：<br><a target="_blank" rel="noopener" href="http://chromedriver.storage.googleapis.com/index.html">http://chromedriver.storage.googleapis.com/index.html</a></p>
+<p>下载驱动成功后，确保chromedriver.exe文件放置于path路径下，我之前将环境变量配置到了python根目录，所以一般将chromedriver.exe放置于python安装的根目录。</p>
+<h5 id="IE"><a href="#IE" class="headerlink" title="IE"></a>IE</h5><p>IE浏览器的IEdriver各版本驱动大全，下载地址：<br><a target="_blank" rel="noopener" href="http://selenium-release.storage.googleapis.com/index.html">http://selenium-release.storage.googleapis.com/index.html</a></p>
+<h2 id="selenium之webdriver框架"><a href="#selenium之webdriver框架" class="headerlink" title="selenium之webdriver框架"></a>selenium之webdriver框架</h2><h3 id="webdriver-API"><a href="#webdriver-API" class="headerlink" title="webdriver API"></a>webdriver API</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 导入webdriver模块</span>
+<span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+
+<span class="token comment"># 导入计时器模块</span>
+<span class="token keyword">import</span> time
+
+<span class="token comment"># 打开Chrome浏览器</span>
+<span class="token comment"># 其他浏览器替换浏览器名即可</span>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Chrome<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 使用webdriver模块api导入网址</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://auntyang.tk"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 计时器6s等待时间，一些异常报错可能就是因为没有在语句下设置等待时间</span>
+<span class="token comment"># time模块的单位是s（秒），参数可以是小数也可以是整数</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 截屏保存到指定目录，参数格式：保存路径+文件名称+后缀</span>
+driver<span class="token punctuation">.</span>get_screenshot_as_file<span class="token punctuation">(</span><span class="token string">"D:\\test.jgp"</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 设置指定浏览器窗口尺寸</span>
+driver<span class="token punctuation">.</span>set_window_size<span class="token punctuation">(</span><span class="token number">540</span><span class="token punctuation">,</span> <span class="token number">960</span><span class="token punctuation">)</span>
+<span class="token comment"># 设置浏览器窗口最大化</span>
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 上一页，相当于浏览器左上角的左箭头按钮</span>
+driver<span class="token punctuation">.</span>back<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 下一页，相当于浏览器左上角的右箭头按钮</span>
+driver<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 使用webdriver模块api进行刷新</span>
+<span class="token comment"># 相当于浏览器输入框后面的刷新按钮</span>
+driver<span class="token punctuation">.</span>refresh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 结束浏览器进程</span>
+driver<span class="token punctuation">.</span>quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 关闭当前窗口</span>
+driver<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="元素定位"><a href="#元素定位" class="headerlink" title="元素定位"></a>元素定位</h3><p>webdriver框架提供了18种元素定位方法，前8种通过元素属性定位，后10种通过xpan和css定位</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#id定位：</span>
+find_element_by_id<span class="token punctuation">(</span>self<span class="token punctuation">,</span> id_<span class="token punctuation">)</span>
+<span class="token comment">#name定位：</span>
+find_element_by_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#class定位：</span>
+find_element_by_class_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#tag定位：</span>
+find_element_by_tag_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#link定位：</span>
+find_element_by_link_text<span class="token punctuation">(</span>self<span class="token punctuation">,</span> link_text<span class="token punctuation">)</span>
+<span class="token comment">#partial_link定位</span>
+find_element_by_partial_link_text<span class="token punctuation">(</span>self<span class="token punctuation">,</span> link_text<span class="token punctuation">)</span>
+<span class="token comment">#xpath定位：</span>
+find_element_by_xpath<span class="token punctuation">(</span>self<span class="token punctuation">,</span> xpath<span class="token punctuation">)</span>
+<span class="token comment">#css定位：</span>
+find_element_by_css_selector<span class="token punctuation">(</span>self<span class="token punctuation">,</span> css_selector）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>复数形式：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#id复数定位</span>
+find_elements_by_id<span class="token punctuation">(</span>self<span class="token punctuation">,</span> id_<span class="token punctuation">)</span>
+<span class="token comment">#name复数定位</span>
+find_elements_by_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#class复数定位</span>
+find_elements_by_class_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#tag复数定位</span>
+find_elements_by_tag_name<span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+<span class="token comment">#link复数定位</span>
+find_elements_by_link_text<span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+<span class="token comment">#partial_link复数定位</span>
+find_elements_by_partial_link_text<span class="token punctuation">(</span>self<span class="token punctuation">,</span> link_text<span class="token punctuation">)</span>
+<span class="token comment">#xpath复数定位</span>
+find_elements_by_xpath<span class="token punctuation">(</span>self<span class="token punctuation">,</span> xpath<span class="token punctuation">)</span>
+<span class="token comment">#css复数定位</span>
+find_elements_by_css_selector<span class="token punctuation">(</span>self<span class="token punctuation">,</span> css_selector<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>参数化方法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">find_element<span class="token punctuation">(</span>self<span class="token punctuation">,</span> by<span class="token operator">=</span><span class="token string">'id'</span><span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>
+find_elements<span class="token punctuation">(</span>self<span class="token punctuation">,</span> by<span class="token operator">=</span><span class="token string">'id'</span><span class="token punctuation">,</span> value<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="xpath定位"><a href="#xpath定位" class="headerlink" title="xpath定位"></a>xpath定位</h3><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>1.有时候同一个属性，同名的比较多，这时候可以通过标签筛选下，定位更准一点<br>2.如果不想制定标签名称，可以用*号表示任意标签<br>3.如果想制定具体某个标签，就可以直接写标签名称</p>
+<h4 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h4><p>1.当某个元素属性不明显，无法直接定位时，可以先找其父元素</p>
+<p>2.找到父元素后，向下一个层级就能定位到该元素</p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h4><p>1.某元素标签和另一元素标签一样，且无法通过层级定位时，属于同父元素</p>
+<p>2.同父元素的元素存在顺序，用索引定位</p>
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><p>1.xpath可以对多个属性进行逻辑运算，支持与（and）、或（or）、非（not）</p>
+<h4 id="模糊匹配"><a href="#模糊匹配" class="headerlink" title="模糊匹配"></a>模糊匹配</h4><p>1.xpath可以对元素进行模糊匹配</p>
+<h4 id="小测试"><a href="#小测试" class="headerlink" title="小测试"></a>小测试</h4><p>编写脚本，打开百度首页，输入关键字“robotframework”，点击搜索</p>
+<p>结果如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200523164846936.gif" alt="Web自动化测试"></p>
+<h3 id="CSS定位"><a href="#CSS定位" class="headerlink" title="CSS定位"></a>CSS定位</h3><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -681,7 +839,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://auntyang.cf/2023/032658580.html">https://auntyang.cf/2023/032658580.html</a>
+                    <a href="https://auntyang.cf/2020/051852901.html">https://auntyang.cf/2020/051852901.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,7 +876,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">自动化测试</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/selenium/">
+                                    <span class="chip bg-color">selenium</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -786,48 +956,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2023/032658580.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="豆瓣卡片测试">
-                        
-                        <span class="card-title">豆瓣卡片测试</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-26
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            auntyang
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2023/032412074.html">
                     <div class="card-image">
@@ -845,9 +976,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -865,6 +996,58 @@
                     
                     <a href="/tags/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">
                         <span class="chip bg-color">现代通信原理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/051610680.html">
+                    <div class="card-image">
+                        
+                        <img src="https://www.freecodecamp.org/news/content/images/size/w1000/2020/08/wireshark-1.png" class="responsive-img" alt="使用网络协议分析仪Wireshark">
+                        
+                        <span class="card-title">使用网络协议分析仪Wireshark</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            掌握安装和配置网络协议分析仪Wireshark的方法、掌熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%AE%9E%E9%AA%8C/">
+                        <span class="chip bg-color">实验</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
                     </a>
                     
                 </div>
