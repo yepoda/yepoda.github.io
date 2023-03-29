@@ -1,189 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用网络协议分析仪Wireshark</title>
-    <url>/2020/051610680.html</url>
-    <content><![CDATA[<h1 id="实验名称-使用网络协议分析仪Wireshark"><a href="#实验名称-使用网络协议分析仪Wireshark" class="headerlink" title="实验名称  使用网络协议分析仪Wireshark"></a>实验名称  使用网络协议分析仪Wireshark</h1><h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ol>
-<li>掌握安装和配置网络协议分析仪Wireshark的方法；</li>
-<li>熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解。</li>
-</ol>
-<h2 id="实验内容和要求"><a href="#实验内容和要求" class="headerlink" title="实验内容和要求"></a>实验内容和要求</h2><pre class="line-numbers language-none"><code class="language-none">1. 安装和配置网络协议分析仪Wireshark（http:&#x2F;&#x2F;www.wireshark.org）；
-	2. 使用并熟悉Wireshark分析协议的界面环境（菜单、工具条和各种窗口等）。
-	3. 学会使用Wireshark捕捉协议包。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><pre class="line-numbers language-none"><code class="language-none">1.运行Windows 10专业版操作系统的PC机一台
-	2.PC具有以太网卡一块，通过双绞线与局域网相连
-	3.已安装Wireshark与Cisco Packet Tracer程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="操作方法与实验步骤"><a href="#操作方法与实验步骤" class="headerlink" title="操作方法与实验步骤"></a>操作方法与实验步骤</h2><h3 id="1-安装网络协议分析仪"><a href="#1-安装网络协议分析仪" class="headerlink" title="1.安装网络协议分析仪"></a>1.安装网络协议分析仪</h3><p><img src="https://s2.loli.net/2023/03/26/PAIblrYFoBu4haO.png" alt="Wireshark首页"><br>安装成功并运行，进入主界面如图，（可以点击图片跳转Wireshark官网下载）我这里安装的版本是3.0.9，进入自动为中文界面，Wireshark进入后界面如上图没有任何本地接口，检查后发现未安装Winpacp，安装Winpacp后重启Wireshark，正常运行。</p>
-<h3 id="2-使用Wireshark分析协议"><a href="#2-使用Wireshark分析协议" class="headerlink" title="2.使用Wireshark分析协议"></a>2.使用Wireshark分析协议</h3><h4 id="（1）点击Wireshark启动程序，正常运行如图"><a href="#（1）点击Wireshark启动程序，正常运行如图" class="headerlink" title="（1）点击Wireshark启动程序，正常运行如图"></a>（1）点击Wireshark启动程序，正常运行如图</h4><p><img src="https://img-blog.csdnimg.cn/20200516175003774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark首页"><br>其中捕获和分析是最重要的功能</p>
-<h4 id="（2）分组捕获"><a href="#（2）分组捕获" class="headerlink" title="（2）分组捕获"></a>（2）分组捕获</h4><p><img src="https://img-blog.csdnimg.cn/20200516191047640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark捕获接口"><br>开始分组捕获之前选择捕获接口，我所使用的网络是网线接入电脑的有线网，所以我选择的是捕获接口是以太网。</p>
-<h4 id="（3）协议分析。"><a href="#（3）协议分析。" class="headerlink" title="（3）协议分析。"></a>（3）协议分析。</h4><p><img src="https://img-blog.csdnimg.cn/20200516191115617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>监听以太网接口得到的报文信息，如上图，其中有一条黑色底色的TCP报文信息*。<br><img src="https://img-blog.csdnimg.cn/20200516191158370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>选择序号为191的一条报文信息进行分析，从蓝框可知该报文的发送源地址为223.166.151.88，目标地址为192.168.31.97，而目标地址192。168.31.97为我的专用网地址（路由器分配给笔记本的内网IP），源地址经查询地址为上海市，是一个公网IP，很明显该报文由外部网络发送至我的内网。<br>该报文的协议为OICQ，起初并不知道这个协议，但在中间信息框中发现该报文信息中包含了我的QQ号，由此推断OICQ为QQ通信协议，经过查询，OICQ为QQ的通讯协议，OICQ用户到OICQ服务器的通讯协议。<br><img src="https://img-blog.csdnimg.cn/20200516191237382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>进入191号报文信息具体页，可看到报文具体信息和十六进制和ASCI码形式的报文内容。<br>这一帧包包含一下四种信息：<br>Frame: 物理层的数据帧情况。<br>Ethernet II , Src: 数据链路层以太网帧头部信息。<br>Internet Protocol Version 4, Src: 互联网层IP包头信息。<br>Internet Control Message Protocol: 互联网控制信息协议。ping 小包所使用的协议。<br>前三层基本上都是一样的，第四层开始就可以出现TCP, UDP 协议，第五层就可能有HTTP 应用层协议等等。<br><img src="https://img-blog.csdnimg.cn/20200516191313947.png" alt="帧结构"><br>由该栏信息可知，该报文源地址服务器端口为8000，目标端口为4004，报文长度为127，总和校验码（Checksum）为0xe51f。<br><img src="https://img-blog.csdnimg.cn/20200516191327952.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="帧结构"><br>协议层信息，协议为OICQ（即时通讯软件协议）包含目标、版本、数据等信息。</p>
-<h4 id="（4）保存分组捕获信息"><a href="#（4）保存分组捕获信息" class="headerlink" title="（4）保存分组捕获信息"></a>（4）保存分组捕获信息</h4><h2 id="实验数据记录和结果分析"><a href="#实验数据记录和结果分析" class="headerlink" title="实验数据记录和结果分析"></a>实验数据记录和结果分析</h2><p>实验数据与结果分析：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Frame <span class="token number">191</span>: <span class="token number">161</span> bytes on wire <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>, <span class="token number">161</span> bytes captured <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span> on interface <span class="token number">0</span>
-//第191帧，由161个字节在线，共1288位，实际捕获到161个字节在0接口
-    Interface id: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>//接口ID：0
-        Interface name: <span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span>
-        Interface description: <span class="token punctuation">\</span><span class="token number">344</span><span class="token punctuation">\</span><span class="token number">273</span><span class="token punctuation">\</span><span class="token number">245</span><span class="token punctuation">\</span><span class="token number">345</span><span class="token punctuation">\</span><span class="token number">244</span><span class="token punctuation">\</span><span class="token number">252</span><span class="token punctuation">\</span><span class="token number">347</span><span class="token punctuation">\</span><span class="token number">275</span><span class="token punctuation">\</span><span class="token number">221</span>
-    Encapsulation type: Ethernet <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>//封装类型
-    Arrival Time: Mar <span class="token number">13</span>, <span class="token number">2020</span> <span class="token number">15</span>:22:45.526314000 中国标准时间//到达时间
-    <span class="token punctuation">[</span>Time <span class="token builtin class-name">shift</span> <span class="token keyword">for</span> this packet: <span class="token number">0.000000000</span> seconds<span class="token punctuation">]</span>//包偏移时间
-    Epoch Time: <span class="token number">1584084165.526314000</span> seconds//不理解
-    <span class="token punctuation">[</span>Time delta from previous captured frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//两帧之间的时间间隔
-    <span class="token punctuation">[</span>Time delta from previous displayed frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//捕获到显示的间隔时间
-    <span class="token punctuation">[</span>Time since reference or first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>//此包和第一帧的时间间隔
-    Frame Number: <span class="token number">191</span>//帧号
-    Frame Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//帧长度
-    Capture Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//捕获的帧长度
-    <span class="token punctuation">[</span>Frame is marked: False<span class="token punctuation">]</span>//帧显著标志
-    <span class="token punctuation">[</span>Frame is ignored: False<span class="token punctuation">]</span>//帧忽略标志
-    <span class="token punctuation">[</span>Protocols <span class="token keyword">in</span> frame: eth:ethertype:ip:udp:oicq<span class="token punctuation">]</span>//帧内封装的协议层次结构
-    <span class="token punctuation">[</span>Coloring Rule Name: UDP<span class="token punctuation">]</span>//着色标记的协议
-    <span class="token punctuation">[</span>Coloring Rule String: udp<span class="token punctuation">]</span>//着色规则显示的字符串
-Ethernet II, Src: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>, Dst: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-    Destination: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        Address: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Source: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        Address: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Type: IPv4 <span class="token punctuation">(</span>0x0800<span class="token punctuation">)</span>
-Internet Protocol Version <span class="token number">4</span>, Src: <span class="token number">223.166</span>.151.88, Dst: <span class="token number">192.168</span>.31.97
-    0100 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> Version: <span class="token number">4</span>
-    <span class="token punctuation">..</span><span class="token punctuation">..</span> 0101 <span class="token operator">=</span> Header Length: <span class="token number">20</span> bytes <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-    Differentiated Services Field: 0x00 <span class="token punctuation">(</span>DSCP: CS0, ECN: Not-ECT<span class="token punctuation">)</span>
-        0000 00<span class="token punctuation">..</span> <span class="token operator">=</span> Differentiated Services Codepoint: Default <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>00 <span class="token operator">=</span> Explicit Congestion Notification: Not ECN-Capable Transport <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    Total Length: <span class="token number">147</span>
-    Identification: 0x8fa2 <span class="token punctuation">(</span><span class="token number">36770</span><span class="token punctuation">)</span>
-    Flags: 0x4000, Don<span class="token string">'t fragment
-        0... .... .... .... = Reserved bit: Not set
-        .1.. .... .... .... = Don'</span>t fragment: Set
-        <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> More fragments: Not <span class="token builtin class-name">set</span>
-    <span class="token punctuation">..</span>.0 0000 0000 0000 <span class="token operator">=</span> Fragment offset: <span class="token number">0</span>
-    Time to live: <span class="token number">52</span>
-    Protocol: UDP <span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span>
-    Header checksum: 0x5faf <span class="token punctuation">[</span>validation disabled<span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Header checksum status: Unverified<span class="token punctuation">]</span>
-    Source: <span class="token number">223.166</span>.151.88
-    Destination: <span class="token number">192.168</span>.31.97
-User Datagram Protocol, Src Port: <span class="token number">8000</span>, Dst Port: <span class="token number">4004</span>
-    Source Port: <span class="token number">8000</span>//源IP
-    Destination Port: <span class="token number">4004</span>//目标IP
-    Length: <span class="token number">127</span>//长度
-    Checksum: 0xe51f <span class="token punctuation">[</span>unverified<span class="token punctuation">]</span>//和校验
-    <span class="token punctuation">[</span>Checksum Status: Unverified<span class="token punctuation">]</span>//和校验状态
-    <span class="token punctuation">[</span>Stream index: <span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Timestamps<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since previous frame: <span class="token number">0.031141000</span> seconds<span class="token punctuation">]</span>
-OICQ - IM software, popular <span class="token keyword">in</span> China//因特网控制信息协议
-    Flag: Oicq packet <span class="token punctuation">(</span>0x02<span class="token punctuation">)</span>
-    Version: 0x3859//版本信息
-    Command: Heart Message <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-    Sequence: <span class="token number">17154</span>
-    Data<span class="token punctuation">(</span>OICQ Number,if sender is client<span class="token punctuation">)</span>: <span class="token number">1026651458</span>
-    Data: 
-        <span class="token punctuation">[</span>Expert Info <span class="token punctuation">(</span>Warning/Undecoded<span class="token punctuation">)</span>: Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Severity level: Warning<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Group: Undecoded<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>实验</tag>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>现代通信原理笔记</title>
-    <url>/2023/032412074.html</url>
-    <content><![CDATA[<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="信息及其度量"><a href="#信息及其度量" class="headerlink" title="信息及其度量"></a>信息及其度量</h2><h3 id="消息与信息"><a href="#消息与信息" class="headerlink" title="消息与信息"></a>消息与信息</h3><p><strong>消息</strong>：包含信息的事物</p>
-<p><strong>信息</strong>：消息中包含的有效内容</p>
-<p>信息具有不确定性</p>
-<h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p><strong>信号</strong>是消息的载体，是一种电波形</p>
-<p>信号分为<strong>模拟信号</strong>（连续信号）和<strong>数字信号</strong>（离散信号）</p>
-<h4 id="模拟信号"><a href="#模拟信号" class="headerlink" title="模拟信号"></a>模拟信号</h4><p>模拟信号占有频带一般都比较窄，其频带利用率较高，缺点是抗干扰能力差，不易保密，设备元器件不易大规模集成。</p>
-<h4 id="数字信号"><a href="#数字信号" class="headerlink" title="数字信号"></a>数字信号</h4><p>比模拟信号占据更宽的系统频带</p>
-<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1.抗干扰、抗噪声性能好</p>
-<p>2.差错可控</p>
-<p>3.易加密</p>
-<p>4.数字通信设备和模拟通信设备相比，设计和制造更容易，体积更小，重量更轻</p>
-<p>5.数字信号可以通过信源编码进行压缩，以减少冗余度，提高信道利用率。</p>
-<p>6.易与现代技术相结合</p>
-<h3 id="信息量"><a href="#信息量" class="headerlink" title="信息量"></a>信息量</h3><p>信息量与消息的种类、特定内容及重要程度无关，仅仅与消息中包含的不确定度有关。消息发生的概率越小，该消息包含的信息量越大。消息发生的概率趋近于0，则其信息量趋近于无穷大。</p>
-<p>信息论中，消息所含的信息量I与消息X出现的概率P(x)的关系为：</p>
-<p>$$<br>I&#x3D;{log_a{\frac1{P(x)}}}&#x3D;-{log_a{P(x)}}\<br>信息量的单位由对数底的取值决定\<br>a&#x3D;2时单位为“比特”\<br>a&#x3D;e时单位为“奈特”\<br>a&#x3D;10时单位为“哈特”\<br>通常采用“比特”作为信息量的实用单位<br>$$</p>
-<p>I代表两种含义：当事件X发送以前，表示事件X发送的不确定性；当事件X发生以后，表示事件X所含有的信息量。</p>
-<p>设离散信息源是一个由n个符号组成的集合，符号集中的每个字符Xi在消息中是按一定概率P(xi)独立出现的，又设符号集中各符号出现的概率为<br><img src="https://i.loli.net/2020/09/18/HXBSv46tu9WnDxG.png" alt="符号集中各符号出现的概率"><br>改变信源每个符号所含的信息量的统计平均值，即平均信息量为：<br><img src="https://i.loli.net/2020/09/18/kNjnmK9FcaD14xO.png" alt="平均信息量"></p>
-<p>连续消息的信息量可以用概率密度来描述，可以证明连续消息的平均信息量（相对熵）为：<br><img src="https://i.loli.net/2020/09/18/NWtygFpTISUoqhV.png" alt="连续消息的平均信息量"><br>f(x)是连续消息出现的概率密度</p>
-<h2 id="通信系统"><a href="#通信系统" class="headerlink" title="通信系统"></a>通信系统</h2><h3 id="通信系统基本模型"><a href="#通信系统基本模型" class="headerlink" title="通信系统基本模型"></a>通信系统基本模型</h3><p><img src="https://i.loli.net/2020/09/18/6sGpvS4tWlzIw89.png" alt="通信系统的基本模型">信源：将消息转换为原始电信号（基带信号）。<br>发送设备：将输入的电信号变成适合信道传输的形式（调制、滤波、放大、发射）包含信源编码和信道编码。<br>信道：将信号从发送设备向接收设备传送的物理媒质，包含有线信道和无线信道。<br>接收设备：从带干扰的接收信号中恢复出相应的原始电信号（解调、滤波、抑制噪声）。<br>受信者（信宿）：将原始电信号转换成为消息。</p>
-<p><strong>信源编码</strong>：可分为压缩编码和保密编码，提高数字信号传输的有效性，信源编码器输出的是信息码元，<strong>话音</strong>和<strong>图像</strong>压缩编码都是信源编码器完成的<br><strong>信道编码</strong>（纠错编码）：提高数字信号传输的可靠性，其基本做法是在信息码组中按一定的规则附加一些监督码元，以使接收端根据相应的规则进行检错和纠错<br><strong>数字调制</strong>：将所传输的数字序列的频谱搬移到合适信道传输的频带范围内，使其适应信道传输的要求，基本的调制方式有幅移键控（ASK）、频移键控（FSK）和相移键控（PSK）<br><strong>加性干扰</strong>：噪声叠加在信号上<br><strong>乘性干扰</strong>：<strong>多径传播</strong>是一种是信号质量降低的干扰，多径传播是信号振幅随机起伏的现象称为<strong>衰落</strong>。将这种衰落称为乘性干扰或乘性噪声。</p>
-<p>在接收设备端的原始电信号还能称为基带信号吗？不是，带有噪声</p>
-<h3 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h3><h4 id="1-按信息传输的方向与时间关系划分通信方式"><a href="#1-按信息传输的方向与时间关系划分通信方式" class="headerlink" title="1.按信息传输的方向与时间关系划分通信方式"></a>1.按信息传输的方向与时间关系划分通信方式</h4><p>对于点对点之间的通信，按信息传送的方向与时间的关系，通信方式可分为单工通信，半双工通信及全双工通信<br>单工通信：广播、遥控、无线寻呼等<br>半双工通信：无线对讲机、收发报机等<br>全双工通信：电话、计算机网络通信等</p>
-<p><img src="https://i.loli.net/2020/09/18/LuIPXo3K6DJkdN1.png" alt="通信方式示意图"></p>
-<h4 id="2-按数字信号码元排列方式划分通信方式"><a href="#2-按数字信号码元排列方式划分通信方式" class="headerlink" title="2.按数字信号码元排列方式划分通信方式"></a>2.按数字信号码元排列方式划分通信方式</h4><p>在数字通信中按照数字码元排列顺序的方式不同，可将通信方式分为串行通信和并行通信。</p>
-<p><img src="https://i.loli.net/2020/09/18/1qri29ZyIgY4uoV.png" alt="串并行通信方式"></p>
-<h5 id="并行通信"><a href="#并行通信" class="headerlink" title="并行通信"></a>并行通信</h5><p>将代表信息的数字信号码元序列分割成两路或两路以上的数字信号序列同时在信道上传输。</p>
-<p>优点：速度快、节省传输时间，但需占用频带宽，设备复杂，成本高，故较少采用，适用于短距离通信。</p>
-<h5 id="串行通信"><a href="#串行通信" class="headerlink" title="串行通信"></a>串行通信</h5><p>将代表信息的数字信号码元序列按照时间顺序一个接一个地传输</p>
-<p>适用于远距离传输</p>
-<h4 id="3-按网络结构划分通信方式"><a href="#3-按网络结构划分通信方式" class="headerlink" title="3.按网络结构划分通信方式"></a>3.按网络结构划分通信方式</h4><p>线型、星型、树型、环形等等</p>
-<h3 id="通信系统的分类"><a href="#通信系统的分类" class="headerlink" title="通信系统的分类"></a>通信系统的分类</h3><h4 id="1-按传输媒质分类"><a href="#1-按传输媒质分类" class="headerlink" title="1.按传输媒质分类"></a>1.按传输媒质分类</h4><p>有线通信系统和无线通信系统</p>
-<h4 id="2-按信号的特征分"><a href="#2-按信号的特征分" class="headerlink" title="2.按信号的特征分"></a>2.按信号的特征分</h4><p>模拟通信系统和数字通信系统</p>
-<h4 id="3-按工作频段分类"><a href="#3-按工作频段分类" class="headerlink" title="3.按工作频段分类"></a>3.按工作频段分类</h4><p>长波通信、中波通信、短波通信、微波通信</p>
-<p><img src="https://i.loli.net/2020/09/18/hw6R9Vznq5vaC4g.png" alt="通信频段、常用传输媒质及主要用途"></p>
-<p>工作波长和频率的换算公式为：</p>
-<p>$$<br>\lambda&#x3D;\frac cf&#x3D;\frac{3x10^8}f\<br>其中\lambda为工作波长(m)，f为最高工作频率(Hz)，c为光速(m&#x2F;s)<br>$$</p>
-<h4 id="4-按调制方式分类"><a href="#4-按调制方式分类" class="headerlink" title="4.按调制方式分类"></a>4.按调制方式分类</h4><p>基带传输系统和频带（调制）传输系统</p>
-<h4 id="5-按通信业务类型分类"><a href="#5-按通信业务类型分类" class="headerlink" title="5.按通信业务类型分类"></a>5.按通信业务类型分类</h4><p>电报通信系统、电话通信系统、数据通信系统和图像通信系统</p>
-<h4 id="6-按信号复用方式分类"><a href="#6-按信号复用方式分类" class="headerlink" title="6.按信号复用方式分类"></a>6.按信号复用方式分类</h4><p>频分复用（FDM）、时分复用（TDM）、码分复用（CDM）通信系统</p>
-<h3 id="模拟通信系统"><a href="#模拟通信系统" class="headerlink" title="模拟通信系统"></a>模拟通信系统</h3><p>传输模拟信号的系统，在信道中传输模拟信号。</p>
-<p><img src="https://i.loli.net/2020/09/18/KIcStB6ZNRGlQiy.png" alt="模拟通信系统的模型"><br>发信人的语音信息经过变换器转变成电信号（<strong>模拟信源</strong>），然后由调制器放大后在信道中传输<br>原始电信号（基带信号）进行调制是为了<strong>提高频带利用率</strong>，使多路信号同时在信道中传输。<br>在接收端，经过解调器和你变换器还原成语音信息。</p>
-<h3 id="数字通信系统"><a href="#数字通信系统" class="headerlink" title="数字通信系统"></a>数字通信系统</h3><p><img src="https://i.loli.net/2020/09/18/j2UzF1kDsOgeHcn.png" alt="image-20200918110926136"><br><strong>数字频带传输通信系统</strong>：；利用数字信号来传递信息的通信系统，分为数字频带传输通信系统和数字基带传输通信系统。<br>数字通信系统有一个非常重要的控制单元：同步系统，可以使通信系统的收、发两端或整个通信系统，以精度很高的时钟提供定时，以使系统数据流能与发送端同步、有序而准确地接受和恢复原信息<br>变换器：将信息转换成数字基带信号</p>
-<p><img src="https://i.loli.net/2020/09/18/hs3LjT6tBmb9AU4.png" alt="数字基带传输系统模型"><br><strong>数字基带传输通信系统</strong>：与频带传输通信系统对应，把没有调制&#x2F;解调器的数字通信系统称为数字基带传输通信系统<br>基带信号形成器：可能包含编码器、加密器以及波形变换等<br>接收滤波器：可能包含译码器、解密器等</p>
-<h2 id="通信系统的性能指标"><a href="#通信系统的性能指标" class="headerlink" title="通信系统的性能指标"></a>通信系统的性能指标</h2><p>评价通信系统优劣的主要性能指标是系统的有效性和可靠性</p>
-<p>有效性：指消息传输的“速度”问题<br>可靠性：指消息传输的“质量”问题</p>
-<p>二者经常矛盾，反比</p>
-<h3 id="模拟通信系统的性能指标"><a href="#模拟通信系统的性能指标" class="headerlink" title="模拟通信系统的性能指标"></a>模拟通信系统的性能指标</h3><p>模拟通信系统的有效性指标用所传信号的有效传输带宽来表征。当信道容许传输带宽一定，而进行多路频分复用时，每路信号所需的有效带宽越窄，信道内复用的路数越多</p>
-<p><strong>信道复用的程度越高，信号传输的有效性越好</strong></p>
-<p>信号的有效传输带宽与系统采用的调制方法有关</p>
-<p>模拟通信系统的可靠性指标用整个通信系统的输出信噪比来衡量。信噪比是信号的平均功率S与噪声的平均功率N之比。<em>信噪比越高，说明噪声对信号的影响越小。显然，信噪比越高，通信质量就越好</em>。</p>
-<p>输出信噪比一方面与信道内噪声的大小和信号的功率有关，同时又<em>和调制方式有很大关系</em>。例如宽带调频系统的有效性不如调幅系统，但是调频系统的可靠性往往比调幅系统好。</p>
-<h3 id="数字通信系统的性能指标"><a href="#数字通信系统的性能指标" class="headerlink" title="数字通信系统的性能指标"></a>数字通信系统的性能指标</h3><h4 id="有效性指标"><a href="#有效性指标" class="headerlink" title="有效性指标"></a>有效性指标</h4><p>数字通信系统的有效性指标用传输速率和频带利用率来表征。</p>
-<h5 id="传输速率"><a href="#传输速率" class="headerlink" title="传输速率"></a>传输速率</h5><p>传输速率有三种表示方式：</p>
-<p>$$<br>码元传输速率R_B\信息传输速率R_b\消息速率R_M<br>$$</p>
-<h6 id="码元传输速率"><a href="#码元传输速率" class="headerlink" title="码元传输速率"></a><strong>码元传输速率</strong></h6><p>简称传码率，又称符号速率等。它表示单位时间内传输码元的数目，单位是波特（Baud），记为B。<br>它表示单位时间内传输码元的数目，单位是波特（Baud），记为B。<br>例如，若1秒内传2400个码元，则传码率为2400B。<br>数字信号有多进制和二进制之分，但码元速率与进制数无关，只与传输的码元长度T有关</p>
-<p><img src="https://i.loli.net/2020/10/02/lADQnE2KjhVryNU.png" alt="符号(码元)传输速率"></p>
-<h6 id="信息传输速率"><a href="#信息传输速率" class="headerlink" title="信息传输速率"></a><strong>信息传输速率</strong></h6><p>简称传信率，又称比特率等。它是指系统每秒钟传送的信息量，单位是比特&#x2F;秒，常用符号“bit&#x2F;s、bps或b&#x2F;s”表示<br>它表示单位时间内传递的平均信息量或比特数</p>
-<p>$$<br>在N进制下，设信息速率为R_b(bit&#x2F;s)，码元速率为R_{BN}(Baud)，由于每个码元或符号通常\都含有一定比特的信息量，因此码元速率和信息速率有确定的关系，即:\<br>R_b&#x3D;R_{BN}H(x)\ \ \ \ \ (bit&#x2F;s)\<br>式中，H(x)为信源中每个符号所含的平均信息量（熵）。当离散信源的每一符号等概率出现\时，熵有最大值为{log_2N}(bit&#x2F;符号),信息速率也达到最大，即：\<br>R_b&#x3D;R_{BN}{log_2N}\ (bit&#x2F;s)\<br>R_{BN}&#x3D;\frac{R_b}{log_2N}\ (Baud)<br>$$</p>
-<h6 id="消息速率"><a href="#消息速率" class="headerlink" title="消息速率"></a><strong>消息速率</strong></h6><p>单位时间内传输的消息数目。例如，传输中文文件时，消息速率的单位是“字&#x2F;秒”</p>
-<h6 id="码元速率与信息速率的关系"><a href="#码元速率与信息速率的关系" class="headerlink" title="码元速率与信息速率的关系"></a>码元速率与信息速率的关系</h6><p>每个码元或符号通常都含有一定bit数的信息量，因此码元速率和信息速率有确定的关系</p>
-<p><img src="https://i.loli.net/2020/10/02/yPuq1p6LjRAflwv.png" alt="码元速率与信息速率的关系"></p>
-<p>H为信源中每个符号所含的平均信息量（熵）<br><strong>M进制、等概率</strong>传输时，熵有最大值，信息速率也达到最大</p>
-<p><img src="https://i.loli.net/2020/10/02/ZrAknGNFxgo9pj7.png" alt="![](https://i.loli.net/2020/10/02/ZrAknGNFxgo9pj7.png)"></p>
-<p>码元速率为1200B<br>采用八进制（M&#x3D;8）时，信息速率为3600b&#x2F;s；<br>采用二进制（M&#x3D;2）时， 信息速率为1200b&#x2F;s，<br><em>二进制的码元速率和信息速率在数量上相等，有时简称它们为数码率。</em></p>
-<h4 id="可靠性指标"><a href="#可靠性指标" class="headerlink" title="可靠性指标"></a>可靠性指标</h4><h5 id="错误率"><a href="#错误率" class="headerlink" title="错误率"></a>错误率</h5><p>衡量数字通信系统可靠性的指标是差错率， 常用误码率和误信率表示。<br>误码率（码元差错率Pe ）是指发生差错的码元数在传输总码元数中所占的比例，更确切地说，误码率是码元在传输系统中被传错的概率，即</p>
-<p><img src="https://i.loli.net/2020/10/02/z6Wk1lIQCRxGocK.png" alt="误码率"></p>
-<p>误信率（信息差错率Pb ）是指发生差错的比特数在传输总比特数中所占的比例， 即</p>
-<p><img src="https://i.loli.net/2020/10/02/6AWBHUE1yjqcMTl.png" alt="误信率"></p>
-<p>实际中分析误信率（二进制就是误码率），可用</p>
-<p><img src="https://i.loli.net/2020/10/02/Dri6m3KL8IwaSPE.png" alt="实际中分析误信率"><br>Pe与Pb的关系：<br>二进制—— Pb&#x3D; Pe<br>M进制—— Pb&lt; Pe</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>现代通信原理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>web自动化测试（python+selenium）</title>
     <url>/2020/051852901.html</url>
     <content><![CDATA[<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Python安装"><a href="#Python安装" class="headerlink" title="Python安装"></a>Python安装</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p><a href="https://www.python.org/">https://www.python.org/</a></p>
@@ -373,6 +190,189 @@ find_elements<span class="token punctuation">(</span>self<span class="token punc
         <tag>自动化测试</tag>
         <tag>python</tag>
         <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用网络协议分析仪Wireshark</title>
+    <url>/2020/051610680.html</url>
+    <content><![CDATA[<h1 id="实验名称-使用网络协议分析仪Wireshark"><a href="#实验名称-使用网络协议分析仪Wireshark" class="headerlink" title="实验名称  使用网络协议分析仪Wireshark"></a>实验名称  使用网络协议分析仪Wireshark</h1><h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ol>
+<li>掌握安装和配置网络协议分析仪Wireshark的方法；</li>
+<li>熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解。</li>
+</ol>
+<h2 id="实验内容和要求"><a href="#实验内容和要求" class="headerlink" title="实验内容和要求"></a>实验内容和要求</h2><pre class="line-numbers language-none"><code class="language-none">1. 安装和配置网络协议分析仪Wireshark（http:&#x2F;&#x2F;www.wireshark.org）；
+	2. 使用并熟悉Wireshark分析协议的界面环境（菜单、工具条和各种窗口等）。
+	3. 学会使用Wireshark捕捉协议包。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><pre class="line-numbers language-none"><code class="language-none">1.运行Windows 10专业版操作系统的PC机一台
+	2.PC具有以太网卡一块，通过双绞线与局域网相连
+	3.已安装Wireshark与Cisco Packet Tracer程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="操作方法与实验步骤"><a href="#操作方法与实验步骤" class="headerlink" title="操作方法与实验步骤"></a>操作方法与实验步骤</h2><h3 id="1-安装网络协议分析仪"><a href="#1-安装网络协议分析仪" class="headerlink" title="1.安装网络协议分析仪"></a>1.安装网络协议分析仪</h3><p><img src="https://s2.loli.net/2023/03/26/PAIblrYFoBu4haO.png" alt="Wireshark首页"><br>安装成功并运行，进入主界面如图，（可以点击图片跳转Wireshark官网下载）我这里安装的版本是3.0.9，进入自动为中文界面，Wireshark进入后界面如上图没有任何本地接口，检查后发现未安装Winpacp，安装Winpacp后重启Wireshark，正常运行。</p>
+<h3 id="2-使用Wireshark分析协议"><a href="#2-使用Wireshark分析协议" class="headerlink" title="2.使用Wireshark分析协议"></a>2.使用Wireshark分析协议</h3><h4 id="（1）点击Wireshark启动程序，正常运行如图"><a href="#（1）点击Wireshark启动程序，正常运行如图" class="headerlink" title="（1）点击Wireshark启动程序，正常运行如图"></a>（1）点击Wireshark启动程序，正常运行如图</h4><p><img src="https://img-blog.csdnimg.cn/20200516175003774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark首页"><br>其中捕获和分析是最重要的功能</p>
+<h4 id="（2）分组捕获"><a href="#（2）分组捕获" class="headerlink" title="（2）分组捕获"></a>（2）分组捕获</h4><p><img src="https://img-blog.csdnimg.cn/20200516191047640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark捕获接口"><br>开始分组捕获之前选择捕获接口，我所使用的网络是网线接入电脑的有线网，所以我选择的是捕获接口是以太网。</p>
+<h4 id="（3）协议分析。"><a href="#（3）协议分析。" class="headerlink" title="（3）协议分析。"></a>（3）协议分析。</h4><p><img src="https://img-blog.csdnimg.cn/20200516191115617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>监听以太网接口得到的报文信息，如上图，其中有一条黑色底色的TCP报文信息*。<br><img src="https://img-blog.csdnimg.cn/20200516191158370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>选择序号为191的一条报文信息进行分析，从蓝框可知该报文的发送源地址为223.166.151.88，目标地址为192.168.31.97，而目标地址192。168.31.97为我的专用网地址（路由器分配给笔记本的内网IP），源地址经查询地址为上海市，是一个公网IP，很明显该报文由外部网络发送至我的内网。<br>该报文的协议为OICQ，起初并不知道这个协议，但在中间信息框中发现该报文信息中包含了我的QQ号，由此推断OICQ为QQ通信协议，经过查询，OICQ为QQ的通讯协议，OICQ用户到OICQ服务器的通讯协议。<br><img src="https://img-blog.csdnimg.cn/20200516191237382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>进入191号报文信息具体页，可看到报文具体信息和十六进制和ASCI码形式的报文内容。<br>这一帧包包含一下四种信息：<br>Frame: 物理层的数据帧情况。<br>Ethernet II , Src: 数据链路层以太网帧头部信息。<br>Internet Protocol Version 4, Src: 互联网层IP包头信息。<br>Internet Control Message Protocol: 互联网控制信息协议。ping 小包所使用的协议。<br>前三层基本上都是一样的，第四层开始就可以出现TCP, UDP 协议，第五层就可能有HTTP 应用层协议等等。<br><img src="https://img-blog.csdnimg.cn/20200516191313947.png" alt="帧结构"><br>由该栏信息可知，该报文源地址服务器端口为8000，目标端口为4004，报文长度为127，总和校验码（Checksum）为0xe51f。<br><img src="https://img-blog.csdnimg.cn/20200516191327952.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="帧结构"><br>协议层信息，协议为OICQ（即时通讯软件协议）包含目标、版本、数据等信息。</p>
+<h4 id="（4）保存分组捕获信息"><a href="#（4）保存分组捕获信息" class="headerlink" title="（4）保存分组捕获信息"></a>（4）保存分组捕获信息</h4><h2 id="实验数据记录和结果分析"><a href="#实验数据记录和结果分析" class="headerlink" title="实验数据记录和结果分析"></a>实验数据记录和结果分析</h2><p>实验数据与结果分析：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Frame <span class="token number">191</span>: <span class="token number">161</span> bytes on wire <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>, <span class="token number">161</span> bytes captured <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span> on interface <span class="token number">0</span>
+//第191帧，由161个字节在线，共1288位，实际捕获到161个字节在0接口
+    Interface id: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>//接口ID：0
+        Interface name: <span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span>
+        Interface description: <span class="token punctuation">\</span><span class="token number">344</span><span class="token punctuation">\</span><span class="token number">273</span><span class="token punctuation">\</span><span class="token number">245</span><span class="token punctuation">\</span><span class="token number">345</span><span class="token punctuation">\</span><span class="token number">244</span><span class="token punctuation">\</span><span class="token number">252</span><span class="token punctuation">\</span><span class="token number">347</span><span class="token punctuation">\</span><span class="token number">275</span><span class="token punctuation">\</span><span class="token number">221</span>
+    Encapsulation type: Ethernet <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>//封装类型
+    Arrival Time: Mar <span class="token number">13</span>, <span class="token number">2020</span> <span class="token number">15</span>:22:45.526314000 中国标准时间//到达时间
+    <span class="token punctuation">[</span>Time <span class="token builtin class-name">shift</span> <span class="token keyword">for</span> this packet: <span class="token number">0.000000000</span> seconds<span class="token punctuation">]</span>//包偏移时间
+    Epoch Time: <span class="token number">1584084165.526314000</span> seconds//不理解
+    <span class="token punctuation">[</span>Time delta from previous captured frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//两帧之间的时间间隔
+    <span class="token punctuation">[</span>Time delta from previous displayed frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//捕获到显示的间隔时间
+    <span class="token punctuation">[</span>Time since reference or first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>//此包和第一帧的时间间隔
+    Frame Number: <span class="token number">191</span>//帧号
+    Frame Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//帧长度
+    Capture Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//捕获的帧长度
+    <span class="token punctuation">[</span>Frame is marked: False<span class="token punctuation">]</span>//帧显著标志
+    <span class="token punctuation">[</span>Frame is ignored: False<span class="token punctuation">]</span>//帧忽略标志
+    <span class="token punctuation">[</span>Protocols <span class="token keyword">in</span> frame: eth:ethertype:ip:udp:oicq<span class="token punctuation">]</span>//帧内封装的协议层次结构
+    <span class="token punctuation">[</span>Coloring Rule Name: UDP<span class="token punctuation">]</span>//着色标记的协议
+    <span class="token punctuation">[</span>Coloring Rule String: udp<span class="token punctuation">]</span>//着色规则显示的字符串
+Ethernet II, Src: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>, Dst: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+    Destination: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+        Address: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
+    Source: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
+        Address: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
+    Type: IPv4 <span class="token punctuation">(</span>0x0800<span class="token punctuation">)</span>
+Internet Protocol Version <span class="token number">4</span>, Src: <span class="token number">223.166</span>.151.88, Dst: <span class="token number">192.168</span>.31.97
+    0100 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> Version: <span class="token number">4</span>
+    <span class="token punctuation">..</span><span class="token punctuation">..</span> 0101 <span class="token operator">=</span> Header Length: <span class="token number">20</span> bytes <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    Differentiated Services Field: 0x00 <span class="token punctuation">(</span>DSCP: CS0, ECN: Not-ECT<span class="token punctuation">)</span>
+        0000 00<span class="token punctuation">..</span> <span class="token operator">=</span> Differentiated Services Codepoint: Default <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>00 <span class="token operator">=</span> Explicit Congestion Notification: Not ECN-Capable Transport <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    Total Length: <span class="token number">147</span>
+    Identification: 0x8fa2 <span class="token punctuation">(</span><span class="token number">36770</span><span class="token punctuation">)</span>
+    Flags: 0x4000, Don<span class="token string">'t fragment
+        0... .... .... .... = Reserved bit: Not set
+        .1.. .... .... .... = Don'</span>t fragment: Set
+        <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> More fragments: Not <span class="token builtin class-name">set</span>
+    <span class="token punctuation">..</span>.0 0000 0000 0000 <span class="token operator">=</span> Fragment offset: <span class="token number">0</span>
+    Time to live: <span class="token number">52</span>
+    Protocol: UDP <span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span>
+    Header checksum: 0x5faf <span class="token punctuation">[</span>validation disabled<span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>Header checksum status: Unverified<span class="token punctuation">]</span>
+    Source: <span class="token number">223.166</span>.151.88
+    Destination: <span class="token number">192.168</span>.31.97
+User Datagram Protocol, Src Port: <span class="token number">8000</span>, Dst Port: <span class="token number">4004</span>
+    Source Port: <span class="token number">8000</span>//源IP
+    Destination Port: <span class="token number">4004</span>//目标IP
+    Length: <span class="token number">127</span>//长度
+    Checksum: 0xe51f <span class="token punctuation">[</span>unverified<span class="token punctuation">]</span>//和校验
+    <span class="token punctuation">[</span>Checksum Status: Unverified<span class="token punctuation">]</span>//和校验状态
+    <span class="token punctuation">[</span>Stream index: <span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>Timestamps<span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>Time since first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>Time since previous frame: <span class="token number">0.031141000</span> seconds<span class="token punctuation">]</span>
+OICQ - IM software, popular <span class="token keyword">in</span> China//因特网控制信息协议
+    Flag: Oicq packet <span class="token punctuation">(</span>0x02<span class="token punctuation">)</span>
+    Version: 0x3859//版本信息
+    Command: Heart Message <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    Sequence: <span class="token number">17154</span>
+    Data<span class="token punctuation">(</span>OICQ Number,if sender is client<span class="token punctuation">)</span>: <span class="token number">1026651458</span>
+    Data: 
+        <span class="token punctuation">[</span>Expert Info <span class="token punctuation">(</span>Warning/Undecoded<span class="token punctuation">)</span>: Trailing stray characters<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Trailing stray characters<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Severity level: Warning<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Group: Undecoded<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>现代通信原理笔记</title>
+    <url>/2023/032412074.html</url>
+    <content><![CDATA[<h1 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h1><h2 id="信息及其度量"><a href="#信息及其度量" class="headerlink" title="信息及其度量"></a>信息及其度量</h2><h3 id="消息与信息"><a href="#消息与信息" class="headerlink" title="消息与信息"></a>消息与信息</h3><p><strong>消息</strong>：包含信息的事物</p>
+<p><strong>信息</strong>：消息中包含的有效内容</p>
+<p>信息具有不确定性</p>
+<h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p><strong>信号</strong>是消息的载体，是一种电波形</p>
+<p>信号分为<strong>模拟信号</strong>（连续信号）和<strong>数字信号</strong>（离散信号）</p>
+<h4 id="模拟信号"><a href="#模拟信号" class="headerlink" title="模拟信号"></a>模拟信号</h4><p>模拟信号占有频带一般都比较窄，其频带利用率较高，缺点是抗干扰能力差，不易保密，设备元器件不易大规模集成。</p>
+<h4 id="数字信号"><a href="#数字信号" class="headerlink" title="数字信号"></a>数字信号</h4><p>比模拟信号占据更宽的系统频带</p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>1.抗干扰、抗噪声性能好</p>
+<p>2.差错可控</p>
+<p>3.易加密</p>
+<p>4.数字通信设备和模拟通信设备相比，设计和制造更容易，体积更小，重量更轻</p>
+<p>5.数字信号可以通过信源编码进行压缩，以减少冗余度，提高信道利用率。</p>
+<p>6.易与现代技术相结合</p>
+<h3 id="信息量"><a href="#信息量" class="headerlink" title="信息量"></a>信息量</h3><p>信息量与消息的种类、特定内容及重要程度无关，仅仅与消息中包含的不确定度有关。消息发生的概率越小，该消息包含的信息量越大。消息发生的概率趋近于0，则其信息量趋近于无穷大。</p>
+<p>信息论中，消息所含的信息量I与消息X出现的概率P(x)的关系为：</p>
+<p>$$<br>I&#x3D;{log_a{\frac1{P(x)}}}&#x3D;-{log_a{P(x)}}\<br>信息量的单位由对数底的取值决定\<br>a&#x3D;2时单位为“比特”\<br>a&#x3D;e时单位为“奈特”\<br>a&#x3D;10时单位为“哈特”\<br>通常采用“比特”作为信息量的实用单位<br>$$</p>
+<p>I代表两种含义：当事件X发送以前，表示事件X发送的不确定性；当事件X发生以后，表示事件X所含有的信息量。</p>
+<p>设离散信息源是一个由n个符号组成的集合，符号集中的每个字符Xi在消息中是按一定概率P(xi)独立出现的，又设符号集中各符号出现的概率为<br><img src="https://i.loli.net/2020/09/18/HXBSv46tu9WnDxG.png" alt="符号集中各符号出现的概率"><br>改变信源每个符号所含的信息量的统计平均值，即平均信息量为：<br><img src="https://i.loli.net/2020/09/18/kNjnmK9FcaD14xO.png" alt="平均信息量"></p>
+<p>连续消息的信息量可以用概率密度来描述，可以证明连续消息的平均信息量（相对熵）为：<br><img src="https://i.loli.net/2020/09/18/NWtygFpTISUoqhV.png" alt="连续消息的平均信息量"><br>f(x)是连续消息出现的概率密度</p>
+<h2 id="通信系统"><a href="#通信系统" class="headerlink" title="通信系统"></a>通信系统</h2><h3 id="通信系统基本模型"><a href="#通信系统基本模型" class="headerlink" title="通信系统基本模型"></a>通信系统基本模型</h3><p><img src="https://i.loli.net/2020/09/18/6sGpvS4tWlzIw89.png" alt="通信系统的基本模型">信源：将消息转换为原始电信号（基带信号）。<br>发送设备：将输入的电信号变成适合信道传输的形式（调制、滤波、放大、发射）包含信源编码和信道编码。<br>信道：将信号从发送设备向接收设备传送的物理媒质，包含有线信道和无线信道。<br>接收设备：从带干扰的接收信号中恢复出相应的原始电信号（解调、滤波、抑制噪声）。<br>受信者（信宿）：将原始电信号转换成为消息。</p>
+<p><strong>信源编码</strong>：可分为压缩编码和保密编码，提高数字信号传输的有效性，信源编码器输出的是信息码元，<strong>话音</strong>和<strong>图像</strong>压缩编码都是信源编码器完成的<br><strong>信道编码</strong>（纠错编码）：提高数字信号传输的可靠性，其基本做法是在信息码组中按一定的规则附加一些监督码元，以使接收端根据相应的规则进行检错和纠错<br><strong>数字调制</strong>：将所传输的数字序列的频谱搬移到合适信道传输的频带范围内，使其适应信道传输的要求，基本的调制方式有幅移键控（ASK）、频移键控（FSK）和相移键控（PSK）<br><strong>加性干扰</strong>：噪声叠加在信号上<br><strong>乘性干扰</strong>：<strong>多径传播</strong>是一种是信号质量降低的干扰，多径传播是信号振幅随机起伏的现象称为<strong>衰落</strong>。将这种衰落称为乘性干扰或乘性噪声。</p>
+<p>在接收设备端的原始电信号还能称为基带信号吗？不是，带有噪声</p>
+<h3 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h3><h4 id="1-按信息传输的方向与时间关系划分通信方式"><a href="#1-按信息传输的方向与时间关系划分通信方式" class="headerlink" title="1.按信息传输的方向与时间关系划分通信方式"></a>1.按信息传输的方向与时间关系划分通信方式</h4><p>对于点对点之间的通信，按信息传送的方向与时间的关系，通信方式可分为单工通信，半双工通信及全双工通信<br>单工通信：广播、遥控、无线寻呼等<br>半双工通信：无线对讲机、收发报机等<br>全双工通信：电话、计算机网络通信等</p>
+<p><img src="https://i.loli.net/2020/09/18/LuIPXo3K6DJkdN1.png" alt="通信方式示意图"></p>
+<h4 id="2-按数字信号码元排列方式划分通信方式"><a href="#2-按数字信号码元排列方式划分通信方式" class="headerlink" title="2.按数字信号码元排列方式划分通信方式"></a>2.按数字信号码元排列方式划分通信方式</h4><p>在数字通信中按照数字码元排列顺序的方式不同，可将通信方式分为串行通信和并行通信。</p>
+<p><img src="https://i.loli.net/2020/09/18/1qri29ZyIgY4uoV.png" alt="串并行通信方式"></p>
+<h5 id="并行通信"><a href="#并行通信" class="headerlink" title="并行通信"></a>并行通信</h5><p>将代表信息的数字信号码元序列分割成两路或两路以上的数字信号序列同时在信道上传输。</p>
+<p>优点：速度快、节省传输时间，但需占用频带宽，设备复杂，成本高，故较少采用，适用于短距离通信。</p>
+<h5 id="串行通信"><a href="#串行通信" class="headerlink" title="串行通信"></a>串行通信</h5><p>将代表信息的数字信号码元序列按照时间顺序一个接一个地传输</p>
+<p>适用于远距离传输</p>
+<h4 id="3-按网络结构划分通信方式"><a href="#3-按网络结构划分通信方式" class="headerlink" title="3.按网络结构划分通信方式"></a>3.按网络结构划分通信方式</h4><p>线型、星型、树型、环形等等</p>
+<h3 id="通信系统的分类"><a href="#通信系统的分类" class="headerlink" title="通信系统的分类"></a>通信系统的分类</h3><h4 id="1-按传输媒质分类"><a href="#1-按传输媒质分类" class="headerlink" title="1.按传输媒质分类"></a>1.按传输媒质分类</h4><p>有线通信系统和无线通信系统</p>
+<h4 id="2-按信号的特征分"><a href="#2-按信号的特征分" class="headerlink" title="2.按信号的特征分"></a>2.按信号的特征分</h4><p>模拟通信系统和数字通信系统</p>
+<h4 id="3-按工作频段分类"><a href="#3-按工作频段分类" class="headerlink" title="3.按工作频段分类"></a>3.按工作频段分类</h4><p>长波通信、中波通信、短波通信、微波通信</p>
+<p><img src="https://i.loli.net/2020/09/18/hw6R9Vznq5vaC4g.png" alt="通信频段、常用传输媒质及主要用途"></p>
+<p>工作波长和频率的换算公式为：</p>
+<p>$$<br>\lambda&#x3D;\frac cf&#x3D;\frac{3x10^8}f\<br>其中\lambda为工作波长(m)，f为最高工作频率(Hz)，c为光速(m&#x2F;s)<br>$$</p>
+<h4 id="4-按调制方式分类"><a href="#4-按调制方式分类" class="headerlink" title="4.按调制方式分类"></a>4.按调制方式分类</h4><p>基带传输系统和频带（调制）传输系统</p>
+<h4 id="5-按通信业务类型分类"><a href="#5-按通信业务类型分类" class="headerlink" title="5.按通信业务类型分类"></a>5.按通信业务类型分类</h4><p>电报通信系统、电话通信系统、数据通信系统和图像通信系统</p>
+<h4 id="6-按信号复用方式分类"><a href="#6-按信号复用方式分类" class="headerlink" title="6.按信号复用方式分类"></a>6.按信号复用方式分类</h4><p>频分复用（FDM）、时分复用（TDM）、码分复用（CDM）通信系统</p>
+<h3 id="模拟通信系统"><a href="#模拟通信系统" class="headerlink" title="模拟通信系统"></a>模拟通信系统</h3><p>传输模拟信号的系统，在信道中传输模拟信号。</p>
+<p><img src="https://i.loli.net/2020/09/18/KIcStB6ZNRGlQiy.png" alt="模拟通信系统的模型"><br>发信人的语音信息经过变换器转变成电信号（<strong>模拟信源</strong>），然后由调制器放大后在信道中传输<br>原始电信号（基带信号）进行调制是为了<strong>提高频带利用率</strong>，使多路信号同时在信道中传输。<br>在接收端，经过解调器和你变换器还原成语音信息。</p>
+<h3 id="数字通信系统"><a href="#数字通信系统" class="headerlink" title="数字通信系统"></a>数字通信系统</h3><p><img src="https://i.loli.net/2020/09/18/j2UzF1kDsOgeHcn.png" alt="image-20200918110926136"><br><strong>数字频带传输通信系统</strong>：；利用数字信号来传递信息的通信系统，分为数字频带传输通信系统和数字基带传输通信系统。<br>数字通信系统有一个非常重要的控制单元：同步系统，可以使通信系统的收、发两端或整个通信系统，以精度很高的时钟提供定时，以使系统数据流能与发送端同步、有序而准确地接受和恢复原信息<br>变换器：将信息转换成数字基带信号</p>
+<p><img src="https://i.loli.net/2020/09/18/hs3LjT6tBmb9AU4.png" alt="数字基带传输系统模型"><br><strong>数字基带传输通信系统</strong>：与频带传输通信系统对应，把没有调制&#x2F;解调器的数字通信系统称为数字基带传输通信系统<br>基带信号形成器：可能包含编码器、加密器以及波形变换等<br>接收滤波器：可能包含译码器、解密器等</p>
+<h2 id="通信系统的性能指标"><a href="#通信系统的性能指标" class="headerlink" title="通信系统的性能指标"></a>通信系统的性能指标</h2><p>评价通信系统优劣的主要性能指标是系统的有效性和可靠性</p>
+<p>有效性：指消息传输的“速度”问题<br>可靠性：指消息传输的“质量”问题</p>
+<p>二者经常矛盾，反比</p>
+<h3 id="模拟通信系统的性能指标"><a href="#模拟通信系统的性能指标" class="headerlink" title="模拟通信系统的性能指标"></a>模拟通信系统的性能指标</h3><p>模拟通信系统的有效性指标用所传信号的有效传输带宽来表征。当信道容许传输带宽一定，而进行多路频分复用时，每路信号所需的有效带宽越窄，信道内复用的路数越多</p>
+<p><strong>信道复用的程度越高，信号传输的有效性越好</strong></p>
+<p>信号的有效传输带宽与系统采用的调制方法有关</p>
+<p>模拟通信系统的可靠性指标用整个通信系统的输出信噪比来衡量。信噪比是信号的平均功率S与噪声的平均功率N之比。<em>信噪比越高，说明噪声对信号的影响越小。显然，信噪比越高，通信质量就越好</em>。</p>
+<p>输出信噪比一方面与信道内噪声的大小和信号的功率有关，同时又<em>和调制方式有很大关系</em>。例如宽带调频系统的有效性不如调幅系统，但是调频系统的可靠性往往比调幅系统好。</p>
+<h3 id="数字通信系统的性能指标"><a href="#数字通信系统的性能指标" class="headerlink" title="数字通信系统的性能指标"></a>数字通信系统的性能指标</h3><h4 id="有效性指标"><a href="#有效性指标" class="headerlink" title="有效性指标"></a>有效性指标</h4><p>数字通信系统的有效性指标用传输速率和频带利用率来表征。</p>
+<h5 id="传输速率"><a href="#传输速率" class="headerlink" title="传输速率"></a>传输速率</h5><p>传输速率有三种表示方式：</p>
+<p>$$<br>码元传输速率R_B\信息传输速率R_b\消息速率R_M<br>$$</p>
+<h6 id="码元传输速率"><a href="#码元传输速率" class="headerlink" title="码元传输速率"></a><strong>码元传输速率</strong></h6><p>简称传码率，又称符号速率等。它表示单位时间内传输码元的数目，单位是波特（Baud），记为B。<br>它表示单位时间内传输码元的数目，单位是波特（Baud），记为B。<br>例如，若1秒内传2400个码元，则传码率为2400B。<br>数字信号有多进制和二进制之分，但码元速率与进制数无关，只与传输的码元长度T有关</p>
+<p><img src="https://i.loli.net/2020/10/02/lADQnE2KjhVryNU.png" alt="符号(码元)传输速率"></p>
+<h6 id="信息传输速率"><a href="#信息传输速率" class="headerlink" title="信息传输速率"></a><strong>信息传输速率</strong></h6><p>简称传信率，又称比特率等。它是指系统每秒钟传送的信息量，单位是比特&#x2F;秒，常用符号“bit&#x2F;s、bps或b&#x2F;s”表示<br>它表示单位时间内传递的平均信息量或比特数</p>
+<p>$$<br>在N进制下，设信息速率为R_b(bit&#x2F;s)，码元速率为R_{BN}(Baud)，由于每个码元或符号通常\都含有一定比特的信息量，因此码元速率和信息速率有确定的关系，即:\<br>R_b&#x3D;R_{BN}H(x)\ \ \ \ \ (bit&#x2F;s)\<br>式中，H(x)为信源中每个符号所含的平均信息量（熵）。当离散信源的每一符号等概率出现\时，熵有最大值为{log_2N}(bit&#x2F;符号),信息速率也达到最大，即：\<br>R_b&#x3D;R_{BN}{log_2N}\ (bit&#x2F;s)\<br>R_{BN}&#x3D;\frac{R_b}{log_2N}\ (Baud)<br>$$</p>
+<h6 id="消息速率"><a href="#消息速率" class="headerlink" title="消息速率"></a><strong>消息速率</strong></h6><p>单位时间内传输的消息数目。例如，传输中文文件时，消息速率的单位是“字&#x2F;秒”</p>
+<h6 id="码元速率与信息速率的关系"><a href="#码元速率与信息速率的关系" class="headerlink" title="码元速率与信息速率的关系"></a>码元速率与信息速率的关系</h6><p>每个码元或符号通常都含有一定bit数的信息量，因此码元速率和信息速率有确定的关系</p>
+<p><img src="https://i.loli.net/2020/10/02/yPuq1p6LjRAflwv.png" alt="码元速率与信息速率的关系"></p>
+<p>H为信源中每个符号所含的平均信息量（熵）<br><strong>M进制、等概率</strong>传输时，熵有最大值，信息速率也达到最大</p>
+<p><img src="https://i.loli.net/2020/10/02/ZrAknGNFxgo9pj7.png" alt="![](https://i.loli.net/2020/10/02/ZrAknGNFxgo9pj7.png)"></p>
+<p>码元速率为1200B<br>采用八进制（M&#x3D;8）时，信息速率为3600b&#x2F;s；<br>采用二进制（M&#x3D;2）时， 信息速率为1200b&#x2F;s，<br><em>二进制的码元速率和信息速率在数量上相等，有时简称它们为数码率。</em></p>
+<h4 id="可靠性指标"><a href="#可靠性指标" class="headerlink" title="可靠性指标"></a>可靠性指标</h4><h5 id="错误率"><a href="#错误率" class="headerlink" title="错误率"></a>错误率</h5><p>衡量数字通信系统可靠性的指标是差错率， 常用误码率和误信率表示。<br>误码率（码元差错率Pe ）是指发生差错的码元数在传输总码元数中所占的比例，更确切地说，误码率是码元在传输系统中被传错的概率，即</p>
+<p><img src="https://i.loli.net/2020/10/02/z6Wk1lIQCRxGocK.png" alt="误码率"></p>
+<p>误信率（信息差错率Pb ）是指发生差错的比特数在传输总比特数中所占的比例， 即</p>
+<p><img src="https://i.loli.net/2020/10/02/6AWBHUE1yjqcMTl.png" alt="误信率"></p>
+<p>实际中分析误信率（二进制就是误码率），可用</p>
+<p><img src="https://i.loli.net/2020/10/02/Dri6m3KL8IwaSPE.png" alt="实际中分析误信率"><br>Pe与Pb的关系：<br>二进制—— Pb&#x3D; Pe<br>M进制—— Pb&lt; Pe</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>现代通信原理</tag>
       </tags>
   </entry>
   <entry>
