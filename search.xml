@@ -607,43 +607,4 @@ systemctl status squid.service
         <tag>现代通信原理</tag>
       </tags>
   </entry>
-  <entry>
-    <title>豆瓣卡片测试</title>
-    <url>/2023/032658580.html</url>
-    <content><![CDATA[<div class="douban-card-block">
-    <a class="douban-card" href="https://movie.douban.com/subject/35205065">
-        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2662972263.jpg');"></div>
-        <div class="douban-card-left">
-            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2662972263.jpg');"></div>
-            <div class="douban-card-status">我看过这部电视剧2023-02-16</div>
-        </div>
-        <div class="douban-card-right">
-            <div class="douban-card-item"><span>电影名: </span><strong>你是我的春天너는나의봄(2021)</strong></div>
-            <div class="douban-card-item"><span>导演: </span><span>郑志贤</span></div>
-            <div class="douban-card-item"><span>主演: </span><span>徐玄振/金东旭</span></div>
-            <div class="douban-card-item"><span>上映时间: </span><span>2021-07-05(韩国)</span></div>
-            <div class="douban-card-item"><span>评分: </span><span>7.4</span></div>
-        </div>
-    </a>
-</div>
-
-<div class="douban-card-block">
-    <a class="douban-card" href="https://book.douban.com/subject/1226200">
-        <div bg-lazy class="douban-card-bgimg" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/subject/s/public/s5717852.jpg');">
-        </div>
-        <div class="douban-card-left">
-            <div bg-lazy class="douban-card-img" style="background-image: url('https://images.weserv.nl/?url=https://img2.doubanio.com/view/subject/s/public/s5717852.jpg');">
-            </div>
-            <div class="douban-card-status">我读过这本书</div>
-        </div>
-        <div class="douban-card-right" style="line-height: 1.7;">
-            <div class="douban-card-item"><span>书名: </span><strong>极地冰河历险记</strong></div>
-            <div class="douban-card-item"><span>作者: </span><span>崔德熙</span></div>
-            <div class="douban-card-item"><span>出版年份: </span><span>2005-2</span></div>
-            <div class="douban-card-item"><span>评分: </span><span>9.1</span></div>
-        </div>
-    </a>
-</div>
-]]></content>
-  </entry>
 </search>
