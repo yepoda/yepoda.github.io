@@ -1187,6 +1187,107 @@ namespace test
       </tags>
   </entry>
   <entry>
+    <title>使用网络协议分析仪Wireshark</title>
+    <url>/2020/051610680.html</url>
+    <content><![CDATA[<h1 id="实验名称-使用网络协议分析仪Wireshark"><a href="#实验名称-使用网络协议分析仪Wireshark" class="headerlink" title="实验名称  使用网络协议分析仪Wireshark"></a>实验名称  使用网络协议分析仪Wireshark</h1><h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ol>
+<li>掌握安装和配置网络协议分析仪Wireshark的方法；</li>
+<li>熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解。</li>
+</ol>
+<h2 id="实验内容和要求"><a href="#实验内容和要求" class="headerlink" title="实验内容和要求"></a>实验内容和要求</h2><pre class="line-numbers language-none"><code class="language-none">1. 安装和配置网络协议分析仪Wireshark（http:&#x2F;&#x2F;www.wireshark.org）；
+	2. 使用并熟悉Wireshark分析协议的界面环境（菜单、工具条和各种窗口等）。
+	3. 学会使用Wireshark捕捉协议包。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><pre class="line-numbers language-none"><code class="language-none">1.运行Windows 10专业版操作系统的PC机一台
+	2.PC具有以太网卡一块，通过双绞线与局域网相连
+	3.已安装Wireshark与Cisco Packet Tracer程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="操作方法与实验步骤"><a href="#操作方法与实验步骤" class="headerlink" title="操作方法与实验步骤"></a>操作方法与实验步骤</h2><h3 id="1-安装网络协议分析仪"><a href="#1-安装网络协议分析仪" class="headerlink" title="1.安装网络协议分析仪"></a>1.安装网络协议分析仪</h3><p><img src="https://s2.loli.net/2023/03/26/PAIblrYFoBu4haO.png" alt="Wireshark首页"><br>安装成功并运行，进入主界面如图，（可以点击图片跳转Wireshark官网下载）我这里安装的版本是3.0.9，进入自动为中文界面，Wireshark进入后界面如上图没有任何本地接口，检查后发现未安装Winpacp，安装Winpacp后重启Wireshark，正常运行。</p>
+<h3 id="2-使用Wireshark分析协议"><a href="#2-使用Wireshark分析协议" class="headerlink" title="2.使用Wireshark分析协议"></a>2.使用Wireshark分析协议</h3><h4 id="（1）点击Wireshark启动程序，正常运行如图"><a href="#（1）点击Wireshark启动程序，正常运行如图" class="headerlink" title="（1）点击Wireshark启动程序，正常运行如图"></a>（1）点击Wireshark启动程序，正常运行如图</h4><p><img src="https://img-blog.csdnimg.cn/20200516175003774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark首页"><br>其中捕获和分析是最重要的功能</p>
+<h4 id="（2）分组捕获"><a href="#（2）分组捕获" class="headerlink" title="（2）分组捕获"></a>（2）分组捕获</h4><p><img src="https://img-blog.csdnimg.cn/20200516191047640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark捕获接口"><br>开始分组捕获之前选择捕获接口，我所使用的网络是网线接入电脑的有线网，所以我选择的是捕获接口是以太网。</p>
+<h4 id="（3）协议分析。"><a href="#（3）协议分析。" class="headerlink" title="（3）协议分析。"></a>（3）协议分析。</h4><p><img src="https://img-blog.csdnimg.cn/20200516191115617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>监听以太网接口得到的报文信息，如上图，其中有一条黑色底色的TCP报文信息*。<br><img src="https://img-blog.csdnimg.cn/20200516191158370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>选择序号为191的一条报文信息进行分析，从蓝框可知该报文的发送源地址为223.166.151.88，目标地址为192.168.31.97，而目标地址192。168.31.97为我的专用网地址（路由器分配给笔记本的内网IP），源地址经查询地址为上海市，是一个公网IP，很明显该报文由外部网络发送至我的内网。<br>该报文的协议为OICQ，起初并不知道这个协议，但在中间信息框中发现该报文信息中包含了我的QQ号，由此推断OICQ为QQ通信协议，经过查询，OICQ为QQ的通讯协议，OICQ用户到OICQ服务器的通讯协议。<br><img src="https://img-blog.csdnimg.cn/20200516191237382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>进入191号报文信息具体页，可看到报文具体信息和十六进制和ASCI码形式的报文内容。<br>这一帧包包含一下四种信息：<br>Frame: 物理层的数据帧情况。<br>Ethernet II , Src: 数据链路层以太网帧头部信息。<br>Internet Protocol Version 4, Src: 互联网层IP包头信息。<br>Internet Control Message Protocol: 互联网控制信息协议。ping 小包所使用的协议。<br>前三层基本上都是一样的，第四层开始就可以出现TCP, UDP 协议，第五层就可能有HTTP 应用层协议等等。<br><img src="https://img-blog.csdnimg.cn/20200516191313947.png" alt="帧结构"><br>由该栏信息可知，该报文源地址服务器端口为8000，目标端口为4004，报文长度为127，总和校验码（Checksum）为0xe51f。<br><img src="https://img-blog.csdnimg.cn/20200516191327952.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="帧结构"><br>协议层信息，协议为OICQ（即时通讯软件协议）包含目标、版本、数据等信息。</p>
+<h4 id="（4）保存分组捕获信息"><a href="#（4）保存分组捕获信息" class="headerlink" title="（4）保存分组捕获信息"></a>（4）保存分组捕获信息</h4><h2 id="实验数据记录和结果分析"><a href="#实验数据记录和结果分析" class="headerlink" title="实验数据记录和结果分析"></a>实验数据记录和结果分析</h2><p>实验数据与结果分析：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Frame <span class="token number">191</span>: <span class="token number">161</span> bytes on wire <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>, <span class="token number">161</span> bytes captured <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span> on interface <span class="token number">0</span>
+//第191帧，由161个字节在线，共1288位，实际捕获到161个字节在0接口
+    Interface id: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>//接口ID：0
+        Interface name: <span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span>
+        Interface description: <span class="token punctuation">\</span><span class="token number">344</span><span class="token punctuation">\</span><span class="token number">273</span><span class="token punctuation">\</span><span class="token number">245</span><span class="token punctuation">\</span><span class="token number">345</span><span class="token punctuation">\</span><span class="token number">244</span><span class="token punctuation">\</span><span class="token number">252</span><span class="token punctuation">\</span><span class="token number">347</span><span class="token punctuation">\</span><span class="token number">275</span><span class="token punctuation">\</span><span class="token number">221</span>
+    Encapsulation type: Ethernet <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>//封装类型
+    Arrival Time: Mar <span class="token number">13</span>, <span class="token number">2020</span> <span class="token number">15</span>:22:45.526314000 中国标准时间//到达时间
+    <span class="token punctuation">[</span>Time <span class="token builtin class-name">shift</span> <span class="token keyword">for</span> this packet: <span class="token number">0.000000000</span> seconds<span class="token punctuation">]</span>//包偏移时间
+    Epoch Time: <span class="token number">1584084165.526314000</span> seconds//不理解
+    <span class="token punctuation">[</span>Time delta from previous captured frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//两帧之间的时间间隔
+    <span class="token punctuation">[</span>Time delta from previous displayed frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//捕获到显示的间隔时间
+    <span class="token punctuation">[</span>Time since reference or first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>//此包和第一帧的时间间隔
+    Frame Number: <span class="token number">191</span>//帧号
+    Frame Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//帧长度
+    Capture Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//捕获的帧长度
+    <span class="token punctuation">[</span>Frame is marked: False<span class="token punctuation">]</span>//帧显著标志
+    <span class="token punctuation">[</span>Frame is ignored: False<span class="token punctuation">]</span>//帧忽略标志
+    <span class="token punctuation">[</span>Protocols <span class="token keyword">in</span> frame: eth:ethertype:ip:udp:oicq<span class="token punctuation">]</span>//帧内封装的协议层次结构
+    <span class="token punctuation">[</span>Coloring Rule Name: UDP<span class="token punctuation">]</span>//着色标记的协议
+    <span class="token punctuation">[</span>Coloring Rule String: udp<span class="token punctuation">]</span>//着色规则显示的字符串
+Ethernet II, Src: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>, Dst: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+    Destination: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+        Address: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
+    Source: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
+        Address: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
+    Type: IPv4 <span class="token punctuation">(</span>0x0800<span class="token punctuation">)</span>
+Internet Protocol Version <span class="token number">4</span>, Src: <span class="token number">223.166</span>.151.88, Dst: <span class="token number">192.168</span>.31.97
+    0100 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> Version: <span class="token number">4</span>
+    <span class="token punctuation">..</span><span class="token punctuation">..</span> 0101 <span class="token operator">=</span> Header Length: <span class="token number">20</span> bytes <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    Differentiated Services Field: 0x00 <span class="token punctuation">(</span>DSCP: CS0, ECN: Not-ECT<span class="token punctuation">)</span>
+        0000 00<span class="token punctuation">..</span> <span class="token operator">=</span> Differentiated Services Codepoint: Default <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>00 <span class="token operator">=</span> Explicit Congestion Notification: Not ECN-Capable Transport <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    Total Length: <span class="token number">147</span>
+    Identification: 0x8fa2 <span class="token punctuation">(</span><span class="token number">36770</span><span class="token punctuation">)</span>
+    Flags: 0x4000, Don<span class="token string">'t fragment
+        0... .... .... .... = Reserved bit: Not set
+        .1.. .... .... .... = Don'</span>t fragment: Set
+        <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> More fragments: Not <span class="token builtin class-name">set</span>
+    <span class="token punctuation">..</span>.0 0000 0000 0000 <span class="token operator">=</span> Fragment offset: <span class="token number">0</span>
+    Time to live: <span class="token number">52</span>
+    Protocol: UDP <span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span>
+    Header checksum: 0x5faf <span class="token punctuation">[</span>validation disabled<span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>Header checksum status: Unverified<span class="token punctuation">]</span>
+    Source: <span class="token number">223.166</span>.151.88
+    Destination: <span class="token number">192.168</span>.31.97
+User Datagram Protocol, Src Port: <span class="token number">8000</span>, Dst Port: <span class="token number">4004</span>
+    Source Port: <span class="token number">8000</span>//源IP
+    Destination Port: <span class="token number">4004</span>//目标IP
+    Length: <span class="token number">127</span>//长度
+    Checksum: 0xe51f <span class="token punctuation">[</span>unverified<span class="token punctuation">]</span>//和校验
+    <span class="token punctuation">[</span>Checksum Status: Unverified<span class="token punctuation">]</span>//和校验状态
+    <span class="token punctuation">[</span>Stream index: <span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">[</span>Timestamps<span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>Time since first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>Time since previous frame: <span class="token number">0.031141000</span> seconds<span class="token punctuation">]</span>
+OICQ - IM software, popular <span class="token keyword">in</span> China//因特网控制信息协议
+    Flag: Oicq packet <span class="token punctuation">(</span>0x02<span class="token punctuation">)</span>
+    Version: 0x3859//版本信息
+    Command: Heart Message <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    Sequence: <span class="token number">17154</span>
+    Data<span class="token punctuation">(</span>OICQ Number,if sender is client<span class="token punctuation">)</span>: <span class="token number">1026651458</span>
+    Data: 
+        <span class="token punctuation">[</span>Expert Info <span class="token punctuation">(</span>Warning/Undecoded<span class="token punctuation">)</span>: Trailing stray characters<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Trailing stray characters<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Severity level: Warning<span class="token punctuation">]</span>
+            <span class="token punctuation">[</span>Group: Undecoded<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>web自动化测试（python+selenium）</title>
     <url>/2020/051852901.html</url>
     <content><![CDATA[<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><h3 id="Python安装"><a href="#Python安装" class="headerlink" title="Python安装"></a>Python安装</h3><h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><p><a href="https://www.python.org/">https://www.python.org/</a></p>
@@ -1376,107 +1477,6 @@ find_elements<span class="token punctuation">(</span>self<span class="token punc
         <tag>自动化测试</tag>
         <tag>python</tag>
         <tag>selenium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用网络协议分析仪Wireshark</title>
-    <url>/2020/051610680.html</url>
-    <content><![CDATA[<h1 id="实验名称-使用网络协议分析仪Wireshark"><a href="#实验名称-使用网络协议分析仪Wireshark" class="headerlink" title="实验名称  使用网络协议分析仪Wireshark"></a>实验名称  使用网络协议分析仪Wireshark</h1><h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ol>
-<li>掌握安装和配置网络协议分析仪Wireshark的方法；</li>
-<li>熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解。</li>
-</ol>
-<h2 id="实验内容和要求"><a href="#实验内容和要求" class="headerlink" title="实验内容和要求"></a>实验内容和要求</h2><pre class="line-numbers language-none"><code class="language-none">1. 安装和配置网络协议分析仪Wireshark（http:&#x2F;&#x2F;www.wireshark.org）；
-	2. 使用并熟悉Wireshark分析协议的界面环境（菜单、工具条和各种窗口等）。
-	3. 学会使用Wireshark捕捉协议包。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><pre class="line-numbers language-none"><code class="language-none">1.运行Windows 10专业版操作系统的PC机一台
-	2.PC具有以太网卡一块，通过双绞线与局域网相连
-	3.已安装Wireshark与Cisco Packet Tracer程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="操作方法与实验步骤"><a href="#操作方法与实验步骤" class="headerlink" title="操作方法与实验步骤"></a>操作方法与实验步骤</h2><h3 id="1-安装网络协议分析仪"><a href="#1-安装网络协议分析仪" class="headerlink" title="1.安装网络协议分析仪"></a>1.安装网络协议分析仪</h3><p><img src="https://s2.loli.net/2023/03/26/PAIblrYFoBu4haO.png" alt="Wireshark首页"><br>安装成功并运行，进入主界面如图，（可以点击图片跳转Wireshark官网下载）我这里安装的版本是3.0.9，进入自动为中文界面，Wireshark进入后界面如上图没有任何本地接口，检查后发现未安装Winpacp，安装Winpacp后重启Wireshark，正常运行。</p>
-<h3 id="2-使用Wireshark分析协议"><a href="#2-使用Wireshark分析协议" class="headerlink" title="2.使用Wireshark分析协议"></a>2.使用Wireshark分析协议</h3><h4 id="（1）点击Wireshark启动程序，正常运行如图"><a href="#（1）点击Wireshark启动程序，正常运行如图" class="headerlink" title="（1）点击Wireshark启动程序，正常运行如图"></a>（1）点击Wireshark启动程序，正常运行如图</h4><p><img src="https://img-blog.csdnimg.cn/20200516175003774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark首页"><br>其中捕获和分析是最重要的功能</p>
-<h4 id="（2）分组捕获"><a href="#（2）分组捕获" class="headerlink" title="（2）分组捕获"></a>（2）分组捕获</h4><p><img src="https://img-blog.csdnimg.cn/20200516191047640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark捕获接口"><br>开始分组捕获之前选择捕获接口，我所使用的网络是网线接入电脑的有线网，所以我选择的是捕获接口是以太网。</p>
-<h4 id="（3）协议分析。"><a href="#（3）协议分析。" class="headerlink" title="（3）协议分析。"></a>（3）协议分析。</h4><p><img src="https://img-blog.csdnimg.cn/20200516191115617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>监听以太网接口得到的报文信息，如上图，其中有一条黑色底色的TCP报文信息*。<br><img src="https://img-blog.csdnimg.cn/20200516191158370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>选择序号为191的一条报文信息进行分析，从蓝框可知该报文的发送源地址为223.166.151.88，目标地址为192.168.31.97，而目标地址192。168.31.97为我的专用网地址（路由器分配给笔记本的内网IP），源地址经查询地址为上海市，是一个公网IP，很明显该报文由外部网络发送至我的内网。<br>该报文的协议为OICQ，起初并不知道这个协议，但在中间信息框中发现该报文信息中包含了我的QQ号，由此推断OICQ为QQ通信协议，经过查询，OICQ为QQ的通讯协议，OICQ用户到OICQ服务器的通讯协议。<br><img src="https://img-blog.csdnimg.cn/20200516191237382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>进入191号报文信息具体页，可看到报文具体信息和十六进制和ASCI码形式的报文内容。<br>这一帧包包含一下四种信息：<br>Frame: 物理层的数据帧情况。<br>Ethernet II , Src: 数据链路层以太网帧头部信息。<br>Internet Protocol Version 4, Src: 互联网层IP包头信息。<br>Internet Control Message Protocol: 互联网控制信息协议。ping 小包所使用的协议。<br>前三层基本上都是一样的，第四层开始就可以出现TCP, UDP 协议，第五层就可能有HTTP 应用层协议等等。<br><img src="https://img-blog.csdnimg.cn/20200516191313947.png" alt="帧结构"><br>由该栏信息可知，该报文源地址服务器端口为8000，目标端口为4004，报文长度为127，总和校验码（Checksum）为0xe51f。<br><img src="https://img-blog.csdnimg.cn/20200516191327952.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="帧结构"><br>协议层信息，协议为OICQ（即时通讯软件协议）包含目标、版本、数据等信息。</p>
-<h4 id="（4）保存分组捕获信息"><a href="#（4）保存分组捕获信息" class="headerlink" title="（4）保存分组捕获信息"></a>（4）保存分组捕获信息</h4><h2 id="实验数据记录和结果分析"><a href="#实验数据记录和结果分析" class="headerlink" title="实验数据记录和结果分析"></a>实验数据记录和结果分析</h2><p>实验数据与结果分析：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Frame <span class="token number">191</span>: <span class="token number">161</span> bytes on wire <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>, <span class="token number">161</span> bytes captured <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span> on interface <span class="token number">0</span>
-//第191帧，由161个字节在线，共1288位，实际捕获到161个字节在0接口
-    Interface id: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>//接口ID：0
-        Interface name: <span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span>
-        Interface description: <span class="token punctuation">\</span><span class="token number">344</span><span class="token punctuation">\</span><span class="token number">273</span><span class="token punctuation">\</span><span class="token number">245</span><span class="token punctuation">\</span><span class="token number">345</span><span class="token punctuation">\</span><span class="token number">244</span><span class="token punctuation">\</span><span class="token number">252</span><span class="token punctuation">\</span><span class="token number">347</span><span class="token punctuation">\</span><span class="token number">275</span><span class="token punctuation">\</span><span class="token number">221</span>
-    Encapsulation type: Ethernet <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>//封装类型
-    Arrival Time: Mar <span class="token number">13</span>, <span class="token number">2020</span> <span class="token number">15</span>:22:45.526314000 中国标准时间//到达时间
-    <span class="token punctuation">[</span>Time <span class="token builtin class-name">shift</span> <span class="token keyword">for</span> this packet: <span class="token number">0.000000000</span> seconds<span class="token punctuation">]</span>//包偏移时间
-    Epoch Time: <span class="token number">1584084165.526314000</span> seconds//不理解
-    <span class="token punctuation">[</span>Time delta from previous captured frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//两帧之间的时间间隔
-    <span class="token punctuation">[</span>Time delta from previous displayed frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//捕获到显示的间隔时间
-    <span class="token punctuation">[</span>Time since reference or first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>//此包和第一帧的时间间隔
-    Frame Number: <span class="token number">191</span>//帧号
-    Frame Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//帧长度
-    Capture Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//捕获的帧长度
-    <span class="token punctuation">[</span>Frame is marked: False<span class="token punctuation">]</span>//帧显著标志
-    <span class="token punctuation">[</span>Frame is ignored: False<span class="token punctuation">]</span>//帧忽略标志
-    <span class="token punctuation">[</span>Protocols <span class="token keyword">in</span> frame: eth:ethertype:ip:udp:oicq<span class="token punctuation">]</span>//帧内封装的协议层次结构
-    <span class="token punctuation">[</span>Coloring Rule Name: UDP<span class="token punctuation">]</span>//着色标记的协议
-    <span class="token punctuation">[</span>Coloring Rule String: udp<span class="token punctuation">]</span>//着色规则显示的字符串
-Ethernet II, Src: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>, Dst: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-    Destination: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        Address: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Source: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        Address: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Type: IPv4 <span class="token punctuation">(</span>0x0800<span class="token punctuation">)</span>
-Internet Protocol Version <span class="token number">4</span>, Src: <span class="token number">223.166</span>.151.88, Dst: <span class="token number">192.168</span>.31.97
-    0100 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> Version: <span class="token number">4</span>
-    <span class="token punctuation">..</span><span class="token punctuation">..</span> 0101 <span class="token operator">=</span> Header Length: <span class="token number">20</span> bytes <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-    Differentiated Services Field: 0x00 <span class="token punctuation">(</span>DSCP: CS0, ECN: Not-ECT<span class="token punctuation">)</span>
-        0000 00<span class="token punctuation">..</span> <span class="token operator">=</span> Differentiated Services Codepoint: Default <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>00 <span class="token operator">=</span> Explicit Congestion Notification: Not ECN-Capable Transport <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    Total Length: <span class="token number">147</span>
-    Identification: 0x8fa2 <span class="token punctuation">(</span><span class="token number">36770</span><span class="token punctuation">)</span>
-    Flags: 0x4000, Don<span class="token string">'t fragment
-        0... .... .... .... = Reserved bit: Not set
-        .1.. .... .... .... = Don'</span>t fragment: Set
-        <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> More fragments: Not <span class="token builtin class-name">set</span>
-    <span class="token punctuation">..</span>.0 0000 0000 0000 <span class="token operator">=</span> Fragment offset: <span class="token number">0</span>
-    Time to live: <span class="token number">52</span>
-    Protocol: UDP <span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span>
-    Header checksum: 0x5faf <span class="token punctuation">[</span>validation disabled<span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Header checksum status: Unverified<span class="token punctuation">]</span>
-    Source: <span class="token number">223.166</span>.151.88
-    Destination: <span class="token number">192.168</span>.31.97
-User Datagram Protocol, Src Port: <span class="token number">8000</span>, Dst Port: <span class="token number">4004</span>
-    Source Port: <span class="token number">8000</span>//源IP
-    Destination Port: <span class="token number">4004</span>//目标IP
-    Length: <span class="token number">127</span>//长度
-    Checksum: 0xe51f <span class="token punctuation">[</span>unverified<span class="token punctuation">]</span>//和校验
-    <span class="token punctuation">[</span>Checksum Status: Unverified<span class="token punctuation">]</span>//和校验状态
-    <span class="token punctuation">[</span>Stream index: <span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Timestamps<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since previous frame: <span class="token number">0.031141000</span> seconds<span class="token punctuation">]</span>
-OICQ - IM software, popular <span class="token keyword">in</span> China//因特网控制信息协议
-    Flag: Oicq packet <span class="token punctuation">(</span>0x02<span class="token punctuation">)</span>
-    Version: 0x3859//版本信息
-    Command: Heart Message <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-    Sequence: <span class="token number">17154</span>
-    Data<span class="token punctuation">(</span>OICQ Number,if sender is client<span class="token punctuation">)</span>: <span class="token number">1026651458</span>
-    Data: 
-        <span class="token punctuation">[</span>Expert Info <span class="token punctuation">(</span>Warning/Undecoded<span class="token punctuation">)</span>: Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Severity level: Warning<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Group: Undecoded<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>实验</tag>
-        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
