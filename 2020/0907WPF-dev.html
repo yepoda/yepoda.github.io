@@ -1,0 +1,2623 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="WPF开发小记, 梅园小径">
+    <meta name="description" content="用.NET&amp;C#为一个农业自动化灌溉的物联网项目写的WPF用户端系统,.NET作为微软自家的框架在win下的软件开发和ui设计都非常方便,可惜兼容性不如Qt。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>WPF开发小记 | 梅园小径</title>
+    <link rel="icon" type="image/png" href="/favicon_ay.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梅园小径" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo diyFont">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo_meiyuan.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">梅园小径</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>清单</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-tv" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>影片剧集</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>书籍杂志</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo_meiyuan.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name diyFont">梅园小径</div>
+        <div class="logo-desc">
+            
+            auntyang的生活与技术小屋
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			清单
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tv" style="position: absolute;left:50px" ></i>
+			      
+		          <span>影片剧集</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>书籍杂志</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-book"></i>
+			
+			文章
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://user-images.githubusercontent.com/13592821/174165081-9c62d188-ecb6-4200-abd8-419afbaf32c2.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">WPF开发小记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/WPF/">
+                                <span class="chip bg-color">WPF</span>
+                            </a>
+                        
+                            <a href="/tags/NET/">
+                                <span class="chip bg-color">.NET</span>
+                            </a>
+                        
+                            <a href="/tags/MaterialDesign/">
+                                <span class="chip bg-color">MaterialDesign</span>
+                            </a>
+                        
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C#</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                技术
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-09-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-03-30
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    53 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="C-基本"><a href="#C-基本" class="headerlink" title="C#基本"></a>C#基本</h1><p>C#是一种面向对象的编程语言。在面向对象的程序设计方法中,程序有各种相互交互的对象组成。相同种类的对象通常具有相同的类型,或者说,在同一Class中。</p>
+<h2 id="C-代码基本结构"><a href="#C-代码基本结构" class="headerlink" title="C#代码基本结构"></a>C#代码基本结构</h2><h3 id="using关键字"><a href="#using关键字" class="headerlink" title="using关键字"></a>using关键字</h3><p>在任何C#程序中的第一条语句都是:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">using system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>using关键字用于在程序中包含命名空间,一个程序可以包含多个using语句。</p>
+<h3 id="class关键字"><a href="#class关键字" class="headerlink" title="class关键字"></a>class关键字</h3><p>class关键字用于声明一个<strong>类</strong>,<strong>类</strong>是一种数据结构,可以封装数据成员、方法成员和其他的类。</p>
+<p>C#中所有的语句都必须包含在类中。</p>
+<p>类名是一种标识符,必须符合标识符的命名规则。</p>
+<h3 id="Main方法"><a href="#Main方法" class="headerlink" title="Main方法"></a>Main方法</h3><p>一个C#程序中只能有一个入口点(Mian方法)</p>
+<p>Main方法<strong>默认访问级别</strong>为private</p>
+<p>可以用三种修饰符修饰Main方法:Pubic,Static,Void<br>Public:说明Mian方法是公有的,在类的外面也可以调用该方法。<br>Static:说明Main方法是一个静态方法,即这个方法属于类的本身而不是这个类的特定对象。调用静态方法不能使用类的实例化对象,必须直接使用类名来调用。<br>Void:说明Main方法是无返回值的</p>
+<p>在Main方法中捕获异常信息并输出:try……catch(Exception)</p>
+<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><p>变量是类的属性或数据成员,用于存储数据。</p>
+<h3 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h3><p>函数是一系列执行指定任务的语句,类的成员函数是在类内生命的</p>
+<h3 id="实例化类"><a href="#实例化类" class="headerlink" title="实例化类"></a>实例化类</h3><p>类是一个概念,只有将类实例化才能够实际上读取数据成员或者成员函数</p>
+<h3 id="设置版本和帮助信息"><a href="#设置版本和帮助信息" class="headerlink" title="设置版本和帮助信息"></a>设置版本和帮助信息</h3><p>为C#程序设置版本和帮助信息,在“解决方案资源管理器”中找到</p>
+<h2 id="C-数据类型"><a href="#C-数据类型" class="headerlink" title="C#数据类型"></a>C#数据类型</h2><h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>值类型变量可以直接分配给一个值,值类型直接包含数据。</p>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>引用类型不包含存储在变量中的实际数据,但它们包含对变量的引用。</p>
+<p>换句话说,它们指的是一个内存位置。使用多个变量时,引用类型可以指向一个内存位置。如果内存位置的数据是有一个变量改变的,其他变量会自动反映这种值的变化。<strong>内置的</strong>引用类型有:object、dynamic、string</p>
+<h2 id="Try…Catch…"><a href="#Try…Catch…" class="headerlink" title="Try…Catch…"></a>Try…Catch…</h2><p>1、代码放到try快中(try是c#的关键字)。代码运行是,会尝试执行try块内部的语句,如果么有语句发生异常,这些语句将顺序执行下去。直到全部都完成,但是一旦出现异常就跳出try块,执行catch块中的内容。</p>
+<p>2、try块需要一个或者多个catch块程序捕捉并处理特定类型的异常。</p>
+<h2 id="InitializeComponent-方法"><a href="#InitializeComponent-方法" class="headerlink" title="InitializeComponent()方法"></a>InitializeComponent()方法</h2><p>InitializeComponent()方法:由系统生成的对窗体界面的定义方法</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public MainWindow()
+&#123;
+    InitializeComponent();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="InitializeComponent方法定义哪里"><a href="#InitializeComponent方法定义哪里" class="headerlink" title="InitializeComponent方法定义哪里"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnblogsfans/archive/2011/02/19/1958575.html">InitializeComponent方法定义哪里</a></h2><p>我们定位到那个方法转到定义,发现没反应。</p>
+<p>实际上这个方法是编译时WPF会为我自动生成,编译后在下面红色标注的地方打开MainWindow.g.cs,在这个文件可以找到这个方法的定义</p>
+<p><img src="https://images.cnblogs.com/cnblogs_com/cnblogsfans/201102/201102191634297448.png"></p>
+<p>在每个窗口建立后,都会同时产生程序代码文件,即.cs文件,以及与之相匹配的.Designer.CS文件,业务逻辑以及事件方法等被编写在.CS文件中,而界面设计规则被封装在.Designer.CS文件中</p>
+<p>InitializeComponent()方法和Dispose()方法,前者为界面设计的变现内容,后者为表单释放系统资源时候执行编码。</p>
+<p>InitializeComponent()方法反映了窗体设计器中窗体和控件的属性。通常不会在这个文件中修改代码。如果更改InitializeComponent()方法中的相关属性参数,在窗体设计器界面上也会显示出来。</p>
+<p>partial 表示以下创建的是分布类代码<br>也就是说 一个类的定义代码 可以写在两个不同的页面<br>Form1.cs和Form1.Designer.cs</p>
+<p>注意:InitializeComponent()方法写在前面和后面是有区别的。InitializeComponent()方法是用来初始化窗体组件的,在InitializeComponent之前,窗体的各个控件还没有进行初始化,比如说窗体上有一个TextBoxUserName,在InitializeComponent之前它还只是一个TextBox类型的变量而已,如果在InitializeComponent之前调用这个TextBox的属性或方法,就会出错。再比如说你拖上取一个TextBox,它放在Form的位置,TextBox的一些属性。包括new 这个TextBox都放在那个函数里面处理的。</p>
+<p>我们可以看一下Form.Designer.cs,在那里找到InitializeComponent方法,您会发现窗体对象的初始化都是在那里做的。</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>基本的类型转换:<a target="_blank" rel="noopener" href="https://www.runoob.com/csharp/csharp-type-conversion.html">https://www.runoob.com/csharp/csharp-type-conversion.html</a></p>
+<p>类型转换:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/minotauros/p/11440040.html">https://www.cnblogs.com/minotauros/p/11440040.html</a></p>
+<p>讲解的比较详细:<a target="_blank" rel="noopener" href="https://blog.csdn.net/wu_l_v/article/details/78989303">https://blog.csdn.net/wu_l_v/article/details/78989303</a></p>
+<h1 id="C-文件读写"><a href="#C-文件读写" class="headerlink" title="C#文件读写"></a>C#文件读写</h1><h2 id="添加命名控件"><a href="#添加命名控件" class="headerlink" title="添加命名控件"></a>添加命名控件</h2><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">System.IO;
+System.Text;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><p>使用FileStream类进行文件的读取 ,并将它转换成char数组,然后输出</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">byte[] byData &#x3D; new byte[100];
+char[] charData &#x3D; new char[1000];
+public void Read()
+&#123;
+  try
+   &#123;
+     FileStream file &#x3D; new FileStream(&quot;E:\\test.txt&quot;, FileMode.Open);
+     file.Seek(0, SeekOrigin.Begin);
+     file.Read(byData, 0, 100);      &#x2F;&#x2F;byData传进来的字节数组,用以接受FileStream对象中的数据,第2个参数是字节数组中开始写入数据的位置,它通常是0,     &#x2F;&#x2F;表示从数组的开端文件中向数组写数据,最后一个参数规定从文件读多少字符.
+     Decoder d &#x3D; Encoding.Default.GetDecoder();
+     d.GetChars(byData, 0, byData.Length, charData, 0);
+     Console.WriteLine(charData);
+     file.Close();
+    &#125;
+   catch (IOException e)
+   &#123;
+      Console.WriteLine(e.ToString());
+   &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用StreamReader读取文件,然后一行一行的输出。</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public void Read(string path)
+&#123;
+    StreamReader sr &#x3D; new StreamReader(path,Encoding.Default);
+    String line;
+    while ((line &#x3D; sr.ReadLine()) !&#x3D; null) 
+    &#123;
+     Console.WriteLine(line.ToString());
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><p>使用FileStream类创建文件,然后将数据写入到文件里。</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public void Write()
+&#123;
+   &#x2F;&#x2F;FileMode.Append为不覆盖文件效果.create为覆盖   FileStream fs &#x3D; new FileStream(&quot;E:\\ak.txt&quot;, FileMode.Create);
+   &#x2F;&#x2F;获得字节数组
+   byte[] data &#x3D; System.Text.Encoding.Default.GetBytes(&quot;Hello World!&quot;); 
+   &#x2F;&#x2F;开始写入
+   fs.Write(data, 0, data.Length);
+   &#x2F;&#x2F;清空缓冲区、关闭流
+   fs.Flush();
+   fs.Close();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用FileStream类创建文件,使用StreamWriter类,将数据写入到文件。</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public void Write(string path)
+&#123;
+   FileStream fs &#x3D; new FileStream(path, FileMode.Create);
+   StreamWriter sw &#x3D; new StreamWriter(fs);
+   sw.Write(&quot;Hello World!!!!&quot;);&#x2F;&#x2F;开始写入
+   sw.Flush();&#x2F;&#x2F;清空缓冲区
+   sw.Close();&#x2F;&#x2F;关闭流
+   fs.Close();
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="C-List介绍"><a href="#C-List介绍" class="headerlink" title="C# List介绍"></a>C# List介绍</h1><h2 id="一、LIST概述"><a href="#一、LIST概述" class="headerlink" title="一、LIST概述"></a><strong>一、LIST概述</strong></h2><p>**所属命名空间:**System.Collections.Generic</p>
+<p>public class List<T> : IList<T>, ICollection<T>, IEnumerable<T>, IList, ICollection, IEnumerable</p>
+<p><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">List</a>类是 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx">ArrayList</a> 类的泛型等效类。该类使用大小可按需动态增加的数组实现 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 泛型接口。</p>
+<p><strong>泛型的好处</strong>: 它为使用c#语言编写面向对象程序增加了极大的效力和灵活性。不会强行对值类型进行装箱和拆箱,或对引用类型进行向下强制类型转换,所以性能得到提高。</p>
+<h2 id="二、性能注意事项"><a href="#二、性能注意事项" class="headerlink" title="二、性能注意事项:"></a><strong>二、性能注意事项:</strong></h2><p><strong>在决定使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> <strong>还是使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx"><strong>ArrayList</strong></a><strong>类(两者具有类似的功能)时,记住</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> 类在大多数情况下执行得更好并且是类型安全的。</p>
+<p>如果对<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 类的类型 T 使用引用类型,则两个类的行为是完全相同的。但是,如果对类型 T 使用值类型,则需要考虑实现和装箱问题。</p>
+<p>“添加到 ArrayList 中的任何引用或值类型都将隐式地向上强制转换为 Object。如果项是值类型,则必须在将其添加到列表中时进行装箱操作,在检索时进行取消装箱操作。强制转换以及装箱和取消装箱操作都会降低性能;在必须对大型集合进行循环访问的情况下,装箱和取消装箱的影响非常明显。”</p>
+<h2 id="三、一般用法"><a href="#三、一般用法" class="headerlink" title="三、一般用法"></a><strong>三、一般用法</strong></h2><p><strong>List</strong>的基础、常用方法:</p>
+<p><strong>声明:</strong></p>
+<p>1、List<T> mList &#x3D; new List<T>();</p>
+<p>T为列表中元素类型,现在以string类型作为例子</p>
+<p>E.g.: List<string> mList &#x3D; new List<string>();</p>
+<p>2、List<T> testList &#x3D;new List<T> (IEnumerable<T> collection);</p>
+<p>以一个集合作为参数创建List</p>
+<p>E.g.:</p>
+<p>string[] temArr &#x3D; { “Ha”, “Hunter”, “Tom”, “Lily”, “Jay”, “Jim”, “Kuku”, “Locu” };</p>
+<p>List<string> testList &#x3D; new List<string>(temArr);</p>
+<h3 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a><strong>添加元素</strong></h3><p>1、 List. Add(T item)  添加一个元素</p>
+<p>E.g.:  mList.Add(“John”);</p>
+<p>2、 List. AddRange(IEnumerable<T> collection)  添加一组元素</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string[] temArr &#x3D; &#123; &quot;Ha&quot;,&quot;Hunter&quot;, &quot;Tom&quot;, &quot;Lily&quot;, &quot;Jay&quot;, &quot;Jim&quot;, &quot;Kuku&quot;, &quot;Locu&quot; &#125;;
+
+mList.AddRange(temArr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>3、Insert(int index, T item);  在index位置添加一个元素</p>
+<p>E.g.:  mList.Insert(1, “Hei”);</p>
+<h3 id="遍历List中元素"><a href="#遍历List中元素" class="headerlink" title="遍历List中元素"></a>遍历List中元素</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">foreach (T element in mList) &#x2F;&#x2F;T的类型与mList声明时一样
+
+ &#123;
+
+   Console.WriteLine(element);
+
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>E.g.:</p>
+<p>foreach (string s in mList)</p>
+<p>{</p>
+<p>Console.WriteLine(s);</p>
+<p>}</p>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><p>1、 List. Remove(T item)    删除一个值</p>
+<p>E.g.:  mList.Remove(“Hunter”);</p>
+<p>2、 List. RemoveAt(int index);  删除下标为index的元素</p>
+<p>E.g.:  mList.RemoveAt(0);</p>
+<p>3、 List. RemoveRange(int index, int count);</p>
+<p>从下标index开始,删除count个元素</p>
+<p>E.g.:  mList.RemoveRange(3, 2);</p>
+<h3 id="判断某个元素是否在该List"><a href="#判断某个元素是否在该List" class="headerlink" title="判断某个元素是否在该List"></a>判断某个元素是否在该List</h3><p>List. Contains(T item)  返回true或false,很实用</p>
+<p>E.g.:</p>
+<p>if (mList.Contains(“Hunter”))</p>
+<p>{</p>
+<p>Console.WriteLine(“There is Hunter in the list”);</p>
+<p>}</p>
+<p>else</p>
+<p>{</p>
+<p>mList.Add(“Hunter”);</p>
+<pre class="line-numbers language-none"><code class="language-none">Console.WriteLine(&quot;Add Hunter successfully.&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>}</p>
+<h3 id="给List里面元素排序"><a href="#给List里面元素排序" class="headerlink" title="给List里面元素排序"></a>给List里面元素排序</h3><p>List. Sort ()  默认是元素第一个字母按升序</p>
+<p>E.g.:  mList.Sort();</p>
+<h3 id="给List里面元素顺序反转"><a href="#给List里面元素顺序反转" class="headerlink" title="给List里面元素顺序反转"></a>给List里面元素顺序反转</h3><p>List. Reverse ()  可以与List. Sort ()配合使用,达到想要的效果</p>
+<p>E.g.:  mList.Sort();</p>
+<h3 id="List清空"><a href="#List清空" class="headerlink" title="List清空"></a>List清空</h3><p>List. Clear ()</p>
+<p>E.g.:  mList.Clear();</p>
+<h3 id="获得List中元素数目"><a href="#获得List中元素数目" class="headerlink" title="获得List中元素数目"></a>获得List中元素数目</h3><p>List. Count ()  返回int值</p>
+<p>E.g.:</p>
+<p>int count &#x3D; mList.Count();</p>
+<pre class="line-numbers language-none"><code class="language-none">Console.WriteLine(&quot;The num of elements in the list: &quot; +count);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h2 id="List的进阶、强大方法"><a href="#List的进阶、强大方法" class="headerlink" title="List的进阶、强大方法"></a>List的进阶、强大方法</h2><p>举例用的List:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string[] temArr &#x3D; &#123; Ha&quot;,&quot;Hunter&quot;, &quot;Tom&quot;, &quot;Lily&quot;, &quot;Jay&quot;, &quot;Jim&quot;, &quot;Kuku&quot;, &quot; &quot;Locu&quot; &#125;;
+
+mList.AddRange(temArr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="List-Find方法"><a href="#List-Find方法" class="headerlink" title="List.Find方法"></a>List.Find方法</h3><p>搜索与指定谓词所定义的条件相匹配的元素,并返回整个 List 中的第一个匹配元素。</p>
+<p>public T Find(Predicate<T> match);</p>
+<p>Predicate是对方法的委托,如果传递给它的对象与委托中定义的条件匹配,则该方法返回 true。当前 List 的元素被逐个传递给Predicate委托,并在 List 中向前移动,从第一个元素开始,到最后一个元素结束。当找到匹配项时处理即停止。</p>
+<p>Predicate 可以委托给一个函数或者一个拉姆达表达式:</p>
+<p>委托给拉姆达表达式:</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string listFind &#x3D; mList.Find(name &#x3D;&gt; &#x2F;&#x2F;name是变量,代表的是mList
+
+  &#123;               &#x2F;&#x2F;中元素,自己设定
+
+    if (name.Length &gt; 3)
+
+    &#123;
+
+      return true;
+
+    &#125;
+
+      return false;
+
+   &#125;);
+
+   Console.WriteLine(listFind);   &#x2F;&#x2F;输出是Hunter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>委托给一个函数:</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string listFind1 &#x3D; mList.Find(ListFind); &#x2F;&#x2F;委托给ListFind函数
+
+Console.WriteLine(listFind);      &#x2F;&#x2F;输出是Hunter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="ListFind函数"><a href="#ListFind函数" class="headerlink" title="ListFind函数"></a>ListFind函数</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public bool ListFind(string name)
+
+&#123;
+
+  if (name.Length &gt; 3)
+
+    &#123;
+
+     return true;
+
+    &#125;
+
+      return false;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这两种方法的结果是一样的。</p>
+<h3 id="List-FindLast方法"><a href="#List-FindLast方法" class="headerlink" title="List.FindLast方法"></a>List.FindLast方法</h3><p>搜索与指定谓词所定义的条件相匹配的元素,并返回整个 List 中的最后一个匹配元素。</p>
+<p>public T FindLast(Predicate<T> match);</p>
+<p>用法与List.Find相同。</p>
+<h3 id="List-TrueForAll方法"><a href="#List-TrueForAll方法" class="headerlink" title="List.TrueForAll方法"></a>List.TrueForAll方法</h3><p>确定是否 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/6sh2ey19(zh-cn,VS.85).aspx">List</a> 中的每个元素都与指定的谓词所定义的条件相匹配。</p>
+<p>public bool TrueForAll(Predicate<T> match);</p>
+<p>委托给拉姆达表达式:</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">bool flag &#x3D; mList.TrueForAll(name &#x3D;&gt;
+
+  &#123;
+
+    if (name.Length &gt; 3)
+
+    &#123;
+
+     return true;
+
+    &#125;
+
+    else
+
+     &#123;
+
+      return false;
+
+      &#125;
+
+   &#125;
+
+ );
+
+ Console.WriteLine(&quot;True for all: &quot;+flag); &#x2F;&#x2F;flag值为false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>委托给一个函数,这里用到上面的<strong>ListFind</strong>函数:</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#"> bool flag &#x3D; mList.TrueForAll(ListFind); &#x2F;&#x2F;委托给ListFind函数
+
+Console.WriteLine(&quot;True for all: &quot;+flag); &#x2F;&#x2F;flag值为false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这两种方法的结果是一样的。</p>
+<h3 id="List-FindAll方法"><a href="#List-FindAll方法" class="headerlink" title="List.FindAll方法"></a>List.FindAll方法</h3><p>检索与指定谓词所定义的条件相匹配的所有元素。</p>
+<p>public List<T> FindAll(Predicate<T> match);</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">List&lt;string&gt; subList &#x3D; mList.FindAll(ListFind); &#x2F;&#x2F;委托给ListFind函数
+
+ foreach (string s in subList)
+
+  &#123;
+
+   Console.WriteLine(&quot;element in subList: &quot;+s);
+
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">这时subList存储的就是所有长度大于3的元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="List-Take-n"><a href="#List-Take-n" class="headerlink" title="List.Take(n)"></a>List.Take(n)</h3><p>获得前n行 返回值为IEnumetable<T>,T的类型与List<T>的类型一样</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">IEnumerable&lt;string&gt; takeList&#x3D; mList.Take(5);
+
+foreach (string s in takeList)
+
+ &#123;
+
+   Console.WriteLine(&quot;element in takeList: &quot; + s);
+
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">这时takeList存放的元素就是mList中的前5个<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="List-Where方法"><a href="#List-Where方法" class="headerlink" title="List.Where方法"></a>List.Where方法</h3><p>检索与指定谓词所定义的条件相匹配的所有元素。跟List.FindAll方法类似。</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">IEnumerable&lt;string&gt; whereList &#x3D; mList.Where(name &#x3D;&gt;
+
+     &#123;
+
+        if (name.Length &gt; 3)
+
+        &#123;
+
+          return true;
+
+        &#125;
+
+        else
+
+        &#123;
+
+          return false;
+
+        &#125;
+
+     &#125;);
+
+   foreach (string s in subList)
+
+   &#123;
+
+     Console.WriteLine(&quot;element in subList: &quot;+s);
+
+   &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">这时subList存储的就是所有长度大于3的元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h3 id="List-RemoveAll方法"><a href="#List-RemoveAll方法" class="headerlink" title="List.RemoveAll方法"></a>List.RemoveAll方法</h3><p>移除与指定的谓词所定义的条件相匹配的所有元素。</p>
+<p>public int RemoveAll(Predicate<T> match);</p>
+<p>E.g.:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">mList.RemoveAll(name &#x3D;&gt;
+
+       &#123;
+
+         if (name.Length &gt; 3)
+
+         &#123;
+
+           return true;
+
+         &#125;
+
+         else
+
+         &#123;
+
+           return false;
+
+         &#125;
+
+       &#125;);
+
+     foreach (string s in mList)
+
+     &#123;
+
+       Console.WriteLine(&quot;element in mList:   &quot; + s);
+
+     &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这时mList存储的就是移除长度大于3之后的元素。</p>
+<p>List<T> 是一个泛型链表…T表示节点元素类型<br>比如<br>List<int> intList;表示一个元素为int的链表<br>intList.Add(34); &#x2F;&#x2F;添加<br>intList.Remove(34);&#x2F;&#x2F;删除<br>intList.RemoveAt(0); &#x2F;&#x2F;删除位于某处的元素<br>intList.Count; &#x2F;&#x2F;链表长度<br>还有Insert,Find,FindAll,Contains等方法,也有索引方法 intList[0] &#x3D; 23;</p>
+<p>1.减少了装箱拆箱<br>2.便于编译时检查数据类型</p>
+<p>List<Object> 就相当于 System.Collections命名空间里面的List</p>
+<h2 id="C-List和string-之间的相互转换"><a href="#C-List和string-之间的相互转换" class="headerlink" title="C#List和string[]之间的相互转换"></a>C#List<string>和string[]之间的相互转换</h2><p>1.从System.String[]转到List&lt;System.String&gt;</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">List&lt;System.String&gt; List &#x3D; new List&lt;System.String&gt;(); string[] str&#x3D;&#123;&quot;1&quot;,&quot;2&quot;,&quot;3&quot;&#125;;
+List &#x3D; new List&lt;System.String&gt;(str);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>2.从List&lt;System.String&gt;转到System.String[]</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">List&lt;System.String&gt; List &#x3D; new List&lt;System.String&gt;(); List.Add(&quot;1&quot;);
+List.Add(&quot;2&quot;);
+List.Add(&quot;3&quot;);&#x2F;&#x2F;添加数据
+System.String[] str &#x3D; &#123; &#125;;
+str &#x3D; List.ToArray();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3.字符串数组可以,其他有些类型像int数组等等的也是可以的。</p>
+<h1 id="C-字符分割"><a href="#C-字符分割" class="headerlink" title="C# 字符分割"></a>C# 字符分割</h1><h2 id="Split-函数"><a href="#Split-函数" class="headerlink" title="Split()函数"></a>Split()函数</h2><p>Split方法提供了字符分割的几种方法</p>
+<p>String.Split方法提供了如下6个重载函数:</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_86599791.htm">String.Split (Char[])</a></td>
+<td align="left">返回包含此实例中的子字符串(由指定 Char 数组的元素分隔)的 String 数组。由 .NET Compact Framework 支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_d4a51604.htm">String.Split (Char[], Int32)</a></td>
+<td align="left">返回包含此实例中的子字符串(由指定 Char 数组的元素分隔)的 String 数组。参数指定返回的子字符串的最大数量。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_0b4c5fa1.htm">String.Split (Char[], StringSplitOptions)</a></td>
+<td align="left">返回包含此字符串中的子字符串(由指定的 Char 数组的元素分隔)的 String 数组。参数指定是否返回空数组元素。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_f66d5c6c.htm">String.Split (String[], StringSplitOptions)</a></td>
+<td align="left">返回包含此字符串中的子字符串(由指定的 String 数组的元素分隔)的 String 数组。参数指定是否返回空数组元素。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_7399acf4.htm">String.Split (Char[], Int32, StringSplitOptions)</a></td>
+<td align="left">返回包含此字符串中的子字符串(由指定的 Char 数组的元素分隔)的 String 数组。参数指定要返回子字符串的最大数量,以及是否要返回空数组元素。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_42368699.htm">String.Split (String[], Int32, StringSplitOptions)</a></td>
+<td align="left">返回包含此字符串中的子字符串(由指定的 String 数组的元素分隔)的 String 数组。参数指定要返回子字符串的最大数量,以及是否要返回空数组元素。</td>
+</tr>
+</tbody></table>
+<p>以下详细举例说明:</p>
+<h3 id="String-Split-Char"><a href="#String-Split-Char" class="headerlink" title="String.Split(Char[])"></a>String.Split(Char[])</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctdd&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;&#125;); 或string []strArray &#x3D; str.Split(&#39;t&#39;); &#x2F;&#x2F;单字符切割(result : &quot;aaa&quot; &quot;bbscc&quot; &quot;dd&quot;)
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,&#39;s&#39;&#125;); &#x2F;&#x2F;多字节切割(result : &quot;aaa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="String-Split-Char-Int32"><a href="#String-Split-Char-Int32" class="headerlink" title="String.Split(Char[],Int32)"></a>String.Split(Char[],Int32)</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctdd&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,2&#125;);&#x2F;&#x2F;只切割成2份(result :&quot;aaa&quot; &quot;bbscctdd&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="String-Split-Char-StringSplitOptions"><a href="#String-Split-Char-StringSplitOptions" class="headerlink" title="String.Split(Char[],StringSplitOptions)"></a>String.Split(Char[],StringSplitOptions)</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctddt&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,StringSplitOptions.RemoveEmptyEntries&#125;);&#x2F;&#x2F;去除空元素(result :&quot;aaa&quot; &quot;bbscc&quot; &quot;dd&quot;)
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,StringSplitOptions.None&#125;);&#x2F;&#x2F;保留空元素(result :&quot;aaa&quot; &quot;bbscc&quot; &quot;dd&quot; “”) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="String-Split-String-StringSplitOptions"><a href="#String-Split-String-StringSplitOptions" class="headerlink" title="String.Split(String[],StringSplitOptions)"></a>String.Split(String[],StringSplitOptions)</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctddt&quot;;
+
+string []strArray &#x3D; str.Split(new String[]&#123;&quot;t&quot;,StringSplitOptions.RemoveEmptyEntries&#125;);&#x2F;&#x2F;去除空元素(result :&quot;aaa&quot; &quot;bbscc&quot; &quot;dd&quot;)
+
+string []strArray &#x3D; str.Split(new String[]&#123;&quot;t&quot;,StringSplitOptions.None&#125;);&#x2F;&#x2F;保留空元素(result :&quot;aaa&quot; &quot;bbscc&quot; &quot;dd&quot; “”) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="String-Split-Char-Int32-StringSplitOptions"><a href="#String-Split-Char-Int32-StringSplitOptions" class="headerlink" title="String.Split(Char[],Int32,StringSplitOptions)"></a>String.Split(Char[],Int32,StringSplitOptions)</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctddt&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,2,StringSplitOptions.RemoveEmptyEntries&#125;);&#x2F;&#x2F;切割成2份且去除空元素(result :&quot;aaa&quot; &quot;bbscctddt&quot;)
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,2,StringSplitOptions.None&#125;);&#x2F;&#x2F;切割成2份且保留空元素(result :&quot;aaa&quot; &quot;bbscctddt&quot; “”)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="String-Split-String-Int32-StringSplitOptions"><a href="#String-Split-String-Int32-StringSplitOptions" class="headerlink" title="String.Split(String[],Int32,StringSplitOptions)"></a>String.Split(String[],Int32,StringSplitOptions)</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctddt&quot;;
+
+string []strArray &#x3D; str.Split(new String[]&#123;&quot;t&quot;,2,StringSplitOptions.RemoveEmptyEntries&#125;);&#x2F;&#x2F;切割成2份且去除空元素(result :&quot;aaa&quot; &quot;bbscctddt&quot;)
+
+string []strArray &#x3D; str.Split(new String[]&#123;&quot;t&quot;,2,StringSplitOptions.None&#125;);&#x2F;&#x2F;切割成2份且保留空元素(result :&quot;aaa&quot; &quot;bbscctddt&quot; “”)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h2><p>正则匹配拆分字符串提供了5个重载函数:</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_16219e3a.htm">Regex.Split (String)</a></td>
+<td align="left">在由<a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/T_System_Text_RegularExpressions_Regex.htm">Regex</a> 构造函数中指定的正则表达式模式定义的位置拆分指定的输入字符串。由 .NET Compact Framework 支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_843a3b0f.htm">Regex.Split (String, Int32)</a></td>
+<td align="left">在由 Regex 构造函数中指定的正则表达式定义的位置,将指定的输入字符串拆分指定的最大次数。由 .NET Compact Framework 支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_d460c748.htm">Regex.Split (String, String)</a></td>
+<td align="left">在由正则表达式模式定义的位置拆分输入字符串。由 .NET Compact Framework 支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_1c9576da.htm">Regex.Split (String, Int32, Int32)</a></td>
+<td align="left">从输入字符串中的指定字符位置开始,在由 Regex 构造函数中指定的正则表达式定义的位置,将指定的输入字符串拆分指定的最大次数。由 .NET Compact Framework 支持。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_2_385f6254.htm">Regex.Split (String, String, RegexOptions)</a></td>
+<td align="left">在由指定的正则表达式模式定义的位置拆分输入字符串。可指定选项来修改匹配的行为。</td>
+</tr>
+</tbody></table>
+<h3 id="添加命名空间"><a href="#添加命名空间" class="headerlink" title="添加命名空间"></a>添加命名空间</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">using System.Text.RegularExpressions;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="函数demo"><a href="#函数demo" class="headerlink" title="函数demo"></a>函数demo</h3><h4 id="Regex-Split-String-String"><a href="#Regex-Split-String-String" class="headerlink" title="Regex.Split(String,String)"></a>Regex.Split(String,String)</h4><p>string str &#x3D; “aaatsbbtscctsdd”;<br>stirng []strArray &#x3D; Regex.Split(str,”ts”); &#x2F;&#x2F;正则匹配切割(result: “aaa” “bb” “cc” “dd”);</p>
+<h4 id="Regex-Split-String-String-1"><a href="#Regex-Split-String-String-1" class="headerlink" title="Regex.Split(String,String)"></a>Regex.Split(String,String)</h4><p>string str &#x3D; “aaatsbbtscctsdd”;<br>stirng []strArray &#x3D; Regex.Split(str,”ts”,RegexOptions.IgnoreCase); &#x2F;&#x2F;正则匹配切割(result: “aaa” “bb” “cc” “dd”);</p>
+<h2 id="字符分割应用"><a href="#字符分割应用" class="headerlink" title="字符分割应用"></a>字符分割应用</h2><h3 id="单字符拆分"><a href="#单字符拆分" class="headerlink" title="单字符拆分"></a>单字符拆分</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctdd&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;&#125;); 或string []strArray &#x3D; str.Split(&#39;t&#39;); &#x2F;&#x2F;单字符切割(result : &quot;aaa&quot;  &quot;bbscc&quot;  &quot;dd&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="多字符拆分"><a href="#多字符拆分" class="headerlink" title="多字符拆分"></a>多字符拆分</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatbbscctdd&quot;;
+
+string []strArray &#x3D; str.Split(new char[]&#123;&#39;t&#39;,&#39;s&#39;&#125;); &#x2F;&#x2F;多字节切割(result : &quot;aaa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串拆分"><a href="#字符串拆分" class="headerlink" title="字符串拆分"></a>字符串拆分</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">using System.Text.RegularExpressions;
+
+string str &#x3D; &quot;aaatsbbtscctsdd&quot;;
+
+stirng []strArray &#x3D; Regex.Split(str,&quot;ts&quot;,RegexOptions.IgnoreCase); &#x2F;&#x2F;正则匹配切割且(result: &quot;aaa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string str &#x3D; &quot;aaatsbbtscctsdd&quot;;
+
+string []strArray &#x3D; str.Split(new string[]&#123;&quot;ts&quot;&#125;); &#x2F;&#x2F;字符串切割(result : &quot;aaa&quot; &quot;bb&quot; &quot;cc&quot; &quot;dd&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>String.Split方法没有重载String.Split(stirng [])方法,也就是说str.Split(“t”)或者str.Split(new string[]{“ts”,”dd”})都是错误的。</p>
+<p>除了切割单字符可用String.Split(‘t’)外,其它的都必须用String.Split(new char[]{})这样的格式,否则编译会出错</p>
+<h1 id="功能实现小记"><a href="#功能实现小记" class="headerlink" title="功能实现小记"></a>功能实现小记</h1><h2 id="WPF打开网页实现"><a href="#WPF打开网页实现" class="headerlink" title="WPF打开网页实现"></a>WPF打开网页实现</h2><h3 id="浏览器打开"><a href="#浏览器打开" class="headerlink" title="浏览器打开"></a>浏览器打开</h3><p>添加头文件引用</p>
+<pre class="line-numbers language-C#" data-language="C#"><code class="language-C#">using System.Diagnostics;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">Process proc &#x3D; new System.Diagnostics.Process();
+proc.StartInfo.FileName &#x3D; &quot;http:&#x2F;&#x2F;www.baidu.com&quot;;
+proc.Start();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="WPF应用程序中打开"><a href="#WPF应用程序中打开" class="headerlink" title="WPF应用程序中打开"></a>WPF应用程序中打开</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">WebBrowser wBrowser &#x3D; new WebBrowser();
+wBrowser .Source &#x3D; new Uri(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;);     
+this.Content &#x3D; wBrowser ;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="WPF插入超链接"><a href="#WPF插入超链接" class="headerlink" title="WPF插入超链接"></a>WPF插入超链接</h2><p>前端XAML:<br>值得注意的一点是,超链接的文字一定要包含在&lt;hyperlink&gt;&lt;&#x2F;hyperlink&gt;标记中,否则报错。并且&lt;hyperlink&gt;&lt;&#x2F;hyperlink&gt;标记不可以单独出现,一定要嵌套在textblcok中</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;TextBlock&gt;
+        &lt;Hyperlink NavigateUri&#x3D;&quot;http:&#x2F;&#x2F;www.nlecloud.com&#x2F;my&#x2F;forget&quot; 
+                   Click&#x3D;&quot;ForgotPassword_Click&quot;
+                   Name&#x3D;&quot;ForgotPassword&quot;&gt;
+          忘记密码
+        &lt;&#x2F;Hyperlink&gt;
+&lt;&#x2F;TextBlock&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>后端C#:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        &#123;&#x2F;&#x2F;忘记密码
+            Hyperlink link &#x3D; sender as Hyperlink;
+            Process.Start(new ProcessStartInfo(link.NavigateUri.AbsoluteUri));
+        &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>坑:窗口全局的MoseMove事件会影响超链接标记的点击属性,导致超链接点击事件不发生的情况。</p>
+<h2 id="实现Image控件点击事件"><a href="#实现Image控件点击事件" class="headerlink" title="实现Image控件点击事件"></a>实现Image控件点击事件</h2><p>为Image控件设置鼠标点击事件</p>
+<pre class="line-numbers language-XAMl" data-language="XAMl"><code class="language-XAMl">&lt;Image
+                            ToolTip&#x3D;&quot;进入新大陆物联网云&quot;
+                            MouseLeftButtonDown&#x3D;&quot;Image_MouseLeftButtonDown&quot;
+                            Width&#x3D;&quot;120&quot; Height&#x3D;&quot;50&quot;
+                            &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在后台代码中写出点击事件的逻辑实现</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        &#123;
+            Process proc &#x3D; new System.Diagnostics.Process();
+            proc.StartInfo.FileName &#x3D; &quot;http:&#x2F;&#x2F;www.nlecloud.com&#x2F;&quot;;
+            proc.Start();
+        &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="HeaderStringFormat-属性"><a href="#HeaderStringFormat-属性" class="headerlink" title="HeaderStringFormat 属性"></a>HeaderStringFormat 属性</h2><p>获取或设置一个撰写字符串,该字符串指定如果 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">[System.ComponentModel.Bindable(true)]
+public string HeaderStringFormat &#123; get; set; &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.string?view=netcore-3.1">String</a><br>一个撰写字符串,指定如果 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。 默认值为 <code>null</code>。</li>
+<li>属性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.bindableattribute?view=netcore-3.1">BindableAttribute</a></li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面的示例将绑定 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol?view=netcore-3.1">TabControl</a> 到对象的集合 <code>Student</code> 。 <code>Student</code>类具有一个 <code>Name</code> 属性和一个对象的集合 <code>Course</code> ,并实现了 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 返回 <code>Name</code> 学生或列出学生课程的字符串的方法。 该示例使用将 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 学生的名称放在 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1">Header</a> 从) 继承的每个 (的中 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> ,并使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol.contentstringformat?view=netcore-3.1">TabControl.ContentStringFormat</a> 来为的内容中的每个学生显示课程列表 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> 。</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Grid&gt;
+  &lt;Grid.Resources&gt;
+    &lt;src:Students x:Key&#x3D;&quot;Students&quot;&#x2F;&gt;
+
+    &lt;Style TargetType&#x3D;&quot;TabItem&quot;&gt;
+      &lt;Setter Property&#x3D;&quot;HeaderStringFormat&quot; Value&#x3D;&quot;n&quot;&#x2F;&gt;
+      &lt;Setter Property&#x3D;&quot;FontFamily&quot; Value&#x3D;&quot;Lucida Sans Unicode&quot;&#x2F;&gt;
+      &lt;Setter Property&#x3D;&quot;Foreground&quot; Value&#x3D;&quot;Green&quot;&#x2F;&gt;
+      &lt;Setter Property&#x3D;&quot;FontWeight&quot; Value&#x3D;&quot;Bold&quot;&#x2F;&gt;
+    &lt;&#x2F;Style&gt;
+  &lt;&#x2F;Grid.Resources&gt;
+
+  &lt;TabControl ItemsSource&#x3D;&quot;&#123;StaticResource Students&#125;&quot;
+              FontFamily&#x3D;&quot;Lucida Console&quot; Foreground&#x3D;&quot;Navy&quot;
+              ContentStringFormat&#x3D;&quot;cl&quot;&#x2F;&gt;
+&lt;&#x2F;Grid&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下面的示例实现 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 方法以返回 <code>Name</code> 学生的或列出学生课程的字符串。</p>
+<pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> format<span class="token punctuation">,</span> <span class="token class-name">IFormatProvider</span> formatProvider<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 'n': print the name only.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>format <span class="token operator">==</span> <span class="token string">"n"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> Name<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// 'cl': print the course list.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>format <span class="token operator">==</span> <span class="token string">"cl"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token class-name"><span class="token keyword">string</span></span> stringFormat <span class="token operator">=</span> <span class="token string">"&#123;0,-25&#125;&#123;1,-30&#125;&#123;2,-10&#125;\r\n"</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">StringBuilder</span> str <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        str<span class="token punctuation">.</span><span class="token function">AppendLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        str<span class="token punctuation">.</span><span class="token function">AppendFormat</span><span class="token punctuation">(</span>stringFormat<span class="token punctuation">,</span> <span class="token string">"Title"</span><span class="token punctuation">,</span> <span class="token string">"Description"</span><span class="token punctuation">,</span> <span class="token string">"ID"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        str<span class="token punctuation">.</span><span class="token function">AppendLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token class-name">Course</span> c <span class="token keyword">in</span> Courses<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            str<span class="token punctuation">.</span><span class="token function">AppendFormat</span><span class="token punctuation">(</span>stringFormat<span class="token punctuation">,</span> c<span class="token punctuation">.</span>Title<span class="token punctuation">,</span> c<span class="token punctuation">.</span>Description<span class="token punctuation">,</span> c<span class="token punctuation">.</span>SectionID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 可以是预定义的复合字符串格式。 有关字符串格式的详细信息,请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/formatting-types">格式设置类型</a>。 如果设置 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplate?view=netcore-3.1">HeaderTemplate</a> 了或的 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplateselector?view=netcore-3.1">HeaderTemplateSelector</a> 属性,则将 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 忽略属性。</p>
+<h3 id="依赖项属性信息"><a href="#依赖项属性信息" class="headerlink" title="依赖项属性信息"></a>依赖项属性信息</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">标识符字段</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformatproperty?view=netcore-3.1">HeaderStringFormatProperty</a></td>
+</tr>
+<tr>
+<td align="left">元数据属性设置为<code>true</code></td>
+<td align="left">无</td>
+</tr>
+</tbody></table>
+<h2 id="Xaml控件不可用属性"><a href="#Xaml控件不可用属性" class="headerlink" title="Xaml控件不可用属性"></a>Xaml控件不可用属性</h2><pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">isEnable &#x3D; &quot;False&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="登录文本框判空提示"><a href="#登录文本框判空提示" class="headerlink" title="登录文本框判空提示"></a>登录文本框判空提示</h2><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">getUsername.text &#x3D;&#x3D; null;
+
+getPassword.password &#x3D;&#x3D; null;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="ToolTip提示控件"><a href="#ToolTip提示控件" class="headerlink" title="ToolTip提示控件"></a>ToolTip提示控件</h2><p>ToolTip控件可以在鼠标移动到某控件上后弹出提示的控件</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt; Button Content &#x3D;&quot;Button&quot; HorizontalAlignment &#x3D;&quot;Left&quot; Margin &#x3D;&quot;80,58,0,0&quot; VerticalAlignment &#x3D;&quot;Top&quot; Width &#x3D;&quot;75&quot;&gt;
+           &lt; Button.ToolTip &gt;
+               &lt; ToolTip Placement &#x3D;&quot;Right&quot;&gt;
+                   &lt; TextBlock &gt;
+                   按钮tooltip
+                   &lt;&#x2F; TextBlock &gt;
+               &lt;&#x2F; ToolTip &gt;              
+           &lt;&#x2F; Button.ToolTip &gt;
+       &lt;&#x2F; Button &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中Placement用来确定Tooltip提示框出现的位置。</p>
+<p>对于StackPanel的控件,如下所示:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt; StackPanel.ToolTip &gt;
+  &lt; ToolTip Placement &#x3D;&quot;Center&quot;&gt;
+ 	 &lt; TextBlock &gt; 
+ 		 第一个按钮 
+ 	 &lt;&#x2F; TextBlock &gt;
+  &lt;&#x2F; ToolTip &gt;
+&lt;&#x2F; StackPanel.ToolTip &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对于ToolTip的控制,还提供了ToolTipService类,ToolTipService是一个静态类,表示一个服务,该服务提供用于控制提示的显示和行为的属性和事件。</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt; Button ToolTipService.Placement &#x3D;&quot;Center&quot; ToolTipService.BetweenShowDelay &#x3D;&quot;1000&quot; ToolTipService.ToolTip &#x3D;&quot;按钮提示&quot;  Content &#x3D;&quot;Button&quot; HorizontalAlignment &#x3D;&quot;Left&quot; Margin &#x3D;&quot;80,58,0,0&quot; VerticalAlignment &#x3D;&quot;Top&quot; Width &#x3D;&quot;75&quot;&gt;
+	&lt; Button.ToolTip &gt;
+		&lt; ToolTip Placement &#x3D;&quot;Right&quot;&gt;
+			&lt; TextBlock &gt;
+ 				按钮tooltip
+			&lt;&#x2F; TextBlock &gt;
+		&lt;&#x2F; ToolTip &gt;
+	&lt;&#x2F; Button.ToolTip &gt;
+&lt;&#x2F; Button &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>ToolTipService主要属性</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">ToolTipService.InitialShowDelay&#x3D;&quot;1000&quot;  &#x2F;&#x2F;获取或设置工具提示打开前的时间长度
+
+ToolTipService.ShowDuration&#x3D;&quot;7000&quot; &#x2F;&#x2F;显示时间
+
+ToolTipService.BetweenShowDelay&#x3D;&quot;2000&quot;&#x2F;&#x2F;获取或设置两个工具提示显示之间的最大时间(第二个工具提示不经延迟即会出现)。
+
+ToolTipService.Placement&#x3D;&quot;Right&quot;&#x2F;&#x2F;工具提示相对原控件打开时的方向,并指定工具提示在与屏幕边界重叠时的行为。
+
+ToolTipService.PlacementRectangle&#x3D;&quot;50,0,0,0&quot;&#x2F;&#x2F;获取或设置相对于其来放置工具提示的矩形区域。
+
+ToolTipService.HorizontalOffset&#x3D;&quot;10&quot;&#x2F;&#x2F;获取或设置由 PlacementRectangle 和 PlacementTarget 属性为工具提示指定的区域的左侧偏移量。
+
+ToolTipService.VerticalOffset&#x3D;&quot;20&quot;&#x2F;&#x2F;获取或设置由 PlacementRectangle 和 PlacementTarget 属性为工具提示指定的区域的顶部距离。
+
+ToolTipService.HasDropShadow&#x3D;&quot;False&quot;&#x2F;&#x2F;获取或设置工具提示是否显示投影效果。
+
+ToolTipService.IsEnabled&#x3D;&quot;True&quot;&#x2F;&#x2F;获取或设置是否显示工具提示。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="DispatcherTimer线程"><a href="#DispatcherTimer线程" class="headerlink" title="DispatcherTimer线程"></a>DispatcherTimer线程</h2><p>什么是 DispatcherTimer? DispatcherTimer是一种定时器!</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public MainWindow()
+&#123;
+    InitializeComponent();
+    this.Loaded +&#x3D; MainWindow_Loaded;
+
+
+&#125;
+DispatcherTimer time;&#x2F;&#x2F;实例化一个定时器
+      
+void MainWindow_Loaded(object sender,RoutedEventArgs e)
+&#123;
+    time &#x3D; new DispatcherTimer();
+    time.Interval &#x3D; TimeSpan.FromSeconds(3000);
+    time.Tick +&#x3D; time_tick;
+    time.Start();
+
+&#125;
+void time_tick (object sender,EventArgs e)
+&#123;
+
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="WPF窗体出现位置"><a href="#WPF窗体出现位置" class="headerlink" title="WPF窗体出现位置"></a>WPF窗体出现位置</h2><p>如何设置WPF窗体在屏幕上显示的位置?</p>
+<p>方法一<br>在后台代码中添加</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public Login()
+&#123;
+InitializeComponent();
+WindowStartupLocation &#x3D; WindowStartupLocation.CenterScreen;&#x2F;&#x2F;WPF窗体在屏幕上居中
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>方法二<br>在XAML代码中添加</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">WindowStartupLocation&#x3D;&quot;CenterScreen&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="获取当前桌面路径"><a href="#获取当前桌面路径" class="headerlink" title="获取当前桌面路径"></a>获取当前桌面路径</h2><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string strDesktopPath &#x3D; Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);&#x2F;&#x2F;用函数获取当前电脑的桌面路径保存为string类型的变量<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="WPF窗体无边框"><a href="#WPF窗体无边框" class="headerlink" title="WPF窗体无边框"></a>WPF窗体无边框</h2><p>WPF做这样的窗口非常简单,只有需在窗口设计中设置两个属性,一个是AllowsTransparency, 设置为 Ture;  一个是 WindowStyle, 设置为 None。<br><img src="https://i.loli.net/2020/10/19/mnHiBZf5DvaSx2X.png" alt="属性设置"><br>注:是Window的属性,不要选中其他的控件。</p>
+<p>另外,如果AllowsTransparency&#x3D;”True”,那么 WindowStyle只能为 None, VS2015 已经做到连动设置,只要勾选AllowsTransparency,后一个也跟着变了。但 VS2008 还是需要用户分别设置,不然会报错。</p>
+<p>还有一个问题不得不提,AllowsTransparency&#x3D;”True” 之后就无法使用 WindowsFormsHost控件了,因为就算用了,WFH里的任何控件也是透明无法显示出来的,比如ReportViewer</p>
+<h2 id="WPF窗体拖动"><a href="#WPF窗体拖动" class="headerlink" title="WPF窗体拖动"></a>WPF窗体拖动</h2><p>标题栏上有最大化最小化和关闭的按钮,其中在登录窗口我们一般是不会使用最大化按钮的。可是不得不说,标题栏还有一个很实用的作用,就是可以拖拽整个窗口,用户只要单击标题栏不放,就可以拖到桌面的任何地方。如今把标题栏隐藏之后,该如何弥补呢?</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        &#123;
+            try
+            &#123;
+                this.DragMove();
+            &#125;
+            catch &#123; &#125;
+        &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>网上很多教程到这一步就结束了,对我这种没有精通C#的人来说很不友善,实际上还需要为窗体XAML添加一个事件,代码如下,其他有关窗体操作的内容以此类推:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">MouseMove&#x3D;&quot;Window_MouseLeftButtonDown&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注:网上有些示例里,没有用 try{}catch{},而只有一行代码</p>
+<pre class="line-numbers language-C#" data-language="C#"><code class="language-C#">this.DragMove();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果在登录窗口,只有那么几个控件和事件的话,应该也是无大碍的。</p>
+<p>在这里有个小小的经验必须分享一下:由于在主界面里也使用了这种无标题栏的窗口,鼠标在Gridview上操作时,经常会引发异常崩溃。所以最好加 try…catch… 避免异常,哪怕是登录窗口也不例外。</p>
+<h3 id="设置允许拖动区域"><a href="#设置允许拖动区域" class="headerlink" title="设置允许拖动区域"></a>设置允许拖动区域</h3><p>这里遇到一点问题,当窗体中有RichTextBox这种能输入的控件时,在控件中按下左键拖动鼠标就会报错,估计是控件本身的鼠标拖动和窗体的冲突。再者,我们在这些控件中拖动鼠标的目的是选择文字,而不是拖动窗口,这时就需要设置相应区域:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">private void BackGround_MouseMove(object sender, MouseEventArgs e)
+    &#123;
+      Point pp &#x3D; Mouse.GetPosition(this);
+      if (pp.X &gt;&#x3D; 20 &amp;&amp; pp.X &lt;&#x3D; 288 &amp;&amp; pp.Y&gt;&#x3D;78 &amp;&amp; pp.Y &lt;&#x3D; 460)
+      	&#123;
+    
+      	&#125;
+      else
+      &#123;
+        if (e.LeftButton &#x3D;&#x3D; MouseButtonState.Pressed)
+        &#123;
+          &#x2F;&#x2F;this.DragMove();     
+          Window.DragMove();
+        &#125;
+      &#125;
+    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="输入密码回车登录"><a href="#输入密码回车登录" class="headerlink" title="输入密码回车登录"></a>输入密码回车登录</h2><p>很多网站会注意这种情况,输入密码后回车,系统就可以登录,这就是良好的用户体验。(当然,也有些网站不注意用户体验,用户必须用鼠标去点击登录的)</p>
+<p>其实在密码框添加一个 KeyDown 事件就可以</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">private void txt_Pwd_KeyDown(object sender, KeyEventArgs e)
+&#123;
+    switch (e.Key)
+    &#123;
+        case Key.Enter:
+            btn_login_Click(btn_login, null);
+            break;
+
+        default:
+            break;
+    &#125;
+&#125;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同时需要在Xaml文件中添加键盘点击事件名称声明:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">Keyboard.KeyDown&#x3D;&quot;txt_Pwd_KeyDown&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="WPF退出程序"><a href="#WPF退出程序" class="headerlink" title="WPF退出程序"></a>WPF退出程序</h2><p>当处于全屏模式下时,没有右上角的退出按钮,此时需要手动写button退出功能。<br>调用下面语句可以直接退出。</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">Application.Current.Shutdown();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="HandyControl与LiveCharts使用出现图形位置偏移问题"><a href="#HandyControl与LiveCharts使用出现图形位置偏移问题" class="headerlink" title="HandyControl与LiveCharts使用出现图形位置偏移问题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">HandyControl与LiveCharts使用出现图形位置偏移问题</a></h2><blockquote>
+<p><code>HandyControl</code>是一套<code>WPF</code>控件库,它几乎重写了所有原生样式,同时包含70余款自定义控件(正逐步增加)。</p>
+</blockquote>
+<p>此处为<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl"><code>HandyControl</code>源码传送门</a>,希望能对它能有所了解</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>由于<code>HandyControl</code>作为<code>WPF</code>的一款<code>UI</code>库,暂时没有考虑过增加,数据图形控件,对于需要数据统计图形展示的用户,可能引入<code>LiveCharts</code>做数据展示处理,运行之后,出现之前好好的控件,显示效果中,图形位置偏移走样问题。</p>
+<h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html#1527470209">现象</a></h3><p>引用<code>HandyControl</code>前,感觉生活很美好</p>
+<p><a target="_blank" rel="noopener" href="https://file.budbud.cn/handycontrol/path/livechart-right.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-right.png" alt="livechart-right"></a></p>
+<p>引入<code>HandyControl</code>后,世界都懵逼了</p>
+<p><a target="_blank" rel="noopener" href="https://file.budbud.cn/handycontrol/path/livechart-wrong.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-wrong.png" alt="livechart-wrong"></a></p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>由于<code>HandyControl</code>本身重写了几乎所有的原生样式,当然也包括了<code>Path</code>的默认样式,<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl/blob/28c464a8e2bc5318f3957a41dae799b824554232/src/Shared/HandyControl_Shared/Themes/Basic/Paths.xaml">详细修改处👉传送门</a></p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Style TargetType&#x3D;&quot;Path&quot;&gt;
+        &lt;Setter Property&#x3D;&quot;Stretch&quot; Value&#x3D;&quot;Uniform&quot;&#x2F;&gt;
+&lt;&#x2F;Style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>清除<code>HandyControl</code>影响,设置<code>Path</code>的<code>Style</code>为空,引入位置,一般在<code>App.xaml</code>中或者使用<code>LiveCharts</code>控件的<code>父级资源</code>中</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Style TargetType&#x3D;&quot;Path&quot; BasedOn&#x3D;&quot;&#123;x:Null&#125;&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>解决方案出处:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">https://www.cnblogs.com/guanguanchangyu/p/12604090.html</a></p>
+<h1 id="错误error"><a href="#错误error" class="headerlink" title="错误error"></a>错误error</h1><h2 id="未将对象引用设置到对象的实例"><a href="#未将对象引用设置到对象的实例" class="headerlink" title="未将对象引用设置到对象的实例"></a>未将对象引用设置到对象的实例</h2><p>完整错误:System.NullReferenceException:未将对象引用设置到对象的实例</p>
+<p>错误场景:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public static int numberPeople()
+       &#123;&#x2F;&#x2F;当前排队人数
+           SensorDataFuzzyQryPagingParas query &#x3D; new SensorDataFuzzyQryPagingParas()
+           &#123;
+               DeviceID&#x3D;119374,
+               ApiTags &#x3D; &quot;number_up&quot;
+           &#125;;
+           var yxh &#x3D; SDK.GetSensorDatas(query, TempInfo.API_HOST);
+ 		   &#x2F;*
+   		 修改前
+   		 return yxh.ResultObj.count;
+   	 *&#x2F;
+           if(yxh.IsSuccess())
+           &#123;
+               return yxh.ResultObj.Count;
+           &#125;
+           else
+           &#123;
+               return 0;
+           &#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>错误原因:出现这个问题是因为引用的对象是null或empty导致</p>
+<p>声明变量时:T t &#x3D; null;(T为类名),此时在栈上有一个地址。地址占4个字节,但地址没有任何指向,即指向内容为空。如果调用T的成员函数,出错:未将对象引用设置到对象实例</p>
+<h2 id="不能在变量声明中指定数组大小"><a href="#不能在变量声明中指定数组大小" class="headerlink" title="不能在变量声明中指定数组大小"></a>不能在变量声明中指定数组大小</h2><p>不能在变量声明中指定数组大小(请尝试使用“new”表达式初始化)</p>
+<p>将大小指定为数组声明的一部分时会发生此错误。 若要解决此错误,请使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/new-operator">new 运算符</a>表达式。</p>
+<p>下面的示例生成 CS0270:</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">&#x2F;&#x2F; CS0270.cs  
+&#x2F;&#x2F; compile with: &#x2F;t:module  
+  
+public class Test  
+&#123;  
+   int[10] a;   &#x2F;&#x2F; CS0270  
+   &#x2F;&#x2F; To resolve, use the following line instead:  
+   &#x2F;&#x2F; int[] a &#x3D; new int[10];  
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="动态图表LiveCharts"><a href="#动态图表LiveCharts" class="headerlink" title="动态图表LiveCharts"></a>动态图表LiveCharts</h1><h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><p>基本图表图线建立:<a target="_blank" rel="noopener" href="http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html">http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html</a></p>
+<p>基本图形的数据绑定:<a target="_blank" rel="noopener" href="https://www.liangzl.com/get-article-detail-172477.html">https://www.liangzl.com/get-article-detail-172477.html</a></p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">mychart.Series &#x3D; new SeriesCollection
+           &#123;
+               new LineSeries
+               &#123;
+                   Values &#x3D; new ChartValues&lt;int&gt;(temp),
+                   DataLabels&#x3D;true,
+                   Title &#x3D; &quot;当前人数&quot;
+               &#125;
+             
+           &#125;;
+
+           &#x2F;&#x2F;myAxisX.Labels &#x3D; new[] &#123; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot; &#125;;&#x2F;&#x2F;横坐标定义
+           DateTime now &#x3D; new DateTime();
+
+           for (int j &#x3D; 0; j &lt; 10; j++)
+           &#123;
+               time1[j] &#x3D; now.ToString();
+
+           &#125;
+           myAxisX.Labels &#x3D; time1;
+           myAxisY.MaxValue &#x3D; 10;&#x2F;&#x2F;纵坐标最大值定义
+           &#x2F;&#x2F;myAxisY.LabelFormatter &#x3D; value &#x3D;&gt; value.ToString(&quot;0%&quot;);
+           myAxisY.Title &#x3D; &quot;人数&quot;;&#x2F;&#x2F;纵坐标标题<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="设置曲线"><a href="#设置曲线" class="headerlink" title="设置曲线"></a>设置曲线</h2><pre class="line-numbers language-C#" data-language="C#"><code class="language-C#">LineSeries mylineseries &#x3D; new LineSeries();&#x2F;&#x2F;首先实例化一条折线
+
+mylineseries.Title &#x3D; &quot;night&quot;;&#x2F;&#x2F;设置折线名称
+
+mylineseries.Stroke &#x3D; System.Windows.Media.Brushes.Black;&#x2F;&#x2F;设置折线颜色
+
+mylineseries.StrokeThickness &#x3D; 10;&#x2F;&#x2F;设置折线粗细
+
+mylineseries.StrokeDashArray &#x3D; new System.Windows.Media.DoubleCollection &#123; 2 &#125;;&#x2F;&#x2F;设置折线样式
+
+mylineseries.LineSmoothness &#x3D; 1;&#x2F;&#x2F;设置折线是否光滑
+
+mylineseries.Fill &#x3D; System.Windows.Media.Brushes.LightBlue;&#x2F;&#x2F;设置折线填充颜色<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="设置图表"><a href="#设置图表" class="headerlink" title="设置图表"></a>设置图表</h2><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">&lt;lvc:CartesianChart x:Name&#x3D;&quot;mychart&quot; Series&#x3D;&quot;&#123;Binding SeriesCollection&#125;&quot;&#x2F; &gt;&#x2F;&#x2F;首先在前台给图表命名
+
+mychart.Background &#x3D; System.Windows.Media.Brushes.Gray;&#x2F;&#x2F;设置图表的背景颜色
+
+mychart.LegendLocation &#x3D; LegendLocation.Top;&#x2F;&#x2F;设置图示位置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="设置轴线"><a href="#设置轴线" class="headerlink" title="设置轴线"></a>设置轴线</h2><pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&#x2F;&#x2F;首先在前台对轴线命名
+&lt;lvc:CartesianChart.AxisX&gt;  
+&lt;lvc:Axis x:Name&#x3D;&quot;myaxisx&quot;&#x2F;&gt;  
+&lt;&#x2F;lvc:CartesianChart.AxisX&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">myaxisx.Separator.StrokeThickness &#x3D; 10;&#x2F;&#x2F;设置轴线粗细
+
+myaxisx.Separator.Step &#x3D; 0.5;&#x2F;&#x2F;设置轴线间隔
+
+myaxisx.Title &#x3D; &quot;Date&quot;;&#x2F;&#x2F;设置轴线标题
+
+myaxisx.Position &#x3D; AxisPosition.RightTop;&#x2F;&#x2F;设置轴线标题
+
+myaxisx.Labels &#x3D; new[]&#123; &quot;Mon&quot;, &quot;Tue&quot;,&quot;Wen&quot;,&quot;Thu&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;&#125;;&#x2F;&#x2F;设置坐标轴标签
+
+myaxisx.LabelsRotation &#x3D; 45;&#x2F;&#x2F;设置坐标轴标签旋转角度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="设置提示"><a href="#设置提示" class="headerlink" title="设置提示"></a>设置提示</h2><pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&#x2F;&#x2F;首先在前台对提示命名
+&lt;lvc:CartesianChart.DataTooltip&gt;  
+&lt;lvc:DefaultTooltip x:Name&#x3D;&quot;mytooltip&quot;&#x2F;&gt;  
+&lt;&#x2F;lvc:CartesianChart.DataTooltip&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">mytooltip.Background &#x3D; System.Windows.Media.Brushes.LightCyan;&#x2F;&#x2F;设置提示的背景颜色
+
+mytooltip.SelectionMode &#x3D; TooltipSelectionMode.OnlySender;&#x2F;&#x2F;设置提示的选择模式
+
+mytooltip.CornerRadius &#x3D; new CornerRadius(5);&#x2F;&#x2F;设置提示框的圆角半径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">&#x2F;&#x2F;设置提示框的边框颜色和大小
+mytooltip.BorderBrush &#x3D; System.Windows.Media.Brushes.Yellow ;  
+mytooltip.BorderThickness &#x3D; new Thickness (2);  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>以上所有后台代码设置均可以在前台实现同样的设置<br>部分前台设置如下:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;lvc:CartesianChart.AxisY&gt; 
+&lt;lvc:Axis Title&#x3D;&quot;star&quot; LabelFormatter&#x3D;&quot;&#123;Binding Formatter&#125;&quot; &gt;&lt;&#x2F;lvc:Axis&gt; 
+&lt;&#x2F;lvc:CartesianChart.AxisY&gt; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Window x:Class&#x3D;&quot;chart_line.MainWindow&quot;
+xmlns&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&#x2F;presentation&quot;
+xmlns:x&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&quot;
+xmlns:d&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;expression&#x2F;blend&#x2F;2008&quot;
+xmlns:mc&#x3D;&quot;http:&#x2F;&#x2F;schemas.openxmlformats.org&#x2F;markup-compatibility&#x2F;2006&quot;
+xmlns:local&#x3D;&quot;clr-namespace:chart_line&quot;
+xmlns:lvc&#x3D;&quot;clr-namespace:LiveCharts.Wpf;assembly&#x3D;LiveCharts.Wpf&quot;
+mc:Ignorable&#x3D;&quot;d&quot;
+Title&#x3D;&quot;MainWindow&quot; Height&#x3D;&quot;350&quot; Width&#x3D;&quot;525&quot;&gt;
+&lt;Grid x:Name&#x3D;&quot;grid&quot;&gt;
+&lt;lvc:CartesianChart x:Name&#x3D;&quot;mychart&quot; Series&#x3D;&quot;&#123;Binding SeriesCollection&#125;&quot; &gt;
+&lt;lvc:CartesianChart.AxisX&gt;
+&lt;lvc:Axis x:Name&#x3D;&quot;myaxisx&quot;&#x2F;&gt;
+&lt;&#x2F;lvc:CartesianChart.AxisX&gt;&lt;lvc:CartesianChart.AxisY&gt;
+&lt;lvc:Axis Title&#x3D;&quot;star&quot; LabelFormatter&#x3D;&quot;&#123;Binding Formatter&#125;&quot; &gt;&lt;&#x2F;lvc:Axis&gt;
+&lt;&#x2F;lvc:CartesianChart.AxisY&gt;
+&lt;lvc:CartesianChart.DataTooltip&gt;
+&lt;lvc:DefaultTooltip x:Name&#x3D;&quot;mytooltip&quot;  &#x2F;&gt;
+&lt;&#x2F;lvc:CartesianChart.DataTooltip&gt;
+&lt;&#x2F;lvc:CartesianChart&gt;
+&lt;&#x2F;Grid&gt;
+&lt;&#x2F;Window&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">using LiveCharts;
+using LiveCharts.Wpf;
+
+namespace chart_line
+&#123;
+&#x2F;&#x2F;&#x2F; &lt;summary&gt;
+&#x2F;&#x2F;&#x2F; Interaction logic for MainWindow.xaml
+&#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;
+public partial class MainWindow : Window
+&#123;
+public SeriesCollection SeriesCollection &#123; get; set; &#125;
+public Func&lt;double, string&gt; Formatter &#123; get; set; &#125;
+public MainWindow()
+&#123;
+InitializeComponent();
+LineSeries mylineseries &#x3D; new LineSeries();
+mylineseries.Title &#x3D; &quot;night&quot;;mylineseries.Stroke &#x3D; System.Windows.Media.Brushes.Blue ;
+mylineseries.StrokeThickness &#x3D; 10;mylineseries.StrokeDashArray &#x3D; new System.Windows.Media.DoubleCollection &#123; 2 &#125;;
+mylineseries.LineSmoothness &#x3D; 1;mylineseries.Fill &#x3D; System.Windows.Media.Brushes.LightBlue  ;&#x2F;&#x2F;mylineseries.PointGeometry &#x3D; null;
+
+mychart.LegendLocation &#x3D; LegendLocation.Top ;mychart.Background &#x3D; System.Windows.Media.Brushes.Gray ;
+myaxisx.Separator.StrokeThickness &#x3D; 10;myaxisx.Separator.Stroke&#x3D; System.Windows.Media.Brushes.Red;
+myaxisx.Separator.Step &#x3D; 0.5;myaxisx.Title &#x3D; &quot;Date&quot;;myaxisx.Position &#x3D; AxisPosition.RightTop;&#x2F;&#x2F;myaxisx.IsMerged &#x3D; true;
+
+myaxisx.LabelsRotation &#x3D; 45;myaxisx.Labels &#x3D; new[]&#123; &quot;Mon&quot;, &quot;Tue&quot;,&quot;Wen&quot;,&quot;Thu&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;&#125;;
+&#x2F;&#x2F;mytooltip.BulletSize &#x3D; 10;
+mytooltip.Background &#x3D; System.Windows.Media.Brushes.LightCyan  ;
+mytooltip.SelectionMode &#x3D; TooltipSelectionMode.OnlySender;mytooltip.CornerRadius &#x3D; new CornerRadius(5);mytooltip.BorderBrush &#x3D; System.Windows.Media.Brushes.Yellow ;
+mytooltip.BorderThickness &#x3D; new Thickness (2);
+double[] mynum &#x3D; &#123; 1, 3, 1, 6, 2, 9, 4 &#125;;
+mylineseries.Values &#x3D; new ChartValues&lt;double&gt; ( mynum );
+Formatter &#x3D; value &#x3D;&gt; value + &quot;-N&quot;;
+SeriesCollection &#x3D; new SeriesCollection &#123;mylineseries&#125;;
+
+DataContext &#x3D; this;
+&#125;
+&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://img-blog.csdnimg.cn/20190124225942411.?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzIzMTc2MTMz,size_16,color_FFFFFF,t_70" alt="效果图"></p>
+<h1 id="XAML"><a href="#XAML" class="headerlink" title="XAML"></a>XAML</h1><p>作为XAML语言的一条规则,必须完全在该对象元素上的任何其他属性元素之前或之后完全指定XAML内容属性的值。例如,以下标记不会编译。</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Button&gt;I am a
+  &lt;Button.Background&gt;Blue&lt;&#x2F;Button.Background&gt;
+  blue button&lt;&#x2F;Button&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="WPF控件"><a href="#WPF控件" class="headerlink" title="WPF控件"></a>WPF控件</h1><h2 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Fred1987/p/6038608.html">Slider</a></h2><h3 id="设置整数"><a href="#设置整数" class="headerlink" title="设置整数"></a>设置整数</h3><p>这个控件上值默认是浮点数,改变它的值可以拖动滑块,也可以在具有焦点的时候使用键盘,还可以点击滑块两侧的空白处(类似滚动条),值的步进有两个属性控制LargeChange和SmallChange,默认值分别是1和0.1,所以会出现1.3543这种情况,不过完全可以自定义的,添加代码:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">Ticks&#x3D;&quot;1 2 3 4 5&quot; &#x2F;&#x2F;这个就是步进值的设置
+IsSnapToTickEnabled&#x3D;&quot;True&quot; &#x2F;&#x2F;还要加上这一句才有效果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">SmallChange&#x3D;&quot;1&quot; 
+IsSnapToTickEnabled&#x3D;&quot;True&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="Border"><a href="#Border" class="headerlink" title="Border"></a>Border</h2><p>border作边框使用</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">BorderBrush&#x3D;&quot;Black&quot;&#x2F;&#x2F;设置边框颜色
+BorderThickness&#x3D;&quot;2&quot;&#x2F;&#x2F;设置边框粗细<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="TextBlock"><a href="#TextBlock" class="headerlink" title="TextBlock"></a>TextBlock</h2><h3 id="TextBlock换行"><a href="#TextBlock换行" class="headerlink" title="TextBlock换行"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuzhenyi/archive/2013/01/13/2858797.html">TextBlock换行</a></h3><p>新建一个TextBlock作为最基础的一个控件,他所携带的功能相对于其他的控件要来的比较少,</p>
+<p>比较值得关注的属性出了布局用的以外和数据绑定意外,就只剩下的Text属性来。</p>
+<p>TextBlock的默认内容属性是Text。</p>
+<p>对于换行来说,需要关注的也就是Text和Inline2个属性。</p>
+<p>常见的TextBlock换行方法</p>
+<p>1)转义字符换行</p>
+<p>在XAML的后台文件中加入代码</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">Me.TextBlock1.Text &#x3D; &quot;AAAAAAA &quot; + vbCrLf + &quot;BBBBBBBB&quot;
+this.TextBlock1.Text &#x3D; &quot;AAAAAAA\nBBBBBBBB&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>在XAML上写时</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;TextBlock Text&#x3D;&quot;AAAAAAA
+BBBBBB&quot;   Height&#x3D;&quot;198&quot; HorizontalAlignment&#x3D;&quot;Left&quot; 
+           Margin&#x3D;&quot;30,27,0,0&quot; Name&#x3D;&quot;TextBlock1&quot; VerticalAlignment&#x3D;&quot;Top&quot; Width&#x3D;&quot;436&quot; &gt;       	&lt;&#x2F;TextBlock&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这样就可以表示显示的表示换行了,</p>
+<p>但是下面这种情况是无效的。</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">        &lt;TextBlock  Height&#x3D;&quot;198&quot; HorizontalAlignment&#x3D;&quot;Left&quot; 
+                   Margin&#x3D;&quot;30,27,0,0&quot; Name&#x3D;&quot;TextBlock1&quot; VerticalAlignment&#x3D;&quot;Top&quot; Width&#x3D;&quot;436&quot; &gt; 
+            AAAAAAA
+BBBBBB
+        &lt;&#x2F;TextBlock&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在Text的内容里赋值时候,会按照XML去解析,所以对于XML的转义字符都会起到他们的作用,而上面这种情况,虽然这种写法是</p>
+<p>是默认获取TextBlock的内容属性,但是在赋值过程中会经过Convert按照String来处理,字符串中解析到换行符时,默认转成了空格。</p>
+<p>所以你看到的结果AAAAAAA和BBBBBB并没有被换行表示,只是中间隔了一个空格。</p>
+<p>另外XML的转义字符:</p>
+<p><strong>空格</strong> (&amp;#x0020;)<br>Tab (&amp;#x0009;)<br><strong>回车</strong> (&amp;#x000D;)<br><strong>换行</strong> (&amp;#x000A;)</p>
+<p>2)设置属性,自动换行</p>
+<p>因为TextBlock有TextWrapping属性的支持,根据控件宽度自动设置换行,没有特殊要求的时候,这基本上能满足需求</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;TextBlock  Height&#x3D;&quot;49&quot; HorizontalAlignment&#x3D;&quot;Left&quot; 
+           Margin&#x3D;&quot;30,27,0,0&quot; Name&#x3D;&quot;TextBlock1&quot; VerticalAlignment&#x3D;&quot;Top&quot; Width&#x3D;&quot;60&quot; TextWrapping&#x3D;&quot;Wrap&quot;&gt; 
+    AAAAAAABBBBBB
+&lt;&#x2F;TextBlock&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3)使用InLines属性的LineBreak来换行</p>
+<p>简单的来说就是,显示的XAML表示用</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;TextBlock  Height&#x3D;&quot;49&quot; HorizontalAlignment&#x3D;&quot;Left&quot; 
+           Margin&#x3D;&quot;30,27,0,0&quot; Name&#x3D;&quot;TextBlock1&quot; VerticalAlignment&#x3D;&quot;Top&quot; Width&#x3D;&quot;60&quot; TextWrapping&#x3D;&quot;Wrap&quot;&gt; 
+    &lt;Run&gt;AAAAAA&lt;&#x2F;Run&gt;
+    &lt;LineBreak&#x2F;&gt;
+    &lt;Run&gt;BBBBBB&lt;&#x2F;Run&gt;
+&lt;&#x2F;TextBlock&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>后台代码添加</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">TextBlock1.Inlines.Add(New Run(&quot;AAAAAA&quot;))
+TextBlock1.Inlines.Add(New LineBreak())
+TextBlock1.Inlines.Add(New Run(&quot;BBBB&quot;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>另外如果RUN里面有大量的文字表示,超过了TextBlock的Width时候,文字会被剪切掉,而不是自动换行,这点需要注意一下</p>
+<h1 id="WPF美化"><a href="#WPF美化" class="headerlink" title="WPF美化"></a>WPF美化</h1><h2 id="MaterialDesignInXaml"><a href="#MaterialDesignInXaml" class="headerlink" title="MaterialDesignInXaml"></a>MaterialDesignInXaml</h2><p>美化包:MaterialDesignInXaml</p>
+<p>导入包:管理Nuget程序包中搜索美化包名</p>
+<p>使用前添加引用:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">xmlns:materialDesign&#x3D;&quot;http:&#x2F;&#x2F;materialdesigninxaml.net&#x2F;winfx&#x2F;xaml&#x2F;themes&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>App.xaml文件添加引用:</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;ResourceDictionary&gt;
+            &lt;ResourceDictionary.MergedDictionaries&gt;
+                &lt;ResourceDictionary Source&#x3D;&quot;pack:&#x2F;&#x2F;application:,,,&#x2F;MaterialDesignThemes.Wpf;component&#x2F;Themes&#x2F;MaterialDesignTheme.Light.xaml&quot; &#x2F;&gt;
+                &lt;ResourceDictionary Source&#x3D;&quot;pack:&#x2F;&#x2F;application:,,,&#x2F;MaterialDesignColors;component&#x2F;Themes&#x2F;Recommended&#x2F;Primary&#x2F;MaterialDesignColor.DeepPurple.xaml&quot; &#x2F;&gt;
+                &lt;ResourceDictionary Source&#x3D;&quot;pack:&#x2F;&#x2F;application:,,,&#x2F;MaterialDesignColors;component&#x2F;Themes&#x2F;Recommended&#x2F;Accent&#x2F;MaterialDesignColor.Lime.xaml&quot; &#x2F;&gt;
+                &lt;ResourceDictionary Source&#x3D;&quot;pack:&#x2F;&#x2F;application:,,,&#x2F;MaterialDesignThemes.Wpf;component&#x2F;Themes&#x2F;MaterialDesignTheme.Defaults.xaml&quot; &#x2F;&gt;
+            &lt;&#x2F;ResourceDictionary.MergedDictionaries&gt;
+            &lt;&#x2F;ResourceDictionary&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Grid Name&#x3D;&quot;myGrid&quot; Width&#x3D;&quot;auto&quot; ShowGridLines&#x3D;&quot;False&quot; Background&#x3D;&quot;AliceBlue&quot;&gt;
+       &lt;Grid.RowDefinitions&gt;
+           &lt;RowDefinition Height&#x3D;&quot;150&quot;&#x2F;&gt;
+           &lt;RowDefinition Height&#x3D;&quot;75&quot;&#x2F;&gt;
+           &lt;RowDefinition Height&#x3D;&quot;75&quot;&#x2F;&gt;
+           &lt;RowDefinition Height&#x3D;&quot;80&quot;&#x2F;&gt;
+           &lt;RowDefinition Height&#x3D;&quot;150&quot;&#x2F;&gt;
+       &lt;&#x2F;Grid.RowDefinitions&gt;
+       &lt;Grid.ColumnDefinitions&gt;
+           &lt;ColumnDefinition Width&#x3D;&quot;200&quot;&#x2F;&gt;
+           &lt;ColumnDefinition Width&#x3D;&quot;*&quot;&#x2F;&gt;
+           &lt;ColumnDefinition Width&#x3D;&quot;200&quot; &#x2F;&gt;
+       &lt;&#x2F;Grid.ColumnDefinitions&gt;
+       &lt;!--为什么放大窗口后textbox比textblock要长??--&gt;
+       &lt;TextBlock Grid.Row&#x3D;&quot;0&quot; Grid.Column&#x3D;&quot;1&quot; Text&#x3D;&quot;登录SwissArmyKnife系统&quot; FontSize&#x3D;&quot;32&quot; TextAlignment&#x3D;&quot;Center&quot; Margin&#x3D;&quot;0,70,0,30&quot;&#x2F;&gt;
+       &lt;TextBox Grid.Row&#x3D;&quot;1&quot; Grid.Column&#x3D;&quot;1&quot; Text&#x3D;&quot;请输入账号&quot;  FontSize&#x3D;&quot;32&quot; Margin&#x3D;&quot;50,15&quot;&#x2F;&gt;
+       &lt;PasswordBox Grid.Row&#x3D;&quot;2&quot; Grid.Column&#x3D;&quot;1&quot;  ToolTip&#x3D;&quot;请输入密码&quot; Margin&#x3D;&quot;50,15&quot; FontSize&#x3D;&quot;32&quot;  
+                    x:Name&#x3D;&quot;FloatingPasswordBox&quot;
+                  
+                    materialDesign:HintAssist.Hint&#x3D;&quot;请输入密码&quot;
+                    materialDesign:HintAssist.Foreground&#x3D;&quot;Green&quot;
+                    materialDesign:TextFieldAssist.UnderlineBrush&#x3D;&quot;Green&quot;
+                    Style&#x3D;&quot;&#123;StaticResource MaterialDesignFloatingHintPasswordBox&#125;&quot; &#x2F;&gt;
+       &lt;Button Grid.Row&#x3D;&quot;3&quot; Grid.Column&#x3D;&quot;1&quot; Content&#x3D;&quot;登录&quot; FontSize&#x3D;&quot;20&quot; Margin&#x3D;&quot;40,15&quot; &#x2F;&gt;
+   &lt;&#x2F;Grid&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="简单对话框"><a href="#简单对话框" class="headerlink" title="简单对话框"></a>简单对话框</h3><p>来自:<a target="_blank" rel="noopener" href="https://blog.csdn.net/bondw/article/details/102762482">https://blog.csdn.net/bondw/article/details/102762482</a></p>
+<p>效果图:</p>
+<p><img src="https://img-blog.csdnimg.cn/20191027002851125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JvbmR3,size_16,color_FFFFFF,t_70" alt="简单对话框demo"></p>
+<p>定义对话框模板SampleMessageDialog.xaml</p>
+<p>注意需要向解决方案添加用户控制窗口,否则会报错</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;UserControl x:Class&#x3D;&quot;test.SampleMessageDialog&quot; 
+    xmlns&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&#x2F;presentation&quot; 
+    xmlns:x&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;winfx&#x2F;2006&#x2F;xaml&quot; 
+    xmlns:mc&#x3D;&quot;http:&#x2F;&#x2F;schemas.openxmlformats.org&#x2F;markup-compatibility&#x2F;2006&quot; 
+    xmlns:d&#x3D;&quot;http:&#x2F;&#x2F;schemas.microsoft.com&#x2F;expression&#x2F;blend&#x2F;2008&quot; 
+    xmlns:materialDesign&#x3D;&quot;http:&#x2F;&#x2F;materialdesigninxaml.net&#x2F;winfx&#x2F;xaml&#x2F;themes&quot; 
+    mc:Ignorable&#x3D;&quot;d&quot; d:DesignHeight&#x3D;&quot;300&quot; d:DesignWidth&#x3D;&quot;300&quot; MaxWidth&#x3D;&quot;400&quot;&gt;
+    &lt;Grid Margin&#x3D;&quot;16&quot;&gt;
+        &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition &#x2F;&gt;
+            &lt;RowDefinition &#x2F;&gt;
+        &lt;&#x2F;Grid.RowDefinitions&gt;
+        &lt;TextBlock x:Name&#x3D;&quot;Message&quot; Margin&#x3D;&quot;0 6 0 0&quot; FontSize&#x3D;&quot;18&quot; Grid.Row&#x3D;&quot;0&quot; &#x2F;&gt;
+        &lt;Button Grid.Row&#x3D;&quot;1&quot; IsDefault&#x3D;&quot;True&quot; Style&#x3D;&quot;&#123;DynamicResource MaterialDesignFlatButton&#125;&quot; HorizontalAlignment&#x3D;&quot;Right&quot; Margin&#x3D;&quot;16 16 16 0&quot; Command&#x3D;&quot;&#123;x:Static materialDesign:DialogHost.CloseDialogCommand&#125;&quot;&gt;
+            ACCEPT
+        &lt;&#x2F;Button&gt;
+    &lt;&#x2F;Grid&gt;
+&lt;&#x2F;UserControl&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对应的SampleMessageDialog.cs</p>
+<pre class="line-numbers language-none"><code class="language-none">using System.Windows.Controls;
+
+namespace test
+&#123;
+    &#x2F;&#x2F;&#x2F; &lt;summary&gt;
+    &#x2F;&#x2F;&#x2F; Interaction logic for SampleMessageDialog.xaml
+    &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt;
+    public partial class SampleMessageDialog : UserControl
+    &#123;
+        public SampleMessageDialog()
+        &#123;
+            InitializeComponent();
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>对应的函数</p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public async void MessageTips(string message, object sender, RoutedEventArgs e)
+&#123;
+	var sampleMessageDialog &#x3D; new SampleMessageDialog
+	&#123;
+		Message &#x3D; &#123; Text &#x3D; message &#125;
+	&#125;;
+	await DialogHost.Show(sampleMessageDialog, &quot;RootDialog&quot;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在需要的位置使用</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">MessageTips(&quot;请确认&quot;, sender, e);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>坑</strong></p>
+<p>直接用,会报错:<br>System.InvalidOperationException:“No loaded DialogHost instances.”<br>原因是对话框放置的位置找不到,这个放置的位置就是这里的 <strong>RootDialog</strong></p>
+<pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">await DialogHost.Show(sampleMessageDialog, &quot;RootDialog&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>需要在windows.xaml里设置,把GRID内容放入到如下容器里面</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;materialDesign:DialogHost Identifier&#x3D;&quot;RootDialog&quot;&gt;
+......
+&lt;&#x2F;materialDesign:DialogHost&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="导入ttf"><a href="#导入ttf" class="headerlink" title="导入ttf"></a>导入ttf</h2><p>因为实现ImageButton接触ttf在wpf中的使用,ttf是图标按钮的集合文件。可在阿里<a target="_blank" rel="noopener" href="http://www.iconfont.cn网站选择下载.首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地.下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件.程序中引用该文件首先需将该字体包设置为resource,如fontfamily./">www.iconfont.cn网站选择下载。首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地。下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件。程序中引用该文件首先需将该字体包设置为Resource,如FontFamily。</a></p>
+<p>c#代码中的引用格式为“#”+”字体名称”。iconfont.cn中下载的字体名称一般都是“iconfont”,所以引用时使用“#iconfont”即可,实例截取:component&#x2F;Resources&#x2F;#iconfont”。</p>
+<p><img src="https://images2015.cnblogs.com/blog/649940/201705/649940-20170519154738478-128340687.png" alt="img"></p>
+<p>图中的demo_unicode.html包含了ttf文件中的unicode编码,如图二所示。wpf中引用时,在xaml和xaml.cs中的方式有所不同。如arrow-left图标的编码是“&amp;#xe614;”,当在xaml中引用时需要直接复制该编码,而在代码(.cs文件)中引用时,格式为“\ue614”。</p>
+<p>  具体介绍在App.xaml中设置为程序资源(Application.Resources)的方法及使用步骤:</p>
+<pre><code>步骤1,在App.xaml中设置如下,其中ttf资源文件所在目录为WpfUI/Resources/,WpfUI是项目名称,iconfont.ttf是字体库文件名,iconfont是字体库的“字体名称”。
+</code></pre>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Application.Resources&gt;
+        &lt;FontFamily x:Key&#x3D;&quot;IconFont&quot;&gt;
+            pack:&#x2F;&#x2F;application:,,,&#x2F;WpfUI;component&#x2F;Resources&#x2F;iconfont.ttf#iconfont
+        &lt;&#x2F;FontFamily&gt;
+        &lt;!--其他设置--&gt;
+&lt;&#x2F;Application.Resources&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>步骤2,在xaml中应用到目标,以设置MenuItem图标为例</p>
+<pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;MenuItem Name&#x3D;&quot;menuItem1&quot; Header&#x3D;&quot;Icon示例&quot; Icon&#x3D;&quot;&quot; FontFamily&#x3D;&quot;&#123;StaticResource IconFont&#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>当前项目常用图标地址:<a target="_blank" rel="noopener" href="http://www.iconfont.cn/collections/detail?cid=4215">http://www.iconfont.cn/collections/detail?cid=4215</a></p>
+<h2 id="PanuonUI-Silver"><a href="#PanuonUI-Silver" class="headerlink" title="PanuonUI.Silver"></a><strong><a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">PanuonUI.Silver</a></strong></h2><p>WPF 的第三方UI库,基于PanuonUI拓展开发的</p>
+<p>gitee:<a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">https://gitee.com/panuon/PanuonUI.Silver</a></p>
+<p>PanuonUI.Silver 2.0手册:<a target="_blank" rel="noopener" href="https://www.yuque.com/mochengvia/silver2.0">https://www.yuque.com/mochengvia/silver2.0</a></p>
+<h2 id="DMSkin"><a href="#DMSkin" class="headerlink" title="DMSkin"></a>DMSkin</h2><p>WPF的第三方库,看了下作者的基于自己的DMSkin写的示例程序,特别棒!</p>
+<p>已经fork到自己的仓库了: <a target="_blank" rel="noopener" href="https://github.com/AuntYang/DMSkin">https://github.com/AuntYang/DMSkin</a></p>
+<h2 id="HandyControl"><a href="#HandyControl" class="headerlink" title="HandyControl"></a><a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl">HandyControl</a></h2><p>WPF的第三方库,在GitHub上开源的中国开发者开发的第三方库,目前不是特别完善,但每个月都在更新。</p>
+<p>HandyControl:<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl">https://github.com/HandyOrg/HandyControl</a></p>
+<p>文档:<a target="_blank" rel="noopener" href="https://handyorg.github.io/handycontrol">https://handyorg.github.io/handycontrol</a></p>
+<h2 id="MahApps-Metro"><a href="#MahApps-Metro" class="headerlink" title=" MahApps.Metro"></a><strong><a target="_blank" rel="noopener" href="https://github.com/MahApps/MahApps.Metro"> MahApps.Metro</a></strong></h2><p>WPF的第三方库,同样在Github上开源的免费库,可以在Nuget上添加引用。</p>
+<p>MahApps.Metro:<a target="_blank" rel="noopener" href="https://github.com/MahApps/MahApps.Metro">https://github.com/MahApps/MahApps.Metro</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">auntyang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://auntyang.cf/2020/0907WPF-dev.html">https://auntyang.cf/2020/0907WPF-dev.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">auntyang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/WPF/">
+                                    <span class="chip bg-color">WPF</span>
+                                </a>
+                            
+                                <a href="/tags/NET/">
+                                    <span class="chip bg-color">.NET</span>
+                                </a>
+                            
+                                <a href="/tags/MaterialDesign/">
+                                    <span class="chip bg-color">MaterialDesign</span>
+                                </a>
+                            
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C#</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <head>
+  <!-- ... -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+  />
+  <!-- ... -->
+</head>
+<body>
+  <!-- ... -->
+  <div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'https://comment.auntyang.cf',
+      reaction: true,
+      requiredMeta: ['nick', 'mail']
+    });
+  </script>
+</body>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/1209wsn%20study.html">
+                    <div class="card-image">
+                        
+                        <img src="https://s2.loli.net/2023/03/30/b4iU3XOutPxfr7N.jpg" class="responsive-img" alt="无线传感器网络必背习题">
+                        
+                        <span class="card-title">无线传感器网络必背习题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            无线传感器网络期末考试必背习题。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-12-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WSN/">
+                        <span class="chip bg-color">WSN</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">无线传感器网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/051852901.html">
+                    <div class="card-image">
+                        
+                        <img src="https://www.selenium.dev/images/selenium_4_logo.png" class="responsive-img" alt="web自动化测试（python+selenium）">
+                        
+                        <span class="card-title">web自动化测试（python+selenium）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                             简要介绍入门学习web自动化测试，需要有一定的web基础，比如xml语言，html语言，这也是我总结自己的学习笔记，持续更新...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    技术
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">自动化测试</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/selenium/">
+                        <span class="chip bg-color">selenium</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 梅园小径<br />'
+            + '文章作者: auntyang<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">auntyang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">30.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2019";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/auntyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:auntyang@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2625475244" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2625475244" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
