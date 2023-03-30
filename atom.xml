@@ -96,6 +96,37 @@
   </entry>
   
   <entry>
+    <title>基于Frp和Squid的代理服务器搭建</title>
+    <link href="https://auntyang.cf/2022/0427Proxy%20server%20construction.html"/>
+    <id>https://auntyang.cf/2022/0427Proxy%20server%20construction.html</id>
+    <published>2022-04-27T07:47:00.000Z</published>
+    <updated>2023-03-30T02:34:10.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;实现需求&quot;&gt;&lt;a href=&quot;#实现需求&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://auntyang.cf/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="内网穿透" scheme="https://auntyang.cf/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="代理服务器" scheme="https://auntyang.cf/tags/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="frp" scheme="https://auntyang.cf/tags/frp/"/>
+    
+    <category term="squid" scheme="https://auntyang.cf/tags/squid/"/>
+    
+  </entry>
+  
+  <entry>
     <title>web自动化测试（python+selenium）</title>
     <link href="https://auntyang.cf/2020/051852901.html"/>
     <id>https://auntyang.cf/2020/051852901.html</id>

@@ -95,8 +95,8 @@
 }
 </style><!-- hexo injector head_begin end -->
     <meta charset="utf-8">
-    <meta name="keywords" content="使用网络协议分析仪Wireshark, 梅园小径">
-    <meta name="description" content="掌握安装和配置网络协议分析仪Wireshark的方法、掌熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解">
+    <meta name="keywords" content="基于Frp和Squid的代理服务器搭建, 梅园小径">
+    <meta name="description" content="面对校外访问校内网资源(如知网等数据库)的需求,通过连接校内网的设备做内网穿透,并架设代理服务器转发来自校外的数据访问请求,以此实现校外公网访问校内网的资源。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -108,7 +108,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用网络协议分析仪Wireshark | 梅园小径</title>
+    <title>基于Frp和Squid的代理服务器搭建 | 梅园小径</title>
     <link rel="icon" type="image/png" href="/favicon_ay.png">
     
 
@@ -528,12 +528,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.freecodecamp.org/news/content/images/size/w1000/2020/08/wireshark-1.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://static1.appinn.com/images/201908/frp1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用网络协议分析仪Wireshark</h1>
+                    <h1 class="description center-align post-title">基于Frp和Squid的代理服务器搭建</h1>
                 </div>
             </div>
         </div>
@@ -557,12 +557,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%9E%E9%AA%8C/">
-                                <span class="chip bg-color">实验</span>
+                            <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+                                <span class="chip bg-color">内网穿透</span>
                             </a>
                         
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                <span class="chip bg-color">计算机网络</span>
+                            <a href="/tags/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                                <span class="chip bg-color">代理服务器</span>
+                            </a>
+                        
+                            <a href="/tags/frp/">
+                                <span class="chip bg-color">frp</span>
+                            </a>
+                        
+                            <a href="/tags/squid/">
+                                <span class="chip bg-color">squid</span>
                             </a>
                         
                     </div>
@@ -573,8 +581,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                学习
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                技术
                             </a>
                         
                     </div>
@@ -586,21 +594,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-16
+                    2022-04-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-26
+                    2023-03-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.6k
                 </div>
                 
 
@@ -630,95 +638,152 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验名称-使用网络协议分析仪Wireshark"><a href="#实验名称-使用网络协议分析仪Wireshark" class="headerlink" title="实验名称  使用网络协议分析仪Wireshark"></a>实验名称  使用网络协议分析仪Wireshark</h1><h2 id="实验目的："><a href="#实验目的：" class="headerlink" title="实验目的："></a>实验目的：</h2><ol>
-<li>掌握安装和配置网络协议分析仪Wireshark的方法；</li>
-<li>熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解。</li>
-</ol>
-<h2 id="实验内容和要求"><a href="#实验内容和要求" class="headerlink" title="实验内容和要求"></a>实验内容和要求</h2><pre class="line-numbers language-none"><code class="language-none">1. 安装和配置网络协议分析仪Wireshark（http:&#x2F;&#x2F;www.wireshark.org）；
-	2. 使用并熟悉Wireshark分析协议的界面环境（菜单、工具条和各种窗口等）。
-	3. 学会使用Wireshark捕捉协议包。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+                <h1 id="实现需求"><a href="#实现需求" class="headerlink" title="实现需求"></a>实现需求</h1><p>硬件:</p>
+<ul>
+<li>具备公网IP的主机(此处使用阿里云服务器)</li>
+<li>连接校内网的主机(此处使用运行Ubunt系统的虚拟机)</li>
+</ul>
+<p>软件:</p>
+<ul>
+<li>frp(内网穿透工具)</li>
+<li>squid(代理服务器工具,UNIX&#x2F;linux主要采用Squid实现代理服务器功能)</li>
+</ul>
+<h1 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h1><p><img src="https://s2.loli.net/2022/04/27/Tn6Y9EFy5crkueb.png" alt="代理拓扑图"></p>
+<ul>
+<li>为什么要云服务器?</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">校园网(校内网)是一个具备严格防火墙的局域网,公网上的设备并不能够直接访问校内网的各种资源,为了实现外网能够访问校园网,我们有两种思路,一在具备公网IP地址的云服务器和校内主机上都安装frp软件,实现内网穿透功能。二是在校内主机上架设VPN服务器,校外设备通过VPN连接校内网访问校内资源。本文采用第一种方式。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><pre class="line-numbers language-none"><code class="language-none">1.运行Windows 10专业版操作系统的PC机一台
-	2.PC具有以太网卡一块，通过双绞线与局域网相连
-	3.已安装Wireshark与Cisco Packet Tracer程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="操作方法与实验步骤"><a href="#操作方法与实验步骤" class="headerlink" title="操作方法与实验步骤"></a>操作方法与实验步骤</h2><h3 id="1-安装网络协议分析仪"><a href="#1-安装网络协议分析仪" class="headerlink" title="1.安装网络协议分析仪"></a>1.安装网络协议分析仪</h3><p><img src="https://s2.loli.net/2023/03/26/PAIblrYFoBu4haO.png" alt="Wireshark首页"><br>安装成功并运行，进入主界面如图，（可以点击图片跳转Wireshark官网下载）我这里安装的版本是3.0.9，进入自动为中文界面，Wireshark进入后界面如上图没有任何本地接口，检查后发现未安装Winpacp，安装Winpacp后重启Wireshark，正常运行。</p>
-<h3 id="2-使用Wireshark分析协议"><a href="#2-使用Wireshark分析协议" class="headerlink" title="2.使用Wireshark分析协议"></a>2.使用Wireshark分析协议</h3><h4 id="（1）点击Wireshark启动程序，正常运行如图"><a href="#（1）点击Wireshark启动程序，正常运行如图" class="headerlink" title="（1）点击Wireshark启动程序，正常运行如图"></a>（1）点击Wireshark启动程序，正常运行如图</h4><p><img src="https://img-blog.csdnimg.cn/20200516175003774.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark首页"><br>其中捕获和分析是最重要的功能</p>
-<h4 id="（2）分组捕获"><a href="#（2）分组捕获" class="headerlink" title="（2）分组捕获"></a>（2）分组捕获</h4><p><img src="https://img-blog.csdnimg.cn/20200516191047640.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark捕获接口"><br>开始分组捕获之前选择捕获接口，我所使用的网络是网线接入电脑的有线网，所以我选择的是捕获接口是以太网。</p>
-<h4 id="（3）协议分析。"><a href="#（3）协议分析。" class="headerlink" title="（3）协议分析。"></a>（3）协议分析。</h4><p><img src="https://img-blog.csdnimg.cn/20200516191115617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>监听以太网接口得到的报文信息，如上图，其中有一条黑色底色的TCP报文信息*。<br><img src="https://img-blog.csdnimg.cn/20200516191158370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>选择序号为191的一条报文信息进行分析，从蓝框可知该报文的发送源地址为223.166.151.88，目标地址为192.168.31.97，而目标地址192。168.31.97为我的专用网地址（路由器分配给笔记本的内网IP），源地址经查询地址为上海市，是一个公网IP，很明显该报文由外部网络发送至我的内网。<br>该报文的协议为OICQ，起初并不知道这个协议，但在中间信息框中发现该报文信息中包含了我的QQ号，由此推断OICQ为QQ通信协议，经过查询，OICQ为QQ的通讯协议，OICQ用户到OICQ服务器的通讯协议。<br><img src="https://img-blog.csdnimg.cn/20200516191237382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="Wireshark以太网监听"><br>进入191号报文信息具体页，可看到报文具体信息和十六进制和ASCI码形式的报文内容。<br>这一帧包包含一下四种信息：<br>Frame: 物理层的数据帧情况。<br>Ethernet II , Src: 数据链路层以太网帧头部信息。<br>Internet Protocol Version 4, Src: 互联网层IP包头信息。<br>Internet Control Message Protocol: 互联网控制信息协议。ping 小包所使用的协议。<br>前三层基本上都是一样的，第四层开始就可以出现TCP, UDP 协议，第五层就可能有HTTP 应用层协议等等。<br><img src="https://img-blog.csdnimg.cn/20200516191313947.png" alt="帧结构"><br>由该栏信息可知，该报文源地址服务器端口为8000，目标端口为4004，报文长度为127，总和校验码（Checksum）为0xe51f。<br><img src="https://img-blog.csdnimg.cn/20200516191327952.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0MTc2NjIw,size_16,color_FFFFFF,t_70" alt="帧结构"><br>协议层信息，协议为OICQ（即时通讯软件协议）包含目标、版本、数据等信息。</p>
-<h4 id="（4）保存分组捕获信息"><a href="#（4）保存分组捕获信息" class="headerlink" title="（4）保存分组捕获信息"></a>（4）保存分组捕获信息</h4><h2 id="实验数据记录和结果分析"><a href="#实验数据记录和结果分析" class="headerlink" title="实验数据记录和结果分析"></a>实验数据记录和结果分析</h2><p>实验数据与结果分析：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Frame <span class="token number">191</span>: <span class="token number">161</span> bytes on wire <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>, <span class="token number">161</span> bytes captured <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span> on interface <span class="token number">0</span>
-//第191帧，由161个字节在线，共1288位，实际捕获到161个字节在0接口
-    Interface id: <span class="token number">0</span> <span class="token punctuation">(</span><span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>//接口ID：0
-        Interface name: <span class="token punctuation">\</span>Device<span class="token punctuation">\</span>NPF_<span class="token punctuation">&#123;</span>7E2C33C0-0623-46BB-9126-813FB633578B<span class="token punctuation">&#125;</span>
-        Interface description: <span class="token punctuation">\</span><span class="token number">344</span><span class="token punctuation">\</span><span class="token number">273</span><span class="token punctuation">\</span><span class="token number">245</span><span class="token punctuation">\</span><span class="token number">345</span><span class="token punctuation">\</span><span class="token number">244</span><span class="token punctuation">\</span><span class="token number">252</span><span class="token punctuation">\</span><span class="token number">347</span><span class="token punctuation">\</span><span class="token number">275</span><span class="token punctuation">\</span><span class="token number">221</span>
-    Encapsulation type: Ethernet <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>//封装类型
-    Arrival Time: Mar <span class="token number">13</span>, <span class="token number">2020</span> <span class="token number">15</span>:22:45.526314000 中国标准时间//到达时间
-    <span class="token punctuation">[</span>Time <span class="token builtin class-name">shift</span> <span class="token keyword">for</span> this packet: <span class="token number">0.000000000</span> seconds<span class="token punctuation">]</span>//包偏移时间
-    Epoch Time: <span class="token number">1584084165.526314000</span> seconds//不理解
-    <span class="token punctuation">[</span>Time delta from previous captured frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//两帧之间的时间间隔
-    <span class="token punctuation">[</span>Time delta from previous displayed frame: <span class="token number">0.027360000</span> seconds<span class="token punctuation">]</span>//捕获到显示的间隔时间
-    <span class="token punctuation">[</span>Time since reference or first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>//此包和第一帧的时间间隔
-    Frame Number: <span class="token number">191</span>//帧号
-    Frame Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//帧长度
-    Capture Length: <span class="token number">161</span> bytes <span class="token punctuation">(</span><span class="token number">1288</span> bits<span class="token punctuation">)</span>//捕获的帧长度
-    <span class="token punctuation">[</span>Frame is marked: False<span class="token punctuation">]</span>//帧显著标志
-    <span class="token punctuation">[</span>Frame is ignored: False<span class="token punctuation">]</span>//帧忽略标志
-    <span class="token punctuation">[</span>Protocols <span class="token keyword">in</span> frame: eth:ethertype:ip:udp:oicq<span class="token punctuation">]</span>//帧内封装的协议层次结构
-    <span class="token punctuation">[</span>Coloring Rule Name: UDP<span class="token punctuation">]</span>//着色标记的协议
-    <span class="token punctuation">[</span>Coloring Rule String: udp<span class="token punctuation">]</span>//着色规则显示的字符串
-Ethernet II, Src: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>, Dst: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-    Destination: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        Address: LcfcHefe_c2:10:c2 <span class="token punctuation">(</span>e8:6a:64:c2:10:c2<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Source: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        Address: XiaomiEl_ee:46:6f <span class="token punctuation">(</span><span class="token number">40</span>:31:3c:ee:46:6f<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> LG bit: Globally unique address <span class="token punctuation">(</span>factory default<span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>.0 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> IG bit: Individual address <span class="token punctuation">(</span>unicast<span class="token punctuation">)</span>
-    Type: IPv4 <span class="token punctuation">(</span>0x0800<span class="token punctuation">)</span>
-Internet Protocol Version <span class="token number">4</span>, Src: <span class="token number">223.166</span>.151.88, Dst: <span class="token number">192.168</span>.31.97
-    0100 <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> Version: <span class="token number">4</span>
-    <span class="token punctuation">..</span><span class="token punctuation">..</span> 0101 <span class="token operator">=</span> Header Length: <span class="token number">20</span> bytes <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-    Differentiated Services Field: 0x00 <span class="token punctuation">(</span>DSCP: CS0, ECN: Not-ECT<span class="token punctuation">)</span>
-        0000 00<span class="token punctuation">..</span> <span class="token operator">=</span> Differentiated Services Codepoint: Default <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span>00 <span class="token operator">=</span> Explicit Congestion Notification: Not ECN-Capable Transport <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    Total Length: <span class="token number">147</span>
-    Identification: 0x8fa2 <span class="token punctuation">(</span><span class="token number">36770</span><span class="token punctuation">)</span>
-    Flags: 0x4000, Don<span class="token string">'t fragment
-        0... .... .... .... = Reserved bit: Not set
-        .1.. .... .... .... = Don'</span>t fragment: Set
-        <span class="token punctuation">..</span><span class="token number">0</span>. <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token punctuation">..</span><span class="token punctuation">..</span> <span class="token operator">=</span> More fragments: Not <span class="token builtin class-name">set</span>
-    <span class="token punctuation">..</span>.0 0000 0000 0000 <span class="token operator">=</span> Fragment offset: <span class="token number">0</span>
-    Time to live: <span class="token number">52</span>
-    Protocol: UDP <span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">)</span>
-    Header checksum: 0x5faf <span class="token punctuation">[</span>validation disabled<span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Header checksum status: Unverified<span class="token punctuation">]</span>
-    Source: <span class="token number">223.166</span>.151.88
-    Destination: <span class="token number">192.168</span>.31.97
-User Datagram Protocol, Src Port: <span class="token number">8000</span>, Dst Port: <span class="token number">4004</span>
-    Source Port: <span class="token number">8000</span>//源IP
-    Destination Port: <span class="token number">4004</span>//目标IP
-    Length: <span class="token number">127</span>//长度
-    Checksum: 0xe51f <span class="token punctuation">[</span>unverified<span class="token punctuation">]</span>//和校验
-    <span class="token punctuation">[</span>Checksum Status: Unverified<span class="token punctuation">]</span>//和校验状态
-    <span class="token punctuation">[</span>Stream index: <span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token punctuation">[</span>Timestamps<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since first frame: <span class="token number">3.969859000</span> seconds<span class="token punctuation">]</span>
-        <span class="token punctuation">[</span>Time since previous frame: <span class="token number">0.031141000</span> seconds<span class="token punctuation">]</span>
-OICQ - IM software, popular <span class="token keyword">in</span> China//因特网控制信息协议
-    Flag: Oicq packet <span class="token punctuation">(</span>0x02<span class="token punctuation">)</span>
-    Version: 0x3859//版本信息
-    Command: Heart Message <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-    Sequence: <span class="token number">17154</span>
-    Data<span class="token punctuation">(</span>OICQ Number,if sender is client<span class="token punctuation">)</span>: <span class="token number">1026651458</span>
-    Data: 
-        <span class="token punctuation">[</span>Expert Info <span class="token punctuation">(</span>Warning/Undecoded<span class="token punctuation">)</span>: Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Trailing stray characters<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Severity level: Warning<span class="token punctuation">]</span>
-            <span class="token punctuation">[</span>Group: Undecoded<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>为什么要代理服务器?</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">代理服务器能够监听设备上的端口,一旦端口接受到访问请求,代理程序会按照预先设定的配置将端口中接收到的访问请求转发并返回请求内容,在校内主机上安装<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Squid&spm=1001.2101.3001.7020">Squid</a>软件,从而将校内主机变为代理服务器,能够转发来自校外设备的浏览器请求。</p>
+<h1 id="实现内网穿透"><a href="#实现内网穿透" class="headerlink" title="实现内网穿透"></a>实现内网穿透</h1><h2 id="云服务器安装frp-server"><a href="#云服务器安装frp-server" class="headerlink" title="云服务器安装frp-server"></a>云服务器安装frp-server</h2><h3 id="获取frp软件"><a href="#获取frp软件" class="headerlink" title="获取frp软件"></a>获取frp软件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src  <span class="token comment">#进入此目录</span>
+<span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz <span class="token comment">#下载frp</span>
+<span class="token function">tar</span> <span class="token parameter variable">-xvf</span> frp_0.38.0_linux_amd64.tar.gz <span class="token comment">#解压;frp文件</span>
+<span class="token builtin class-name">cd</span> frp_0.38.0_linux_amd64/ <span class="token comment">#进入解压后的frp文件夹</span>
+<span class="token function">ls</span> <span class="token comment">#浏览文件夹</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/04/27/AB7lXHTYsqaDzWd.png" alt="ls命令结果"></p>
+<p>可见frp文件夹中包含了frpc和frps两个可执行文件,frpc即frp-client(客户端),frps即frp-server(服务端)</p>
+<h3 id="配置frp服务器端配置文件frps-ini"><a href="#配置frp服务器端配置文件frps-ini" class="headerlink" title="配置frp服务器端配置文件frps.ini"></a>配置frp服务器端配置文件frps.ini</h3><p>用vim命令打开frps.ini文件</p>
+<pre class="line-numbers language-none"><code class="language-none">[common]
+bind_port &#x3D; 7000   #frp使用的端口
+
+dashboard_user &#x3D; admin    #流量监控的账户  自己设置
+dashboard_pwd &#x3D; 123456    #流量监控的密码   自己设置
+dashboard_port &#x3D; 6440     #流量监控程序的端口,搭建完成之后用 云服务器IP:6440 就可以打开流量监控网页程序<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="启动frp服务端"><a href="#启动frp服务端" class="headerlink" title="启动frp服务端"></a>启动frp服务端</h3><pre class="line-numbers language-none"><code class="language-none">nohup .&#x2F;frps -c .&#x2F;frps.ini &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注:nohup的作用是让我在关闭Xshell远程连接时,frp服务端不会跟ssh进程一起关闭。<br>参考文档:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/gatieme/article/details/52777721">解决Linux关闭终端(关闭SSH等)后运行的程序自动停止</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/davidhzq/article/details/102766881">在linux后台运行脚本命令和程序的方法大全</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><img src="https://s2.loli.net/2022/04/27/uKyGrtOgTzNWQin.png" alt="在这里插入图片描述">注意事项</h3><p>国内云服务器大多都要配置安全组的,以阿里云为例,配置规则里更改访问规则,从而打开需要用到的端口。</p>
+<h2 id="在校内主机安装frp-client"><a href="#在校内主机安装frp-client" class="headerlink" title="在校内主机安装frp-client"></a>在校内主机安装frp-client</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src  <span class="token comment">#进入此目录</span>
+<span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz      <span class="token comment">#笔者这里用的版本和云服务器的一样,读者在Github选择自己合适的版本</span>
+<span class="token function">tar</span> <span class="token parameter variable">-xvf</span> frp_0.38.0_linux_amd64.tar.gz <span class="token comment">#解压文件</span>
+<span class="token builtin class-name">cd</span> frp_0.31.1_linux_amd64/
+<span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/04/27/R4n5vMAlhk8BUzL.png" alt="ls命令结果"></p>
+<h3 id="配置frp客户端配置文件frpc-ini"><a href="#配置frp客户端配置文件frpc-ini" class="headerlink" title="配置frp客户端配置文件frpc.ini"></a>配置frp客户端配置文件frpc.ini</h3><p>用vim命令打开frpc.ini文件。</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini"><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">common</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">server_addr</span> <span class="token punctuation">=</span> <span class="token value attr-value">&lt;你的云服务器IP地址></span>
+<span class="token key attr-name">server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">7000</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ssh</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">type</span> <span class="token punctuation">=</span> <span class="token value attr-value">tcp</span>
+<span class="token key attr-name">local_ip</span> <span class="token punctuation">=</span> <span class="token value attr-value">127.0.0.1</span>
+<span class="token key attr-name">local_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">22        #local_port端口是校内主机的ssh端口号</span>
+<span class="token key attr-name">remote_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">6001     #remote_port端口是云服务器的端口号。此端口自己设置,实现当你用Xshell连接 云服务器IP地址:6001即是在连接你校内主机的SSH端口</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>启动frp客户端</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./frpc <span class="token parameter variable">-c</span> ./frpc.ini <span class="token comment">#若需要关闭终端后仍继续运行,参考上文云服务器端命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="测试frp是否搭建成功"><a href="#测试frp是否搭建成功" class="headerlink" title="测试frp是否搭建成功"></a>测试frp是否搭建成功</h2><p>用Xshell连接,连接地址填 云服务器IP地址:6001,用户名和密码填校内主机的。如果ssh能够成功连接,则成功实现内网穿透。<br>frp官方提供的教程:<a target="_blank" rel="noopener" href="https://gofrp.org/docs/examples/ssh/">通过SSH访问内网机器</a></p>
+<h1 id="校内主机实现代理服务器功能"><a href="#校内主机实现代理服务器功能" class="headerlink" title="校内主机实现代理服务器功能"></a>校内主机实现代理服务器功能</h1><h2 id="校内主机安装Squid软件"><a href="#校内主机安装Squid软件" class="headerlink" title="校内主机安装Squid软件"></a>校内主机安装Squid软件</h2><p>安装软件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> squid <span class="token parameter variable">-y</span>
+yum <span class="token function">install</span> httpd-tools <span class="token parameter variable">-y</span>  
+<span class="token comment">#以上两命令适用于centos</span>
+<span class="token function">apt</span> <span class="token function">install</span> squid <span class="token parameter variable">-y</span>
+<span class="token function">apt</span> <span class="token function">install</span> apache2-utils <span class="token parameter variable">-y</span>
+<span class="token comment">#以上两条命令适用于Ubuntu</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>生成密码文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /etc/squid3/
+<span class="token comment">#ikaros 是用户名</span>
+htpasswd <span class="token parameter variable">-cd</span> /etc/squid3/passwords ikaros
+<span class="token comment">#提示输入密码,比如输入123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/04/27/Cb5KoEj6Nk2Flim.png" alt="生成密码文件执行结果"></p>
+<p>测试密码文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/usr/lib64/squid/basic_ncsa_auth /etc/squid3/passwords
+<span class="token comment">#输入用户名 密码</span>
+ikaros  <span class="token number">123456</span>
+<span class="token comment">#提示ok说明成功</span>
+ok
+<span class="token comment">#ctrl+c退出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/04/27/lyeFmL3x5dg9W6U.png" alt="测试密码文件执行结果"></p>
+<p>配置squid.conf文件</p>
+<pre class="line-numbers language-ini" data-language="ini"><code class="language-ini">vim /etc/squid/squid.conf
+<span class="token comment">#在最后添加</span>
+auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid3/passwords
+auth_param basic realm proxy
+acl authenticated proxy_auth REQUIRED
+http_access allow authenticated
+
+<span class="token comment"># And finally deny all other access to this proxy</span>
+http_access allow all
+
+<span class="token comment"># Deny CONNECT to other than secure SSL ports</span>
+http_access allow CONNECT !SSL_ports
+
+<span class="token comment">#这里是端口号,可以按需修改</span>
+<span class="token comment">#http_port 3128 这样写会同时监听ipv6和ipv4的端口,推荐适应下面的配置方法。</span>
+http_port 0.0.0.0:3128
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>squid软件相关命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#启动start</span>
+systemctl start squid.service
+<span class="token comment">#停止stop</span>
+systemctl stop squid.service
+<span class="token comment">#重启stop</span>
+systemctl restart squid.service
+<span class="token comment">#配置开机自启动</span>
+systemctl <span class="token builtin class-name">enable</span> squid.service
+<span class="token comment">#关闭开机自启动</span>
+systemctl disable squid.service
+<span class="token comment">#查看运行状态</span>
+systemctl status squid.service
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://s2.loli.net/2022/04/27/dXsaZYW2DNJzjw4.png" alt="执行启动命令结果"></p>
+<p>参考教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/123048354">Centos7搭建Squid代理服务器</a></p>
+<h2 id="修改校内主机frp客户端配置文件frpc-ini"><a href="#修改校内主机frp客户端配置文件frpc-ini" class="headerlink" title="修改校内主机frp客户端配置文件frpc.ini"></a>修改校内主机frp客户端配置文件frpc.ini</h2><p>我们在4.1步骤里添加了校内主机3128端口为代理服务器的端口,所有到此端口的浏览器请求都会被此端口转发出去。<br>此时我们还得更改校内主机frp客户端配置文件frpc.ini,从而使云服务器所收到的浏览器请求转发到校内主机的3128端口。</p>
+<p>Xshell以root身份连接校内主机</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src/frp_0.38.0_linux_amd64/    <span class="token comment">#进入校内服务器的存放frp文件的目录</span>
+<span class="token function">vim</span> frpc.ini
+
+<span class="token comment">#在最后添加</span>
+<span class="token comment">#[proxy-http]</span>
+<span class="token comment">#local_ip = 127.0.0.1</span>
+<span class="token comment">#local_port = 3128</span>
+<span class="token comment">#remote_port = 8000    此端口自己设置,步骤五会用到。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>重启frp客户端</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> ./frpc.ini <span class="token operator">&amp;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果报以下错误,说明之前的frp客户端还没关闭。关闭方法可kill此进程,具体方法百度如何重启frp客户端。</p>
+<p><img src="https://s2.loli.net/2022/04/27/oQBaIVYXvGqSfg1.png" alt="错误"></p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>到了这一步,校园网代理就算搭建完毕,可以直接使用windows连接我们的代理。看校外的笔记本电脑是否呢能够免费下载知网,以及顶会期刊论文。</p>
+<p>打开windows菜单-&gt;设置-&gt;网络与Internet-&gt;代理</p>
+<p><img src="https://s2.loli.net/2022/04/27/dgYZ3nb6hq4jlxR.png" alt="win10设置代理"></p>
+<p>在地址一栏填上你的云服务器IP地址,端口填8000(在4.2这一步设置的),然后打开使用代理服务器的开关</p>
+<p>然后打开浏览器,就可以成功访问校园网资源</p>
 
                 
             </div>
@@ -745,7 +810,7 @@ OICQ - IM software, popular <span class="token keyword">in</span> China//因特�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://auntyang.cf/2020/051610680.html">https://auntyang.cf/2020/051610680.html</a>
+                    <a href="https://auntyang.cf/2022/0427Proxy%20server%20construction.html">https://auntyang.cf/2022/0427Proxy%20server%20construction.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -783,12 +848,20 @@ OICQ - IM software, popular <span class="token keyword">in</span> China//因特�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%9E%E9%AA%8C/">
-                                    <span class="chip bg-color">实验</span>
+                                <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+                                    <span class="chip bg-color">内网穿透</span>
                                 </a>
                             
-                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                                    <span class="chip bg-color">计算机网络</span>
+                                <a href="/tags/%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                                    <span class="chip bg-color">代理服务器</span>
+                                </a>
+                            
+                                <a href="/tags/frp/">
+                                    <span class="chip bg-color">frp</span>
+                                </a>
+                            
+                                <a href="/tags/squid/">
+                                    <span class="chip bg-color">squid</span>
                                 </a>
                             
                         </div>
@@ -862,6 +935,55 @@ OICQ - IM software, popular <span class="token keyword">in</span> China//因特�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2023/032412074.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="现代通信原理笔记">
+                        
+                        <span class="card-title">现代通信原理笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            现代通信原理学习笔记和总结，提炼自樊昌信主编的《现代通信原理》。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">现代通信原理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/051852901.html">
                     <div class="card-image">
                         
@@ -877,9 +999,9 @@ OICQ - IM software, popular <span class="token keyword">in</span> China//因特�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -905,59 +1027,6 @@ OICQ - IM software, popular <span class="token keyword">in</span> China//因特�
                     
                     <a href="/tags/selenium/">
                         <span class="chip bg-color">selenium</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/051610680.html">
-                    <div class="card-image">
-                        
-                        <img src="https://www.freecodecamp.org/news/content/images/size/w1000/2020/08/wireshark-1.png" class="responsive-img" alt="使用网络协议分析仪Wireshark">
-                        
-                        <span class="card-title">使用网络协议分析仪Wireshark</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            掌握安装和配置网络协议分析仪Wireshark的方法、掌熟悉使用Wireshark工具分析网络协议的基本方法，加深对协议格式、协议层次和协议交互过程的理解
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%AE%9E%E9%AA%8C/">
-                        <span class="chip bg-color">实验</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">计算机网络</span>
                     </a>
                     
                 </div>
