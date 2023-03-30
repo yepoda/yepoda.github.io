@@ -815,7 +815,7 @@ systemctl status squid.service
 <p>rm  -rf   要删除的文件名或目录<br>(7) 创建新的空的普通文件<br>touch</p>
 <p>语法:<br>touch  要创建的普通文件的文件名(可以多个,多个的话以空格隔开)</p>
 <p>例子:</p>
-<p> touch main.c  main.h  lcd.c lcd.h ts.c  ts.h  detect.c detect.h<br>(8) 工程编译命令<br>make<br>但是make的正确运行离不开一个配置文件 Makefile&#x2F;makefile</p>
+<p>touch main.c  main.h  lcd.c lcd.h ts.c  ts.h  detect.c detect.h<br>(8) 工程编译命令<br>make<br>但是make的正确运行离不开一个配置文件 Makefile&#x2F;makefile</p>
 <p>用法:<br>make clean 清除中间文件和可执行文件<br>make  自动进行编译工作<br>这一步如果没有语法错误,则会最终生成可执行文件</p>
 <p>如:<br>-〉 smart_home</p>
 <h1 id="LCD屏幕的使用"><a href="#LCD屏幕的使用" class="headerlink" title="LCD屏幕的使用"></a>LCD屏幕的使用</h1><p>Linux下一切皆文件,屏幕的使用同样是操作文件的过程。</p>
@@ -829,6 +829,7 @@ systemctl status squid.service
 <p>“透明度”<br>一个像素点由4个字节来描述的<br>ARGB:<br>A 透明度<br>0~255<br>ARGB:0x00 00 00 00 &#x3D;&#x3D;&gt; int</p>
 <h2 id="Linux层次"><a href="#Linux层次" class="headerlink" title="Linux层次"></a>Linux层次</h2><p>中间层OS<br>对上应用层提供操作硬件的接口函数,并且屏蔽实现的细节<br>于是我们就有人提出在内存上开辟一段缓冲区,用来保存屏幕上的每一个像素点的颜色值,然后应用程序直接把要显示的图像的颜色值直接写入到这块内存上即可。<br>buffer至少要多大:480*800*4<br>这种缓冲区,我们在Linux下面称之为:帧缓冲 fram buffer &#x3D;&#x3D;&#x3D; fb<br>帧缓冲设备是对图像设备的一种抽象,它让上层应用不必关心具体的实现的细节,上层应用只需要在帧缓冲中填上合适的颜色值即可。<br>然后帧缓冲的驱动按一定的刷新频率,把颜色值在屏幕上正确的显示即可。以上就是帧缓冲的原理。</p>
 <pre class="line-numbers language-none"><code class="language-none">6818开发板上:屏幕 &#x2F;dev&#x2F;fb0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h2 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h2><pre class="line-numbers language-none"><code class="language-none">系统IO
 		标准IO
 		命令man
@@ -845,10 +846,12 @@ systemctl status squid.service
 		open--打开文件
 		NAME
         open, openat, creat - open and possibly create a file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 	       #include &lt;sys&#x2F;types.h&gt;
 	       #include &lt;sys&#x2F;stat.h&gt;
 	       #include &lt;fcntl.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">int open(const char *pathname, int flags);
 	  函数功能:打开文件
 	  函数参数:
@@ -871,8 +874,10 @@ systemctl status squid.service
 	     可以由perror来解释
 	     NAME
 perror - print a system error message<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 	       #include &lt;stdio.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">void perror(const char *s);
 	       eg:
 	       	perror(&quot;binglang:&quot;);
@@ -885,19 +890,26 @@ perror - print a system error message<span aria-hidden="true" class="line-number
 			perror(&quot;open fail&quot;);
 			return ;
 		&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">b.close
 	NAME
 close - close a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">int close(int fd);
 	       fd:文件描述符是open的返回值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">c.read
 	NAME
     read - read from a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">ssize_t read(int fd, void *buf, size_t count);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">函数功能:
 		从一个已经打开的文件中读 count个字节,放到buf所指向的空间中去。
 	函数参数:
@@ -909,16 +921,20 @@ close - close a file descriptor<span aria-hidden="true" class="line-numbers-rows
 	 函数返回值:
 	 	成功,返回成功读取到字节数,文件偏移量(光标)会随之增加
 	 	失败,返回-1,并且errno被设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">d.write
 		NAME
 write - write to a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>ssize_t write(int fd, const void *buf, size_t count);<br>函数功能:<br>从buf所指向的空间里面取count个字节写到fd中去<br>函数参数:<br>fd:<br>buf:<br>count:<br>函数返回值:<br>成功,返回成功写入的字节数,文件偏移量(光标)会随之增加<br>失败,返回-1,并且errno被设置</p>
 <p>e.lseek<br>NAME<br>lseek - reposition read&#x2F;write file offset</p>
 <pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
 	       #include &lt;sys&#x2F;types.h&gt;
 	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">off_t lseek(int fd, off_t offset, int whence);
 	      函数功能:重定位光标
 	      函数参数:
@@ -927,8 +943,10 @@ write - write to a file descriptor<span aria-hidden="true" class="line-numbers-r
 	      	whence:定位光标
 	      SEEK_SET:以文件的开头定位  offset&gt;0
           	The file offset is set to offset bytes.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SEEK_CUR:以当前光标位置进行定位 offset可正可负
 	              The file offset is set to its current location plus offset bytes.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">SEEK_END:以文件末尾进行定位 offset可正可负
 	              The file offset is set to the size of the file plus offset bytes.
 	    返回值:
@@ -936,10 +954,13 @@ write - write to a file descriptor<span aria-hidden="true" class="line-numbers-r
 	    	失败,返回-1,并且errno被设置
 	   作业一:
 	   		使用lseek来求文件大小。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">作业二:
 	   		在开发板屏幕上显示德国国旗。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">作业三:
 	   		在开发板屏幕上显示太极图案<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h1 id="BMP图片显示"><a href="#BMP图片显示" class="headerlink" title="BMP图片显示"></a>BMP图片显示</h1><h2 id="Linux帧缓存驱动"><a href="#Linux帧缓存驱动" class="headerlink" title="Linux帧缓存驱动"></a>Linux帧缓存驱动</h2><p>物理屏幕分辨率:<br>800*480</p>
 <pre class="line-numbers language-none"><code class="language-none">屏幕由480行,且每行有800个像素点组成。
 	每个像素点可以颜色一个标准的颜色:
@@ -947,24 +968,32 @@ write - write to a file descriptor<span aria-hidden="true" class="line-numbers-r
 但是每个不同的屏幕,显示时序、接口等等都不一样,
 那如果这样,我应用程序如果要显示一个颜色,还要根据不同
 的屏幕,去组织不同的代码,这个是不是就很麻烦。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">从应用角度来说:
 		“我(应用工程师)认为,所以的显示屏都应该是一样的,
 		因为我用它就是用来显示某个颜色”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>为了实现这个:<br>Linux内核特地引入 “帧缓冲”</p>
 <pre class="line-numbers language-none"><code class="language-none">在内核开辟了一个 Frame Buffer,用来保存显示屏上每一个像素
 	点的颜色(从上至下,从左至右)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">应用程序只需要把准备好的颜色值数据,拷贝到frame buffer,
 	然后 帧缓冲驱动,会按照一定的刷新频率、按照特定的屏幕显示
 	的要求、接口、时序......把颜色值正确地显示到屏幕上去。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">对上(应用)屏蔽了具体的硬件实现细节。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <hr>
 <h2 id="frame-buffer本质就是一块内存显示任何图像都是直接去操作这块内存"><a href="#frame-buffer本质就是一块内存显示任何图像都是直接去操作这块内存" class="headerlink" title="frame buffer本质就是一块内存显示任何图像都是直接去操作这块内存"></a>frame buffer本质就是一块内存<br>显示任何图像都是直接去操作这块内存</h2><p>可以通过指针去操作这个frame buffer,进而就可以通过指针去显示图像!!!</p>
 <p>int *plcd; &#x2F;&#x2F;假设 让plcd指向linux内核帧缓冲的首地址</p>
 <pre class="line-numbers language-none"><code class="language-none">*plcd &#x3D; 0xff0000; &#x2F;&#x2F;屏幕上第0行的第0点显示红色<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">*(plcd + 1) &#x3D; 0xff0000;&#x2F;&#x2F;屏幕上第0行的第1个点显示红色
 	*(plcd + 2) &#x3D; 0xff0000;&#x2F;&#x2F;屏幕上第0行的第2个点显示红色
 	...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">如果是任意的一个点(x,y)如何通过 plcd来显示颜色呢?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">(0,0)-------------------------------&gt;x
 		|
 		|
@@ -972,18 +1001,24 @@ write - write to a file descriptor<span aria-hidden="true" class="line-numbers-r
 		|		(x,y)
 		|
 		|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>*(plcd + 800*y + x) &#x3D; 0xff0000;</p>
 <pre class="line-numbers language-none"><code class="language-none">void lcd_draw_point(int x, int y, int color)
 	&#123;
 		if (x &gt;&#x3D; 0 &amp;&amp; x &lt; 800 &amp;&amp; y &gt;&#x3D; 0 &amp;&amp; y &lt; 480)
 		&#123;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>*(plcd + 800*y + x) &#x3D; color;<br>}</p>
 <pre class="line-numbers language-none"><code class="language-none">&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">....
 	关键点:
 		如何获取linux内核帧缓冲的首地址呢?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><p>内存函数:</p>
 <p>mmap: memory map</p>
 <p>NAME<br>mmap, munmap - map or unmap files or devices into memory</p>
@@ -999,6 +1034,7 @@ length:长度
 返回值:
 成功返回0
 失败返回其他值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="BMP图片解析及显示"><a href="#BMP图片解析及显示" class="headerlink" title="BMP图片解析及显示"></a>BMP图片解析及显示</h2><p>bitmap ,位图文件, microsoft。<br>是一种无压缩的图片格式 。</p>
 <p>每一张BMP图片文件 ,可以分为如下四个部分:</p>
 <p>BITMAP文件头<br>14bytes</p>
@@ -1006,27 +1042,35 @@ length:长度
 <p>width:<br>int width;<br>lseek(fd, 0X12, SEEK_SET);<br>read(fd, &amp;width, 4);</p>
 <pre class="line-numbers language-none"><code class="language-none">width &gt; 0
 			每一行的像素点的数据是从左至右保存的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">width &lt; 0
 			每一行的像素点的数据是从右至左保存的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>height:<br>0x16处的4个字节<br>int height;<br>lseek(fd, 0x16,SEEK_SET);<br>read(fd, &amp;height, 4);</p>
 <pre class="line-numbers language-none"><code class="language-none">height &gt; 0
 			先保存了是最底下一行的数据, 从下至上保存每一行
 		height &lt; 0
 			先保存了最上面一行的数据,从上至下保存每一行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>depth:<br>色深。指的是每个像素点数据所占的bits位数。<br>1, 2, 4, 8, ……。</p>
 <pre class="line-numbers language-none"><code class="language-none">depth &#x3D; 24
 			RGB888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">depth &#x3D; 32
 			ARGB8888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <p>调色板<br>标准的图片(depth&#x3D;24 or 32),这一部分没有</p>
 <p>像素数组<br>保存了每一个像素点的颜色值。</p>
 <pre class="line-numbers language-none"><code class="language-none">如:
 			width &gt; 0
 			height &gt; 0
 			depth &#x3D; 24<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">B G R (图片最左下角的那个点的颜色值)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>思考:<br>(1) 图片缩放功能</p>
 <pre class="line-numbers language-none"><code class="language-none">(2) 图片显示的动画功能<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="字模"><a href="#字模" class="headerlink" title="字模"></a>字模</h1><p><img src="https://i.loli.net/2021/06/10/nyLq859cMCDaxHJ.png" alt="横向取模"></p>
 <p><img src="https://i.loli.net/2021/06/10/KXglUh7IukFTo5M.png" alt="纵向取模"></p>
 <p><img src="https://i.loli.net/2021/06/10/SqersaMNCzwLnBu.png" alt="纵向取模_多个字"></p>
@@ -1034,43 +1078,55 @@ length:长度
 <h1 id="实现图片的动画显示效果"><a href="#实现图片的动画显示效果" class="headerlink" title="实现图片的动画显示效果"></a>实现图片的动画显示效果</h1><h1 id="线程和音乐播放"><a href="#线程和音乐播放" class="headerlink" title="线程和音乐播放"></a>线程和音乐播放</h1><h2 id="程序的运行方式"><a href="#程序的运行方式" class="headerlink" title="程序的运行方式"></a>程序的运行方式</h2><p>串行方式:<br>先把程序1执行完毕,然后再执行程序2,……。</p>
 <pre class="line-numbers language-none"><code class="language-none">缺点:
 		CPU利用率非常低。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">程序
 			S1 输入数据
 			S2 运算
 			S3 写回结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">为了提高CPU利用率<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>并发方式<br>允许多个程序同时运行。</p>
 <pre class="line-numbers language-none"><code class="language-none">为了提高CPU利用率,程序的运行采用并发的方式。
 	现代操作系统为了实现程序的并发方式,特地引入进程。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">引入进程的目的是为了实现并发,让多个程序同时运行,
 	请问操作系统是如何达到这个目的呢?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><p>程序:静态的概念<br>进程:动态的概念。<br>进程就一个程序的执行过程。</p>
 <pre class="line-numbers language-none"><code class="language-none">Ready
 	Running
 	Blocking<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">进程是粗粒度的并发,
 	线程是细粒度的并发。线程是进程内部一条指令执行路径。
 			一个进程可以有多个线程,一个进程内部的多个线程
 			共享整个进程地址空间的。
 			一个进程内的线程通信 效率 要比 多个进程通信效率高。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Linux线程创建"><a href="#Linux线程创建" class="headerlink" title="Linux线程创建"></a>Linux线程创建</h2><p>pthread: posix thread</p>
 <p>NAME<br>pthread_create - create a new thread</p>
 <p>SYNOPSIS<br>#include &lt;pthread.h&gt;</p>
 <pre class="line-numbers language-none"><code class="language-none">pthread_t 类型是用来描述一个线程信息,如:线程id,...
        			 pthread_t的实例是用来 唯一标识一个线程的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">int pthread_create(pthread_t *thread,
        						const pthread_attr_t *attr,
                           void *(*start_routine) (void *),
                           void *arg);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">thread: 指向的空间,用来保存线程id,
                          attr: 用来指定线程的属性,一般此处填NULL,
                          		采用默认的线程属性。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">start_routine: 函数指针,指向“线程函数”
                          arg: 将作为“线程函数”参数
                   返回值:
                   	成功返回 0
                   	失败返回 -1,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">Compile and link with -pthread.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">例子<span class="token operator">:</span>
 
 	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;pthread.h></span></span>
@@ -1099,14 +1155,17 @@ length:长度
 
 		<span class="token comment">//...</span>
 	<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h1 id="获取传感器数据"><a href="#获取传感器数据" class="headerlink" title="获取传感器数据"></a>获取传感器数据</h1><h2 id="上位机和下位机"><a href="#上位机和下位机" class="headerlink" title="上位机和下位机"></a>上位机和下位机</h2><p>在项目中,经常需要与其他的外部模块进行通信。<br>通信双方,其中一方为上位机,另外一方为下位机。<br>上位机:<br>把性能比较强,大部分数据处理在上位机完成。</p>
 <pre class="line-numbers language-none"><code class="language-none">下位机:
 			功能比较单一,一般只负责数据采集的那一端。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h2 id="GY-39通信接口及协议"><a href="#GY-39通信接口及协议" class="headerlink" title="GY-39通信接口及协议"></a>GY-39通信接口及协议</h2><p>UART</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//串口所对应的文件名</span>
 	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM2</span> <span class="token string">"/dev/ttySAC1"</span></span>
 	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM3</span> <span class="token string">"/dev/ttySAC2"</span></span>
 	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM4</span> <span class="token string">"/dev/ttySAC3"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>(1) open<br>(2) 配置串口参数</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//初始化串口</span>
 <span class="token comment">//file: 串口所对应的文件名</span>
@@ -1114,7 +1173,7 @@ length:长度
 <span class="token keyword">int</span> <span class="token function">init_serial</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>file<span class="token punctuation">,</span> <span class="token keyword">int</span> baudrate<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span> 
 	<span class="token keyword">int</span> fd<span class="token punctuation">;</span>
-	
+
 	fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> O_RDWR<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token keyword">if</span> <span class="token punctuation">(</span>fd <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 	<span class="token punctuation">&#123;</span>
@@ -1125,7 +1184,7 @@ length:长度
 	<span class="token keyword">struct</span> <span class="token class-name">termios</span> myserial<span class="token punctuation">;</span>
 	<span class="token comment">//清空结构体</span>
 	<span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>myserial<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token comment">//O_RDWR           </span>
+	<span class="token comment">//O_RDWR         </span>
 	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">|=</span> <span class="token punctuation">(</span>CLOCAL <span class="token operator">|</span> CREAD<span class="token punctuation">)</span><span class="token punctuation">;</span>
 	<span class="token comment">//设置控制模式状态,本地连接,接受使能</span>
 	<span class="token comment">//设置 数据位</span>
@@ -1154,7 +1213,7 @@ length:长度
 			<span class="token function">cfsetispeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B19200<span class="token punctuation">)</span><span class="token punctuation">;</span>
 			<span class="token keyword">break</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-	
+
 	<span class="token comment">/* 刷新输出队列,清除正接受的数据 */</span>
 	<span class="token function">tcflush</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> TCIFLUSH<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1163,25 +1222,31 @@ length:长度
 
 	<span class="token keyword">return</span> fd<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>(3)read&#x2F;write</p>
 <p>(4)close</p>
 <hr>
 <pre class="line-numbers language-none"><code class="language-none">上位机                             GY39
 			----------------------&gt;
 			cmd(0xA5, 0x83, 0x28)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">GY39数据输出格式:<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">帧头 帧头 类型	 长度						 校验和
 		0xA5 0XA5 type	 len  data1 data2 ... dataN  checksu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h1 id="触摸屏输入事件获取"><a href="#触摸屏输入事件获取" class="headerlink" title="触摸屏输入事件获取"></a>触摸屏输入事件获取</h1><h2 id="Linux输入子系统的层次"><a href="#Linux输入子系统的层次" class="headerlink" title="Linux输入子系统的层次"></a>Linux输入子系统的层次</h2><p>模块化是一个系统的属性,把一个系统分为 高内聚、低耦合的模块。<br>高内聚:把逻辑上相关的对象(概念)划分在一起<br>低耦合:减少模块间的依赖</p>
 <p>模块化不是结构化分析方法特有的,面向对象的分析方法也有。<br>结构化分析方法 模块化是以子程序(子系统)为主<br>面向对象分析方法 模块化是 类和对象 划分为主。</p>
 <p>linux下所有系统识别的“输入设备”,都会生成一个标准的文件接口:</p>
 <pre class="line-numbers language-none"><code class="language-none">&#x2F;dev&#x2F;input&#x2F;eventX(X&#x3D;0,1,2,...)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>我的输入设备对应的到底是哪个文件 ?<br>&#x2F;proc&#x2F;bus&#x2F;input&#x2F;devices<br>上面这个文件里,把每个输入设备的信息保存起来.</p>
 <p>读取事件的流程:</p>
 <pre class="line-numbers language-none"><code class="language-none">(1) open
 	(2) read  事件结构体 struct input_event
 	(3) 解析
 	(4) close<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="事件结构体"><a href="#事件结构体" class="headerlink" title="事件结构体"></a>事件结构体</h2><p>struct input_event</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">input_event</span> <span class="token punctuation">&#123;</span>
 			<span class="token keyword">struct</span> <span class="token class-name">timeval</span> time<span class="token punctuation">;</span> <span class="token comment">//事件发生的时间</span>
@@ -1231,6 +1296,7 @@ length:长度
 				 				<span class="token operator">=</span><span class="token number">0</span>  弹起
 		<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h1 id="Linux灯光驱动调用"><a href="#Linux灯光驱动调用" class="headerlink" title="Linux灯光驱动调用"></a>Linux灯光驱动调用</h1><h2 id="驱动是什么"><a href="#驱动是什么" class="headerlink" title="驱动是什么?"></a>驱动是什么?</h2><p>A 硬件   B 软件</p>
 <p>应用程序是也是软件。</p>
 <p>驱动是操作硬件的代码。驱动层次位于应用与硬件之间。<br>驱动对上提供操作硬件的接口,并且需要向应用屏蔽硬件<br>实现的细节。 驱动对下(硬件)检测&#x2F;监测硬件上的改变或<br>状态的变化,并向上报告其状态。</p>
@@ -1239,19 +1305,25 @@ length:长度
 <pre class="line-numbers language-none"><code class="language-none">裸机驱动:
 		不跑操作系统。
 		你想怎么操作硬件,想提供什么接口给应用,都由你来写。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">linux&#x2F;widows驱动:
 		你必须按照linux&#x2F;windows定义的框架,定义好的接口,去实现。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h2 id="驱动控制灯光"><a href="#驱动控制灯光" class="headerlink" title="驱动控制灯光"></a>驱动控制灯光</h2><p>open<br>read&#x2F;write&#x2F;ioctl&#x2F;….<br>close</p>
 <p>加载驱动:<br>insmod   kobject_led.ko</p>
 <p>卸载驱动:<br>rmmod   kobject_led.ko</p>
 <p>一旦加载成功,在开发板目录<br>&#x2F;sys&#x2F;kernel&#x2F;gec_ctrl&#x2F;<br>生成<br>led_d7<br>led_d8<br>led_d9<br>led_d10<br>led_all<br>beep</p>
 <pre class="line-numbers language-none"><code class="language-none">控制 led_d7
 		open(&quot;&#x2F;sys&#x2F;kernel&#x2F;gec_ctrl&#x2F;led_d7&quot;, O_RDWR)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">int on &#x3D; 1; &#x2F;&#x2F;写1到文件表示 写
 		write(fd, &amp;on,  4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">on &#x3D; 0; &#x2F;&#x2F;写0到文件表示 关
 		write(fd, &amp;on, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">[root@GEC6818 &#x2F;mnt]# mount -t nfs 192.168.3.16:&#x2F;mnt&#x2F;hgfs &#x2F;mnt -o nolock &#x2F;&#x2F;要注意虚拟机文件的权限问题<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://img2020.cnblogs.com/blog/2228564/202012/2228564-20201203204525247-456551250.png" alt="img"></p>
 <p>挂载成功,现在主机,虚拟机,开发板共享了同一个目录。</p>
 ]]></content>
