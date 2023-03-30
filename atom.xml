@@ -48,31 +48,6 @@
   </entry>
   
   <entry>
-    <title>现代通信原理笔记</title>
-    <link href="https://auntyang.cf/2023/032412074.html"/>
-    <id>https://auntyang.cf/2023/032412074.html</id>
-    <published>2023-03-24T10:30:45.000Z</published>
-    <updated>2023-03-30T03:17:22.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;概论&quot;&gt;&lt;a href=&quot;#概论&quot; class=&quot;headerlink&quot; title=&quot;概论&quot;&gt;&lt;/a&gt;概论&lt;/h1&gt;&lt;h2 id=&quot;信息及其度量&quot;&gt;&lt;a href=&quot;#信息及其度量&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="学习" scheme="https://auntyang.cf/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="现代通信原理" scheme="https://auntyang.cf/tags/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>基于Frp和Squid的代理服务器搭建</title>
     <link href="https://auntyang.cf/2022/0427Proxy%20server%20construction.html"/>
     <id>https://auntyang.cf/2022/0427Proxy%20server%20construction.html</id>
@@ -193,6 +168,31 @@
     <category term="WSN" scheme="https://auntyang.cf/tags/WSN/"/>
     
     <category term="无线传感器网络" scheme="https://auntyang.cf/tags/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>现代通信原理笔记</title>
+    <link href="https://auntyang.cf/2020/091712074.html"/>
+    <id>https://auntyang.cf/2020/091712074.html</id>
+    <published>2020-09-17T04:00:00.000Z</published>
+    <updated>2023-03-30T03:34:44.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;概论&quot;&gt;&lt;a href=&quot;#概论&quot; class=&quot;headerlink&quot; title=&quot;概论&quot;&gt;&lt;/a&gt;概论&lt;/h1&gt;&lt;h2 id=&quot;信息及其度量&quot;&gt;&lt;a href=&quot;#信息及其度量&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="学习" scheme="https://auntyang.cf/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="现代通信原理" scheme="https://auntyang.cf/tags/%E7%8E%B0%E4%BB%A3%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
