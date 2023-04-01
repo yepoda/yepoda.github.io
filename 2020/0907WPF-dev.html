@@ -601,7 +601,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-30
+                    2023-04-01
                 </div>
                 
 
@@ -736,14 +736,14 @@ public void Read()
    fs.Close();
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="C-List介绍"><a href="#C-List介绍" class="headerlink" title="C# List介绍"></a>C# List介绍</h1><h2 id="一、LIST概述"><a href="#一、LIST概述" class="headerlink" title="一、LIST概述"></a><strong>一、LIST概述</strong></h2><p>**所属命名空间:**System.Collections.Generic</p>
+<h1 id="C-List"><a href="#C-List" class="headerlink" title="C# List"></a>C# List</h1><h2 id="LIST概述"><a href="#LIST概述" class="headerlink" title="LIST概述"></a><strong>LIST概述</strong></h2><p>**所属命名空间:**System.Collections.Generic</p>
 <p>public class List<T> : IList<T>, ICollection<T>, IEnumerable<T>, IList, ICollection, IEnumerable</p>
 <p><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">List</a>类是 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx">ArrayList</a> 类的泛型等效类。该类使用大小可按需动态增加的数组实现 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 泛型接口。</p>
 <p><strong>泛型的好处</strong>: 它为使用c#语言编写面向对象程序增加了极大的效力和灵活性。不会强行对值类型进行装箱和拆箱,或对引用类型进行向下强制类型转换,所以性能得到提高。</p>
-<h2 id="二、性能注意事项"><a href="#二、性能注意事项" class="headerlink" title="二、性能注意事项:"></a><strong>二、性能注意事项:</strong></h2><p><strong>在决定使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> <strong>还是使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx"><strong>ArrayList</strong></a><strong>类(两者具有类似的功能)时,记住</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> 类在大多数情况下执行得更好并且是类型安全的。</p>
+<h2 id="性能注意事项"><a href="#性能注意事项" class="headerlink" title="性能注意事项:"></a><strong>性能注意事项:</strong></h2><p><strong>在决定使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> <strong>还是使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx"><strong>ArrayList</strong></a><strong>类(两者具有类似的功能)时,记住</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> 类在大多数情况下执行得更好并且是类型安全的。</p>
 <p>如果对<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 类的类型 T 使用引用类型,则两个类的行为是完全相同的。但是,如果对类型 T 使用值类型,则需要考虑实现和装箱问题。</p>
 <p>“添加到 ArrayList 中的任何引用或值类型都将隐式地向上强制转换为 Object。如果项是值类型,则必须在将其添加到列表中时进行装箱操作,在检索时进行取消装箱操作。强制转换以及装箱和取消装箱操作都会降低性能;在必须对大型集合进行循环访问的情况下,装箱和取消装箱的影响非常明显。”</p>
-<h2 id="三、一般用法"><a href="#三、一般用法" class="headerlink" title="三、一般用法"></a><strong>三、一般用法</strong></h2><p><strong>List</strong>的基础、常用方法:</p>
+<h2 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a><strong>一般用法</strong></h2><p><strong>List</strong>的基础、常用方法:</p>
 <p><strong>声明:</strong></p>
 <p>1、List<T> mList &#x3D; new List<T>();</p>
 <p>T为列表中元素类型,现在以string类型作为例子</p>
@@ -794,7 +794,6 @@ mList.AddRange(temArr);<span aria-hidden="true" class="line-numbers-rows"><span>
 <p>mList.Add(“Hunter”);</p>
 <pre class="line-numbers language-none"><code class="language-none">Console.WriteLine(&quot;Add Hunter successfully.&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
 <p>}</p>
 <h3 id="给List里面元素排序"><a href="#给List里面元素排序" class="headerlink" title="给List里面元素排序"></a>给List里面元素排序</h3><p>List. Sort ()  默认是元素第一个字母按升序</p>
 <p>E.g.:  mList.Sort();</p>
@@ -806,7 +805,6 @@ mList.AddRange(temArr);<span aria-hidden="true" class="line-numbers-rows"><span>
 <p>E.g.:</p>
 <p>int count &#x3D; mList.Count();</p>
 <pre class="line-numbers language-none"><code class="language-none">Console.WriteLine(&quot;The num of elements in the list: &quot; +count);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 
 <h2 id="List的进阶、强大方法"><a href="#List的进阶、强大方法" class="headerlink" title="List的进阶、强大方法"></a>List的进阶、强大方法</h2><p>举例用的List:</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">string[] temArr &#x3D; &#123; Ha&quot;,&quot;Hunter&quot;, &quot;Tom&quot;, &quot;Lily&quot;, &quot;Jay&quot;, &quot;Jim&quot;, &quot;Kuku&quot;, &quot; &quot;Locu&quot; &#125;;
@@ -915,7 +913,6 @@ Console.WriteLine(&quot;True for all: &quot;+flag); &#x2F;&#x2F;flag值为false<
 
 <pre class="line-numbers language-none"><code class="language-none">这时subList存储的就是所有长度大于3的元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-
 <h3 id="List-Take-n"><a href="#List-Take-n" class="headerlink" title="List.Take(n)"></a>List.Take(n)</h3><p>获得前n行 返回值为IEnumetable<T>,T的类型与List<T>的类型一样</p>
 <p>E.g.:</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">IEnumerable&lt;string&gt; takeList&#x3D; mList.Take(5);
@@ -929,7 +926,6 @@ foreach (string s in takeList)
  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-none"><code class="language-none">这时takeList存放的元素就是mList中的前5个<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 
 <h3 id="List-Where方法"><a href="#List-Where方法" class="headerlink" title="List.Where方法"></a>List.Where方法</h3><p>检索与指定谓词所定义的条件相匹配的所有元素。跟List.FindAll方法类似。</p>
 <p>E.g.:</p>
@@ -964,7 +960,6 @@ foreach (string s in takeList)
    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-none"><code class="language-none">这时subList存储的就是所有长度大于3的元素<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 
 <h3 id="List-RemoveAll方法"><a href="#List-RemoveAll方法" class="headerlink" title="List.RemoveAll方法"></a>List.RemoveAll方法</h3><p>移除与指定的谓词所定义的条件相匹配的所有元素。</p>
 <p>public int RemoveAll(Predicate<T> match);</p>
@@ -1146,7 +1141,7 @@ proc.StartInfo.FileName &#x3D; &quot;http:&#x2F;&#x2F;www.baidu.com&quot;;
 proc.Start();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="WPF应用程序中打开"><a href="#WPF应用程序中打开" class="headerlink" title="WPF应用程序中打开"></a>WPF应用程序中打开</h3><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">WebBrowser wBrowser &#x3D; new WebBrowser();
-wBrowser .Source &#x3D; new Uri(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;);     
+wBrowser .Source &#x3D; new Uri(&quot;http:&#x2F;&#x2F;www.baidu.com&quot;);   
 this.Content &#x3D; wBrowser ;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="WPF插入超链接"><a href="#WPF插入超链接" class="headerlink" title="WPF插入超链接"></a>WPF插入超链接</h2><p>前端XAML:<br>值得注意的一点是,超链接的文字一定要包含在&lt;hyperlink&gt;&lt;&#x2F;hyperlink&gt;标记中,否则报错。并且&lt;hyperlink&gt;&lt;&#x2F;hyperlink&gt;标记不可以单独出现,一定要嵌套在textblcok中</p>
@@ -1268,7 +1263,7 @@ getPassword.password &#x3D;&#x3D; null;<span aria-hidden="true" class="line-numb
                    &lt; TextBlock &gt;
                    按钮tooltip
                    &lt;&#x2F; TextBlock &gt;
-               &lt;&#x2F; ToolTip &gt;              
+               &lt;&#x2F; ToolTip &gt;            
            &lt;&#x2F; Button.ToolTip &gt;
        &lt;&#x2F; Button &gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
@@ -1321,7 +1316,7 @@ ToolTipService.IsEnabled&#x3D;&quot;True&quot;&#x2F;&#x2F;获取或设置是否�
 
 &#125;
 DispatcherTimer time;&#x2F;&#x2F;实例化一个定时器
-      
+    
 void MainWindow_Loaded(object sender,RoutedEventArgs e)
 &#123;
     time &#x3D; new DispatcherTimer();
@@ -1375,13 +1370,13 @@ WindowStartupLocation &#x3D; WindowStartupLocation.CenterScreen;&#x2F;&#x2F;WPF�
       Point pp &#x3D; Mouse.GetPosition(this);
       if (pp.X &gt;&#x3D; 20 &amp;&amp; pp.X &lt;&#x3D; 288 &amp;&amp; pp.Y&gt;&#x3D;78 &amp;&amp; pp.Y &lt;&#x3D; 460)
       	&#123;
-    
+  
       	&#125;
       else
       &#123;
         if (e.LeftButton &#x3D;&#x3D; MouseButtonState.Pressed)
         &#123;
-          &#x2F;&#x2F;this.DragMove();     
+          &#x2F;&#x2F;this.DragMove();   
           Window.DragMove();
         &#125;
       &#125;
@@ -1475,7 +1470,7 @@ public class Test
                    DataLabels&#x3D;true,
                    Title &#x3D; &quot;当前人数&quot;
                &#125;
-             
+           
            &#125;;
 
            &#x2F;&#x2F;myAxisX.Labels &#x3D; new[] &#123; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot; &#125;;&#x2F;&#x2F;横坐标定义
@@ -1711,7 +1706,7 @@ TextBlock1.Inlines.Add(New Run(&quot;BBBB&quot;))<span aria-hidden="true" class=
        &lt;TextBox Grid.Row&#x3D;&quot;1&quot; Grid.Column&#x3D;&quot;1&quot; Text&#x3D;&quot;请输入账号&quot;  FontSize&#x3D;&quot;32&quot; Margin&#x3D;&quot;50,15&quot;&#x2F;&gt;
        &lt;PasswordBox Grid.Row&#x3D;&quot;2&quot; Grid.Column&#x3D;&quot;1&quot;  ToolTip&#x3D;&quot;请输入密码&quot; Margin&#x3D;&quot;50,15&quot; FontSize&#x3D;&quot;32&quot;  
                     x:Name&#x3D;&quot;FloatingPasswordBox&quot;
-                  
+                
                     materialDesign:HintAssist.Hint&#x3D;&quot;请输入密码&quot;
                     materialDesign:HintAssist.Foreground&#x3D;&quot;Green&quot;
                     materialDesign:TextFieldAssist.UnderlineBrush&#x3D;&quot;Green&quot;
@@ -1786,19 +1781,16 @@ namespace test
 <p>c#代码中的引用格式为“#”+”字体名称”。iconfont.cn中下载的字体名称一般都是“iconfont”,所以引用时使用“#iconfont”即可,实例截取:component&#x2F;Resources&#x2F;#iconfont”。</p>
 <p><img src="https://images2015.cnblogs.com/blog/649940/201705/649940-20170519154738478-128340687.png" alt="img"></p>
 <p>图中的demo_unicode.html包含了ttf文件中的unicode编码,如图二所示。wpf中引用时,在xaml和xaml.cs中的方式有所不同。如arrow-left图标的编码是“&amp;#xe614;”,当在xaml中引用时需要直接复制该编码,而在代码(.cs文件)中引用时,格式为“\ue614”。</p>
-<p>  具体介绍在App.xaml中设置为程序资源(Application.Resources)的方法及使用步骤:</p>
-<pre><code>步骤1,在App.xaml中设置如下,其中ttf资源文件所在目录为WpfUI/Resources/,WpfUI是项目名称,iconfont.ttf是字体库文件名,iconfont是字体库的“字体名称”。
-</code></pre>
+<p>具体介绍在App.xaml中设置为程序资源(Application.Resources)的方法及使用步骤:</p>
+<p>步骤1,在App.xaml中设置如下,其中ttf资源文件所在目录为WpfUI&#x2F;Resources&#x2F;,WpfUI是项目名称,iconfont.ttf是字体库文件名,iconfont是字体库的“字体名称”。</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Application.Resources&gt;
         &lt;FontFamily x:Key&#x3D;&quot;IconFont&quot;&gt;
             pack:&#x2F;&#x2F;application:,,,&#x2F;WpfUI;component&#x2F;Resources&#x2F;iconfont.ttf#iconfont
         &lt;&#x2F;FontFamily&gt;
         &lt;!--其他设置--&gt;
 &lt;&#x2F;Application.Resources&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <p>步骤2,在xaml中应用到目标,以设置MenuItem图标为例</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;MenuItem Name&#x3D;&quot;menuItem1&quot; Header&#x3D;&quot;Icon示例&quot; Icon&#x3D;&quot;&quot; FontFamily&#x3D;&quot;&#123;StaticResource IconFont&#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>当前项目常用图标地址:<a target="_blank" rel="noopener" href="http://www.iconfont.cn/collections/detail?cid=4215">http://www.iconfont.cn/collections/detail?cid=4215</a></p>
 <h2 id="PanuonUI-Silver"><a href="#PanuonUI-Silver" class="headerlink" title="PanuonUI.Silver"></a><strong><a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">PanuonUI.Silver</a></strong></h2><p>WPF 的第三方UI库,基于PanuonUI拓展开发的</p>
 <p>gitee:<a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">https://gitee.com/panuon/PanuonUI.Silver</a></p>
