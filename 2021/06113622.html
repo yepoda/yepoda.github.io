@@ -1,0 +1,2045 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><!-- hexo injector head_begin start --><style type="text/css">.douban-card-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 400px;
+}
+
+.douban-card {
+    display: flex;
+    margin: 30px 10px;
+    padding: 15px;
+    border-radius: 15px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.douban-card:hover {
+    text-decoration: none;
+}
+
+.douban-card-bgimg {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    filter: blur(15px) brightness(0.6);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-img {
+    position: relative;
+    height: 130px;
+    width: 80px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.douban-card-left:hover .douban-card-img {
+    filter: blur(5px) brightness(0.6);
+    transform: perspective(800px) rotateX(180deg);
+}
+
+.douban-card-left .douban-card-img {
+    transition: all 500ms ease;
+}
+
+.douban-card-left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.douban-card-left .douban-card-status {
+    height: 130px;
+    width: 80px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 30%;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: all 500ms ease;
+}
+
+.douban-card-left:hover .douban-card-status {
+    transform: perspective(800px) rotateX(0deg);
+}
+
+.douban-card-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+    line-height: 1.3;
+    color: antiquewhite;
+}
+
+.douban-card-item {
+    margin-top: 4px;
+}
+</style><!-- hexo injector head_begin end -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="智能家居控制系统开发笔记, 梅园小径">
+    <meta name="description" content="基于arm-Linux开发的智能家居控制系统项目,在开发中有许多问题和值得记录的技术知识,如帧缓冲、BMP编码原理等,也由此得以窥见Linux驱动开发的一角。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>智能家居控制系统开发笔记 | 梅园小径</title>
+    <link rel="icon" type="image/png" href="/favicon_ay.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梅园小径" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo diyFont">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo_meiyuan.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">梅园小径</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>清单</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/movies">
+          
+          <i class="fas fa-tv" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>影片剧集</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/books">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>书籍杂志</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+      
+      <i class="fas fa-subway" style="zoom: 0.6;"></i>
+      
+      <span>开往</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo_meiyuan.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name diyFont">梅园小径</div>
+        <div class="logo-desc">
+            
+            auntyang的生活与技术小屋
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			清单
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/movies " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tv" style="position: absolute;left:50px" ></i>
+			      
+		          <span>影片剧集</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/books " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>书籍杂志</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-book"></i>
+			
+			文章
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-subway"></i>
+			
+			开往
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://s2.loli.net/2023/03/30/xHW9GZgRC4OMtk2.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">智能家居控制系统开发笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">
+                                <span class="chip bg-color">嵌入式开发</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">
+                                <span class="chip bg-color">物联网</span>
+                            </a>
+                        
+                            <a href="/tags/ARM/">
+                                <span class="chip bg-color">ARM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%8A%80%E6%9C%AF/" class="post-category">
+                                技术
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-06-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-03-30
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    20 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="段错误"><a href="#段错误" class="headerlink" title="段错误"></a>段错误</h2><p>段错误: C&#x2F;C++<br>segmentation  fault</p>
+<p>内存的非法访问。 &lt;&#x3D;  段错误<br>不能读的内存,你去读<br>不能写的内存,你去写<br>不是你的内存,你去访问</p>
+<p>指针(数组)有误</p>
+<pre class="line-numbers language-none"><code class="language-none">int a[10];
+	int i &#x3D; 11;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">a[i] ;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int *p &#x3D; NULL;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">a &#x3D; *p;
+	*p &#x3D; 250;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int *p1;  &#x2F;&#x2F;p1野指针
+		*p1;  &#x3D;&gt; 内存的非法访问<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>一个进程运行过程中,出现段错误啦,操作系统是如何处理的呢?<br>把这个进程给kill掉。</p>
+<p>找段错误,比较容易:<br>加打印。</p>
+<pre class="line-numbers language-none"><code class="language-none">printf(&quot;abc\n&quot;);   &#x3D;&gt; abc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">xxxx();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">printf(&quot;123\n&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>printf(“%s L_%d\n”, __FUNCTION__, __LINE__ );</p>
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>__FUNCTION__  字符串,函数名<br>__LINE__     int, 当前行号<br>__FILE__    字符串,文件名</p>
+<h1 id="Linux交叉开发环境搭建"><a href="#Linux交叉开发环境搭建" class="headerlink" title="Linux交叉开发环境搭建"></a>Linux交叉开发环境搭建</h1><h2 id="项目开发规范"><a href="#项目开发规范" class="headerlink" title="项目开发规范"></a>项目开发规范</h2><h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3><p>缩进问题</p>
+<p>对齐问题</p>
+<h3 id="文件规范"><a href="#文件规范" class="headerlink" title="文件规范"></a>文件规范</h3><p>模块化思想开发</p>
+<p>文件夹规范</p>
+<p>smart_home&#x2F; &lt;&lt;&lt;&lt;&lt; 包含项目的所有资料<br>src&#x2F; &lt; —-包含工程源代码<br>main.c&#x2F;main.h<br>lcd.c&#x2F;lcd.h<br>ts.c&#x2F;ts.h<br>….</p>
+<h2 id="代码编译"><a href="#代码编译" class="headerlink" title="代码编译"></a>代码编译</h2><p>GCC:GNU C Compiler</p>
+<p>编译器:xxx-yyy-gcc均为跨平台的交叉编译器,如arm-Linux-gcc为目标平台为arm,编译平台为Linux,编译语言为c语言的编译器。</p>
+<p>如何解决各平台,如Windows、Linux、arm平台之间的文件传输问题?<br>A:Windows与Linux:共享文件夹功能<br>Windows与arm:串口的xModern协议传输文件</p>
+<p>下载程序<br>rx : receive xModern<br>用串口的xModern协议来接收文件<br>如:<br>rx  smart_home</p>
+<pre class="line-numbers language-none"><code class="language-none">改变可执行文件的权限
+	chmod +x  smart_home<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">eXcute<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>运行可执行程序</p>
+<pre class="line-numbers language-none"><code class="language-none">.&#x2F;可执行程序<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>什么是终端(terminal) ?<br>A 硬件  B 软件<br>终端是介于用户和OS内核之间的桥梁软件。它接收用户输入的命令,<br>并解析命令,提交给OS执行,并把OS执行命令的结果反馈给用户。</p>
+<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><p>几条基本的常用的linux命令:<br>(1)linux文件系统<br>linux文件系统是“树”的形式结构的。<br>绝对路径:<br>指根目录“&#x2F;”开始的路径。<br>如:<br>&#x2F;home&#x2F;gec&#x2F;1.txt</p>
+<pre class="line-numbers language-none"><code class="language-none">系统认识文件是以 绝对路径 来识别的。
+		相对路径:
+			不以根目录&quot;&#x2F;&quot;开始的路径。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">working directory 工作目录&#x2F;当前目录
+			在linux下每个进程都会有一个“当前目录”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">如:
+				假设你的当前目录 为 &#x2F;home
+				此时,你可以用目录:
+					gec&#x2F;1.txt  --&gt; &#x2F;home&#x2F;gec&#x2F;1.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">当前目录+相对路径 &#x3D;〉 绝对路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">操作系统会自动为每个目录创建两个子目录
+				.&#x2F;  代表的是当前路径
+				..&#x2F;  代表的是上一级路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>(2)cd<br>change directory 改变目录</p>
+<pre class="line-numbers language-none"><code class="language-none">语法:
+	 	cd  目录名
+	 		目录名代表的是你要切换到的那个目录
+	 		目录名指定可以用 绝对路径,也可以用相对路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(3) ls<br>list  列举。列举一个目录或文件的信息</p>
+<pre class="line-numbers language-none"><code class="language-none">ls  目录
+	  ls
+	  	列举当前目录的文件信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>(4) pwd<br>print  working directory<br>输出当前工作目录的完整的路径名</p>
+<p>(5) 创建目录mkdir<br>make  directory创建目录的</p>
+<p>mkdir  要创建的目录名<br>目录名可以用绝对路径指定,也可以用相对路径</p>
+<p>mkdir   -p   要创建的目录名<br>-p parent 双亲<br>如果要创建的目录的父目录(父目录的父目录,…)没有,则一并创建。<br>(6) 删除文件或目录<br>rm  remove</p>
+<p>rm  -rf   要删除的文件名或目录<br>(7) 创建新的空的普通文件<br>touch</p>
+<p>语法:<br>touch  要创建的普通文件的文件名(可以多个,多个的话以空格隔开)</p>
+<p>例子:</p>
+<p>touch main.c  main.h  lcd.c lcd.h ts.c  ts.h  detect.c detect.h<br>(8) 工程编译命令<br>make<br>但是make的正确运行离不开一个配置文件 Makefile&#x2F;makefile</p>
+<p>用法:<br>make clean 清除中间文件和可执行文件<br>make  自动进行编译工作<br>这一步如果没有语法错误,则会最终生成可执行文件</p>
+<p>如:<br>-〉 smart_home</p>
+<h1 id="LCD屏幕的使用"><a href="#LCD屏幕的使用" class="headerlink" title="LCD屏幕的使用"></a>LCD屏幕的使用</h1><p>Linux下一切皆文件,屏幕的使用同样是操作文件的过程。</p>
+<h2 id="LCD屏幕原理"><a href="#LCD屏幕原理" class="headerlink" title="LCD屏幕原理"></a>LCD屏幕原理</h2><p>分辨率:800*480 480P<br>1920*1080 1080P<br>1080*720 720P<br>2K<br>4K<br>由480行 每行有800个像素点来组成</p>
+<p>像素点(piexl)是什么?<br>像素点就是能显示某种颜色的店<br>在屏幕上显示图像 是不是就是给每个像素点一个颜色</p>
+<p>颜色如何描述的<br>红色<br>RED ….<br>如何统一<br>各种颜色其实由三基色组成<br>red green blue</p>
+<p>red的程度不一样 怎么来描述呢?<br>量化:数量化</p>
+<p>read<br>*<br>**</p>
+<p>read  green blue<br>255   0      0     耀世红<br>0    255      0    原谅绿<br>0     0     255    天空蓝</p>
+<p>RGB:占3个字节 0xff0000</p>
+<p>“透明度”<br>一个像素点由4个字节来描述的<br>ARGB:<br>A 透明度<br>0~255<br>ARGB:0x00 00 00 00 &#x3D;&#x3D;&gt; int</p>
+<h2 id="Linux层次"><a href="#Linux层次" class="headerlink" title="Linux层次"></a>Linux层次</h2><p>中间层OS<br>对上应用层提供操作硬件的接口函数,并且屏蔽实现的细节<br>于是我们就有人提出在内存上开辟一段缓冲区,用来保存屏幕上的每一个像素点的颜色值,然后应用程序直接把要显示的图像的颜色值直接写入到这块内存上即可。<br>buffer至少要多大:480*800*4<br>这种缓冲区,我们在Linux下面称之为:帧缓冲 fram buffer &#x3D;&#x3D;&#x3D; fb<br>帧缓冲设备是对图像设备的一种抽象,它让上层应用不必关心具体的实现的细节,上层应用只需要在帧缓冲中填上合适的颜色值即可。<br>然后帧缓冲的驱动按一定的刷新频率,把颜色值在屏幕上正确的显示即可。以上就是帧缓冲的原理。</p>
+<pre class="line-numbers language-none"><code class="language-none">6818开发板上:屏幕 &#x2F;dev&#x2F;fb0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h2><pre class="line-numbers language-none"><code class="language-none">系统IO
+		标准IO
+		命令man
+			查看帮助文档,linux提供了API函数的帮助文档(说明文档)
+			eg:
+				man printf
+			可选项-f 显示所有的相关的页
+			查看具体那一页:直接man + 页数
+			eg:
+				man 3 printf
+		操作文件
+			打开、关闭、读、写
+		a.open close
+		open--打开文件
+		NAME
+        open, openat, creat - open and possibly create a file<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+	       #include &lt;sys&#x2F;types.h&gt;
+	       #include &lt;sys&#x2F;stat.h&gt;
+	       #include &lt;fcntl.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int open(const char *pathname, int flags);
+	  函数功能:打开文件
+	  函数参数:
+	  	pathname:文件路径名,可以是绝对路径也可以是相对路径
+	  	flags:标志位,文件以什么权限打开
+	  		O_RDONLY:只读 open_read_only
+	  		O_WRONLY:只写
+	  		O_RDWR:可读可写
+	  	三个标志只能选其一
+	  返回值:
+	  	成功,返回一个文件描述符(&gt;0)
+	  	失败,返回-1,并且errno被设备。
+	  	同学    槟榔
+	     0     买到了
+	     -1    没买到
+	     -2    被抓到了
+	     -3    槟榔被吃光了
+	     ....
+	     errno
+	     可以由perror来解释
+	     NAME
+perror - print a system error message<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+	       #include &lt;stdio.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">void perror(const char *s);
+	       eg:
+	       	perror(&quot;binglang:&quot;);
+	       在屏幕打印:
+	       	槟榔:错误信息\n
+	代码举例:
+		int fd &#x3D; open(&quot;1.txt&quot;,O_RDWR);&#x2F;&#x2F;以可读可写打开文件
+		if(fd&lt;0)
+		&#123;
+			perror(&quot;open fail&quot;);
+			return ;
+		&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">b.close
+	NAME
+close - close a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int close(int fd);
+	       fd:文件描述符是open的返回值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">c.read
+	NAME
+    read - read from a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">ssize_t read(int fd, void *buf, size_t count);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">函数功能:
+		从一个已经打开的文件中读 count个字节,放到buf所指向的空间中去。
+	函数参数:
+		fd:
+		buf:
+		count:
+	  PS:void* 空指针
+	  PS:const C语言关键字,所修饰的变量,告诉系统不能轻易的去改变。为了提升程序健壮性。
+	 函数返回值:
+	 	成功,返回成功读取到字节数,文件偏移量(光标)会随之增加
+	 	失败,返回-1,并且errno被设置<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">d.write
+		NAME
+write - write to a file descriptor<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+#include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>ssize_t write(int fd, const void *buf, size_t count);<br>函数功能:<br>从buf所指向的空间里面取count个字节写到fd中去<br>函数参数:<br>fd:<br>buf:<br>count:<br>函数返回值:<br>成功,返回成功写入的字节数,文件偏移量(光标)会随之增加<br>失败,返回-1,并且errno被设置</p>
+<p>e.lseek<br>NAME<br>lseek - reposition read&#x2F;write file offset</p>
+<pre class="line-numbers language-none"><code class="language-none">SYNOPSIS
+	       #include &lt;sys&#x2F;types.h&gt;
+	       #include &lt;unistd.h&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">off_t lseek(int fd, off_t offset, int whence);
+	      函数功能:重定位光标
+	      函数参数:
+	      	fd:
+	      	offset:要设置的偏移量
+	      	whence:定位光标
+	      SEEK_SET:以文件的开头定位  offset&gt;0
+          	The file offset is set to offset bytes.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SEEK_CUR:以当前光标位置进行定位 offset可正可负
+	              The file offset is set to its current location plus offset bytes.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">SEEK_END:以文件末尾进行定位 offset可正可负
+	              The file offset is set to the size of the file plus offset bytes.
+	    返回值:
+	    	成功返回新的光标位置相对于文件开头的偏移量(单位字节)
+	    	失败,返回-1,并且errno被设置
+	   作业一:
+	   		使用lseek来求文件大小。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">作业二:
+	   		在开发板屏幕上显示德国国旗。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">作业三:
+	   		在开发板屏幕上显示太极图案<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h1 id="BMP图片显示"><a href="#BMP图片显示" class="headerlink" title="BMP图片显示"></a>BMP图片显示</h1><h2 id="Linux帧缓存驱动"><a href="#Linux帧缓存驱动" class="headerlink" title="Linux帧缓存驱动"></a>Linux帧缓存驱动</h2><p>物理屏幕分辨率:<br>800*480</p>
+<pre class="line-numbers language-none"><code class="language-none">屏幕由480行,且每行有800个像素点组成。
+	每个像素点可以颜色一个标准的颜色:
+		ARGB8888
+但是每个不同的屏幕,显示时序、接口等等都不一样,
+那如果这样,我应用程序如果要显示一个颜色,还要根据不同
+的屏幕,去组织不同的代码,这个是不是就很麻烦。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">从应用角度来说:
+		“我(应用工程师)认为,所以的显示屏都应该是一样的,
+		因为我用它就是用来显示某个颜色”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>为了实现这个:<br>Linux内核特地引入 “帧缓冲”</p>
+<pre class="line-numbers language-none"><code class="language-none">在内核开辟了一个 Frame Buffer,用来保存显示屏上每一个像素
+	点的颜色(从上至下,从左至右)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">应用程序只需要把准备好的颜色值数据,拷贝到frame buffer,
+	然后 帧缓冲驱动,会按照一定的刷新频率、按照特定的屏幕显示
+	的要求、接口、时序......把颜色值正确地显示到屏幕上去。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">对上(应用)屏蔽了具体的硬件实现细节。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<hr>
+<h2 id="frame-buffer本质就是一块内存显示任何图像都是直接去操作这块内存"><a href="#frame-buffer本质就是一块内存显示任何图像都是直接去操作这块内存" class="headerlink" title="frame buffer本质就是一块内存显示任何图像都是直接去操作这块内存"></a>frame buffer本质就是一块内存<br>显示任何图像都是直接去操作这块内存</h2><p>可以通过指针去操作这个frame buffer,进而就可以通过指针去显示图像!!!</p>
+<p>int *plcd; &#x2F;&#x2F;假设 让plcd指向linux内核帧缓冲的首地址</p>
+<pre class="line-numbers language-none"><code class="language-none">*plcd &#x3D; 0xff0000; &#x2F;&#x2F;屏幕上第0行的第0点显示红色<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">*(plcd + 1) &#x3D; 0xff0000;&#x2F;&#x2F;屏幕上第0行的第1个点显示红色
+	*(plcd + 2) &#x3D; 0xff0000;&#x2F;&#x2F;屏幕上第0行的第2个点显示红色
+	...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">如果是任意的一个点(x,y)如何通过 plcd来显示颜色呢?<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">(0,0)-------------------------------&gt;x
+		|
+		|
+		|
+		|		(x,y)
+		|
+		|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>*(plcd + 800*y + x) &#x3D; 0xff0000;</p>
+<pre class="line-numbers language-none"><code class="language-none">void lcd_draw_point(int x, int y, int color)
+	&#123;
+		if (x &gt;&#x3D; 0 &amp;&amp; x &lt; 800 &amp;&amp; y &gt;&#x3D; 0 &amp;&amp; y &lt; 480)
+		&#123;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>*(plcd + 800*y + x) &#x3D; color;<br>}</p>
+<pre class="line-numbers language-none"><code class="language-none">&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">....
+	关键点:
+		如何获取linux内核帧缓冲的首地址呢?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h2><p>内存函数:</p>
+<p>mmap: memory map</p>
+<p>NAME<br>mmap, munmap - map or unmap files or devices into memory</p>
+<p>SYNOPSIS<br>#include &lt;sys&#x2F;mman.h&gt;</p>
+<p>mmap用来把内核和文件的内存,映射到应用程序空间。<br>目的是让应用程序通过指针直接去访问内核、驱动、文件的内容。<br>void* mmap(void *addr, size_t length, int prot,<br>int flags,   int fd, off_t offset);</p>
+<p>addr: 地址,表示您要映射到哪个位置上去。<br>有人说,我怎么知道映射到哪个位置上去。<br>一般的人不知道,所以此处可以填 NULL,表示让<br>操作系统自动分配。<br>length:<br>要映射的内存区的长度,如:	800*480*4<br>prot: 映射区的权限,如下:<br>PROT_READ<br>PROT_WRITE: 可读可写<br>PROT_EXEC : excute,可执行<br>PROT_NONE<br>flags: 映射标志。<br>MAP_SHARED  &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>MAP_PRIVATE</p>
+<p>fd :文件描述符,表示您要映射哪个文件。</p>
+<p>offset:偏移量,表示您要从文件的哪个位置开始映射<br>返回值:<br>成功,返回映射区的首地址。<br>失败,返回MAP_FAILED</p>
+<pre class="line-numbers language-none"><code class="language-none">munmap解映射。
+int munmap(void *addr, size_t length);
+addr:要解映射的地址
+length:长度
+返回值:
+成功返回0
+失败返回其他值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="BMP图片解析及显示"><a href="#BMP图片解析及显示" class="headerlink" title="BMP图片解析及显示"></a>BMP图片解析及显示</h2><p>bitmap ,位图文件, microsoft。<br>是一种无压缩的图片格式 。</p>
+<p>每一张BMP图片文件 ,可以分为如下四个部分:</p>
+<p>BITMAP文件头<br>14bytes</p>
+<p>DIB文件头<br>40bytes<br>0x12处的4个字节</p>
+<p>width:<br>int width;<br>lseek(fd, 0X12, SEEK_SET);<br>read(fd, &amp;width, 4);</p>
+<pre class="line-numbers language-none"><code class="language-none">width &gt; 0
+			每一行的像素点的数据是从左至右保存的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">width &lt; 0
+			每一行的像素点的数据是从右至左保存的<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>height:<br>0x16处的4个字节<br>int height;<br>lseek(fd, 0x16,SEEK_SET);<br>read(fd, &amp;height, 4);</p>
+<pre class="line-numbers language-none"><code class="language-none">height &gt; 0
+			先保存了是最底下一行的数据, 从下至上保存每一行
+		height &lt; 0
+			先保存了最上面一行的数据,从上至下保存每一行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>depth:<br>色深。指的是每个像素点数据所占的bits位数。<br>1, 2, 4, 8, ……。</p>
+<pre class="line-numbers language-none"><code class="language-none">depth &#x3D; 24
+			RGB888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">depth &#x3D; 32
+			ARGB8888<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>调色板<br>标准的图片(depth&#x3D;24 or 32),这一部分没有</p>
+<p>像素数组<br>保存了每一个像素点的颜色值。</p>
+<pre class="line-numbers language-none"><code class="language-none">如:
+			width &gt; 0
+			height &gt; 0
+			depth &#x3D; 24<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">B G R (图片最左下角的那个点的颜色值)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>思考:<br>(1) 图片缩放功能</p>
+<pre class="line-numbers language-none"><code class="language-none">(2) 图片显示的动画功能<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="字模"><a href="#字模" class="headerlink" title="字模"></a>字模</h1><p><img src="https://i.loli.net/2021/06/10/nyLq859cMCDaxHJ.png" alt="横向取模"></p>
+<p><img src="https://i.loli.net/2021/06/10/KXglUh7IukFTo5M.png" alt="纵向取模"></p>
+<p><img src="https://i.loli.net/2021/06/10/SqersaMNCzwLnBu.png" alt="纵向取模_多个字"></p>
+<p><img src="https://i.loli.net/2021/06/10/1HMhlaYmOvifZXE.png" alt="字模图片"></p>
+<h1 id="实现图片的动画显示效果"><a href="#实现图片的动画显示效果" class="headerlink" title="实现图片的动画显示效果"></a>实现图片的动画显示效果</h1><h1 id="线程和音乐播放"><a href="#线程和音乐播放" class="headerlink" title="线程和音乐播放"></a>线程和音乐播放</h1><h2 id="程序的运行方式"><a href="#程序的运行方式" class="headerlink" title="程序的运行方式"></a>程序的运行方式</h2><p>串行方式:<br>先把程序1执行完毕,然后再执行程序2,……。</p>
+<pre class="line-numbers language-none"><code class="language-none">缺点:
+		CPU利用率非常低。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">程序
+			S1 输入数据
+			S2 运算
+			S3 写回结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">为了提高CPU利用率<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>并发方式<br>允许多个程序同时运行。</p>
+<pre class="line-numbers language-none"><code class="language-none">为了提高CPU利用率,程序的运行采用并发的方式。
+	现代操作系统为了实现程序的并发方式,特地引入进程。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">引入进程的目的是为了实现并发,让多个程序同时运行,
+	请问操作系统是如何达到这个目的呢?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h2><p>程序:静态的概念<br>进程:动态的概念。<br>进程就一个程序的执行过程。</p>
+<pre class="line-numbers language-none"><code class="language-none">Ready
+	Running
+	Blocking<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">进程是粗粒度的并发,
+	线程是细粒度的并发。线程是进程内部一条指令执行路径。
+			一个进程可以有多个线程,一个进程内部的多个线程
+			共享整个进程地址空间的。
+			一个进程内的线程通信 效率 要比 多个进程通信效率高。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Linux线程创建"><a href="#Linux线程创建" class="headerlink" title="Linux线程创建"></a>Linux线程创建</h2><p>pthread: posix thread</p>
+<p>NAME<br>pthread_create - create a new thread</p>
+<p>SYNOPSIS<br>#include &lt;pthread.h&gt;</p>
+<pre class="line-numbers language-none"><code class="language-none">pthread_t 类型是用来描述一个线程信息,如:线程id,...
+       			 pthread_t的实例是用来 唯一标识一个线程的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int pthread_create(pthread_t *thread,
+       						const pthread_attr_t *attr,
+                          void *(*start_routine) (void *),
+                          void *arg);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">thread: 指向的空间,用来保存线程id,
+                         attr: 用来指定线程的属性,一般此处填NULL,
+                         		采用默认的线程属性。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">start_routine: 函数指针,指向“线程函数”
+                         arg: 将作为“线程函数”参数
+                  返回值:
+                  	成功返回 0
+                  	失败返回 -1,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">Compile and link with -pthread.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">例子<span class="token operator">:</span>
+
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;pthread.h></span></span>
+	     	<span class="token keyword">void</span><span class="token operator">*</span> <span class="token function">task1</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+
+		<span class="token comment">//while (1)</span>
+		<span class="token comment">//&#123;</span>
+		     	<span class="token comment">//	&#125;</span>
+	<span class="token comment">//	system("madplay  xxx.mp3");</span>
+		<span class="token keyword">char</span> cmd<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+		<span class="token function">sprintf</span><span class="token punctuation">(</span>cmd<span class="token punctuation">,</span> <span class="token string">"madplay %s"</span><span class="token punctuation">,</span> mp3_file_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token function">system</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	     	<span class="token class-name">pthread_t</span> tid<span class="token punctuation">;</span>
+	<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+
+		ret <span class="token operator">=</span> <span class="token function">pthread_create</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>tid<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> task1<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>ret <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+
+		<span class="token punctuation">&#125;</span>
+
+		<span class="token comment">//...</span>
+	<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="获取传感器数据"><a href="#获取传感器数据" class="headerlink" title="获取传感器数据"></a>获取传感器数据</h1><h2 id="上位机和下位机"><a href="#上位机和下位机" class="headerlink" title="上位机和下位机"></a>上位机和下位机</h2><p>在项目中,经常需要与其他的外部模块进行通信。<br>通信双方,其中一方为上位机,另外一方为下位机。<br>上位机:<br>把性能比较强,大部分数据处理在上位机完成。</p>
+<pre class="line-numbers language-none"><code class="language-none">下位机:
+			功能比较单一,一般只负责数据采集的那一端。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="GY-39通信接口及协议"><a href="#GY-39通信接口及协议" class="headerlink" title="GY-39通信接口及协议"></a>GY-39通信接口及协议</h2><p>UART</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//串口所对应的文件名</span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM2</span> <span class="token string">"/dev/ttySAC1"</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM3</span> <span class="token string">"/dev/ttySAC2"</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">COM4</span> <span class="token string">"/dev/ttySAC3"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(1) open<br>(2) 配置串口参数</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">//初始化串口</span>
+<span class="token comment">//file: 串口所对应的文件名</span>
+<span class="token comment">//baudrate:波特率</span>
+<span class="token keyword">int</span> <span class="token function">init_serial</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>file<span class="token punctuation">,</span> <span class="token keyword">int</span> baudrate<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span> 
+	<span class="token keyword">int</span> fd<span class="token punctuation">;</span>
+
+	fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> O_RDWR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>fd <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"open device error:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+	<span class="token keyword">struct</span> <span class="token class-name">termios</span> myserial<span class="token punctuation">;</span>
+	<span class="token comment">//清空结构体</span>
+	<span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>myserial<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//O_RDWR         </span>
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">|=</span> <span class="token punctuation">(</span>CLOCAL <span class="token operator">|</span> CREAD<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//设置控制模式状态,本地连接,接受使能</span>
+	<span class="token comment">//设置 数据位</span>
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">&amp;=</span> <span class="token operator">~</span>CSIZE<span class="token punctuation">;</span>   <span class="token comment">//清空数据位</span>
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">&amp;=</span> <span class="token operator">~</span>CRTSCTS<span class="token punctuation">;</span> <span class="token comment">//无硬件流控制</span>
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">|=</span> CS8<span class="token punctuation">;</span>      <span class="token comment">//数据位:8</span>
+
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">&amp;=</span> <span class="token operator">~</span>CSTOPB<span class="token punctuation">;</span><span class="token comment">//   //1位停止位</span>
+	myserial<span class="token punctuation">.</span>c_cflag <span class="token operator">&amp;=</span> <span class="token operator">~</span>PARENB<span class="token punctuation">;</span>  <span class="token comment">//不要校验</span>
+	<span class="token comment">//myserial.c_iflag |= IGNPAR;   //不要校验</span>
+	<span class="token comment">//myserial.c_oflag = 0;  //输入模式</span>
+	<span class="token comment">//myserial.c_lflag = 0;  //不激活终端模式</span>
+
+	<span class="token keyword">switch</span> <span class="token punctuation">(</span>baudrate<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">case</span> <span class="token number">9600</span><span class="token operator">:</span>
+			<span class="token function">cfsetospeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B9600<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//设置波特率</span>
+			<span class="token function">cfsetispeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B9600<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">case</span> <span class="token number">115200</span><span class="token operator">:</span>
+			<span class="token function">cfsetospeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B115200<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//设置波特率</span>
+			<span class="token function">cfsetispeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B115200<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">case</span> <span class="token number">19200</span><span class="token operator">:</span>
+			<span class="token function">cfsetospeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B19200<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//设置波特率</span>
+			<span class="token function">cfsetispeed</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>myserial<span class="token punctuation">,</span> B19200<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+
+	<span class="token comment">/* 刷新输出队列,清除正接受的数据 */</span>
+	<span class="token function">tcflush</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> TCIFLUSH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token comment">/* 改变配置 */</span>
+	<span class="token function">tcsetattr</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> TCSANOW<span class="token punctuation">,</span> <span class="token operator">&amp;</span>myserial<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> fd<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(3)read&#x2F;write</p>
+<p>(4)close</p>
+<hr>
+<pre class="line-numbers language-none"><code class="language-none">上位机                             GY39
+			----------------------&gt;
+			cmd(0xA5, 0x83, 0x28)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">GY39数据输出格式:<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">帧头 帧头 类型	 长度						 校验和
+		0xA5 0XA5 type	 len  data1 data2 ... dataN  checksu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h1 id="触摸屏输入事件获取"><a href="#触摸屏输入事件获取" class="headerlink" title="触摸屏输入事件获取"></a>触摸屏输入事件获取</h1><h2 id="Linux输入子系统的层次"><a href="#Linux输入子系统的层次" class="headerlink" title="Linux输入子系统的层次"></a>Linux输入子系统的层次</h2><p>模块化是一个系统的属性,把一个系统分为 高内聚、低耦合的模块。<br>高内聚:把逻辑上相关的对象(概念)划分在一起<br>低耦合:减少模块间的依赖</p>
+<p>模块化不是结构化分析方法特有的,面向对象的分析方法也有。<br>结构化分析方法 模块化是以子程序(子系统)为主<br>面向对象分析方法 模块化是 类和对象 划分为主。</p>
+<p>linux下所有系统识别的“输入设备”,都会生成一个标准的文件接口:</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;dev&#x2F;input&#x2F;eventX(X&#x3D;0,1,2,...)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我的输入设备对应的到底是哪个文件 ?<br>&#x2F;proc&#x2F;bus&#x2F;input&#x2F;devices<br>上面这个文件里,把每个输入设备的信息保存起来.</p>
+<p>读取事件的流程:</p>
+<pre class="line-numbers language-none"><code class="language-none">(1) open
+	(2) read  事件结构体 struct input_event
+	(3) 解析
+	(4) close<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="事件结构体"><a href="#事件结构体" class="headerlink" title="事件结构体"></a>事件结构体</h2><p>struct input_event</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">input_event</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">struct</span> <span class="token class-name">timeval</span> time<span class="token punctuation">;</span> <span class="token comment">//事件发生的时间</span>
+		     __u16 type<span class="token punctuation">;</span>
+		     		type代表事件的类型<span class="token punctuation">,</span>
+		     			EV_KEY   按键类型
+
+		     			EV_REL  relative 相对事件<span class="token punctuation">,</span>如<span class="token operator">:</span> 鼠标
+		     					相对于上一个点的位移<span class="token punctuation">(</span>x轴和y轴<span class="token punctuation">)</span>
+
+		     			EV_ABS  absolute 绝对事件<span class="token punctuation">,</span>如<span class="token operator">:</span> 触摸屏事件
+		     					当前点的绝对坐标
+
+
+			__u16 code<span class="token punctuation">;</span>
+					根据type的不同<span class="token punctuation">,</span>code含义也不同。
+					<span class="token keyword">if</span> type <span class="token operator">==</span> EV_KEY<span class="token punctuation">,</span> 
+						code就是相应按键的键值
+							 KEY_A
+							 KEY_B
+							 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+							 BTN_TOUCH 
+
+					<span class="token keyword">if</span> type <span class="token operator">==</span> EV_ABS<span class="token punctuation">,</span> 
+						code就是相应的绝对坐标
+							ABS_X  x轴事件
+							ABS_Y  y轴事件
+							ABS_PRESSURE  压力事件
+
+
+			__s32 value<span class="token punctuation">;</span>
+				 根据type的不同<span class="token punctuation">,</span>value含义也不同
+				 	<span class="token keyword">if</span> type <span class="token operator">==</span> EV_KEY
+				 		value  <span class="token number">1</span>  按下
+				 		value  <span class="token number">0</span>  弹起
+
+				 	<span class="token keyword">if</span>  type <span class="token operator">==</span> EV_ABS
+				 		<span class="token keyword">if</span> code <span class="token operator">==</span> ABS_X 
+				 			value X轴的坐标值
+
+				 		<span class="token keyword">if</span> code <span class="token operator">==</span> ABS_Y
+				 			value  Y轴的坐标值
+
+				 		<span class="token keyword">if</span> code <span class="token operator">==</span> ABS_PRESSSURE
+				 			value  压力值
+				 				<span class="token operator">></span><span class="token number">0</span>  触摸屏按下
+				 				<span class="token operator">=</span><span class="token number">0</span>  弹起
+		<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="Linux灯光驱动调用"><a href="#Linux灯光驱动调用" class="headerlink" title="Linux灯光驱动调用"></a>Linux灯光驱动调用</h1><h2 id="驱动是什么"><a href="#驱动是什么" class="headerlink" title="驱动是什么?"></a>驱动是什么?</h2><p>A 硬件   B 软件</p>
+<p>应用程序是也是软件。</p>
+<p>驱动是操作硬件的代码。驱动层次位于应用与硬件之间。<br>驱动对上提供操作硬件的接口,并且需要向应用屏蔽硬件<br>实现的细节。 驱动对下(硬件)检测&#x2F;监测硬件上的改变或<br>状态的变化,并向上报告其状态。</p>
+<p>驱动与应用程序有什么区别?</p>
+<p>裸机驱动<br>BSP驱动<br>linux驱动<br>windows驱动<br>……<br>在不同的平台下写驱动,框架及方法有不一样的。</p>
+<pre class="line-numbers language-none"><code class="language-none">裸机驱动:
+		不跑操作系统。
+		你想怎么操作硬件,想提供什么接口给应用,都由你来写。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">linux&#x2F;widows驱动:
+		你必须按照linux&#x2F;windows定义的框架,定义好的接口,去实现。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="驱动控制灯光"><a href="#驱动控制灯光" class="headerlink" title="驱动控制灯光"></a>驱动控制灯光</h2><p>open<br>read&#x2F;write&#x2F;ioctl&#x2F;….<br>close</p>
+<p>加载驱动:<br>insmod   kobject_led.ko</p>
+<p>卸载驱动:<br>rmmod   kobject_led.ko</p>
+<p>一旦加载成功,在开发板目录<br>&#x2F;sys&#x2F;kernel&#x2F;gec_ctrl&#x2F;<br>生成<br>led_d7<br>led_d8<br>led_d9<br>led_d10<br>led_all<br>beep</p>
+<pre class="line-numbers language-none"><code class="language-none">控制 led_d7
+		open(&quot;&#x2F;sys&#x2F;kernel&#x2F;gec_ctrl&#x2F;led_d7&quot;, O_RDWR)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">int on &#x3D; 1; &#x2F;&#x2F;写1到文件表示 写
+		write(fd, &amp;on,  4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">on &#x3D; 0; &#x2F;&#x2F;写0到文件表示 关
+		write(fd, &amp;on, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">[root@GEC6818 &#x2F;mnt]# mount -t nfs 192.168.3.16:&#x2F;mnt&#x2F;hgfs &#x2F;mnt -o nolock &#x2F;&#x2F;要注意虚拟机文件的权限问题<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://img2020.cnblogs.com/blog/2228564/202012/2228564-20201203204525247-456551250.png" alt="img"></p>
+<p>挂载成功,现在主机,虚拟机,开发板共享了同一个目录。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">auntyang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://auntyang.cf/2021/06113622.html">https://auntyang.cf/2021/06113622.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">auntyang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/">
+                                    <span class="chip bg-color">嵌入式开发</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/">
+                                    <span class="chip bg-color">物联网</span>
+                                </a>
+                            
+                                <a href="/tags/ARM/">
+                                    <span class="chip bg-color">ARM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <head>
+  <!-- ... -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/@waline/client@v2/dist/waline.css"
+  />
+  <!-- ... -->
+</head>
+<body>
+  <!-- ... -->
+  <div id="waline"></div>
+  <script type="module">
+    import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+
+    init({
+      el: '#waline',
+      serverURL: 'https://comment.auntyang.cf',
+      reaction: true,
+      requiredMeta: ['nick', 'mail']
+    });
+  </script>
+</body>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/082329226.html">
+                    <div class="card-image">
+                        
+                        <img src="https://picx.zhimg.com/v2-6103683e7fbb8f4d39554694249aa7bd_1440w.jpg?source=172ae18b" class="responsive-img" alt="考研英语翻译笔记">
+                        
+                        <span class="card-title">考研英语翻译笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            唐静老师的英语翻译强化课总结和联系
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%8B%B1%E8%AF%AD%E7%BF%BB%E8%AF%91/">
+                        <span class="chip bg-color">英语翻译</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%80%83%E7%A0%94/">
+                        <span class="chip bg-color">考研</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%94%90%E9%9D%99/">
+                        <span class="chip bg-color">唐静</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/1209wsn%20study.html">
+                    <div class="card-image">
+                        
+                        <img src="https://s2.loli.net/2023/03/30/b4iU3XOutPxfr7N.jpg" class="responsive-img" alt="无线传感器网络必背习题">
+                        
+                        <span class="card-title">无线传感器网络必背习题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            无线传感器网络期末考试必背习题。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WSN/">
+                        <span class="chip bg-color">WSN</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%97%A0%E7%BA%BF%E4%BC%A0%E6%84%9F%E5%99%A8%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">无线传感器网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 梅园小径<br />'
+            + '文章作者: auntyang<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">auntyang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">30.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2019";
+                        var startMonth = "6";
+                        var startDate = "28";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/auntyang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:auntyang@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2625475244" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2625475244" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
