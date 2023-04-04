@@ -252,7 +252,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+    <a href="https://www.travellings.cn" class="waves-effect waves-light">
       
       <i class="fas fa-subway" style="zoom: 0.6;"></i>
       
@@ -405,7 +405,7 @@
         
         <li class="m-nav-item">
 	  
-		<a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+		<a href="https://www.travellings.cn" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-subway"></i>
 			
@@ -660,7 +660,7 @@
 </ul>
 <pre class="line-numbers language-none"><code class="language-none">代理服务器能够监听设备上的端口,一旦端口接受到访问请求,代理程序会按照预先设定的配置将端口中接收到的访问请求转发并返回请求内容,在校内主机上安装<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Squid&spm=1001.2101.3001.7020">Squid</a>软件,从而将校内主机变为代理服务器,能够转发来自校外设备的浏览器请求。</p>
+<p><a href="https://so.csdn.net/so/search?q=Squid&spm=1001.2101.3001.7020">Squid</a>软件,从而将校内主机变为代理服务器,能够转发来自校外设备的浏览器请求。</p>
 <h1 id="实现内网穿透"><a href="#实现内网穿透" class="headerlink" title="实现内网穿透"></a>实现内网穿透</h1><h2 id="云服务器安装frp-server"><a href="#云服务器安装frp-server" class="headerlink" title="云服务器安装frp-server"></a>云服务器安装frp-server</h2><h3 id="获取frp软件"><a href="#获取frp软件" class="headerlink" title="获取frp软件"></a>获取frp软件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src  <span class="token comment">#进入此目录</span>
 <span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz <span class="token comment">#下载frp</span>
 <span class="token function">tar</span> <span class="token parameter variable">-xvf</span> frp_0.38.0_linux_amd64.tar.gz <span class="token comment">#解压;frp文件</span>
@@ -679,7 +679,7 @@ dashboard_port &#x3D; 6440     #流量监控程序的端口,搭建完成之后�
 
 <h3 id="启动frp服务端"><a href="#启动frp服务端" class="headerlink" title="启动frp服务端"></a>启动frp服务端</h3><pre class="line-numbers language-none"><code class="language-none">nohup .&#x2F;frps -c .&#x2F;frps.ini &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>注:nohup的作用是让我在关闭Xshell远程连接时,frp服务端不会跟ssh进程一起关闭。<br>参考文档:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/gatieme/article/details/52777721">解决Linux关闭终端(关闭SSH等)后运行的程序自动停止</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/davidhzq/article/details/102766881">在linux后台运行脚本命令和程序的方法大全</a></p>
+<p>注:nohup的作用是让我在关闭Xshell远程连接时,frp服务端不会跟ssh进程一起关闭。<br>参考文档:<br><a href="https://blog.csdn.net/gatieme/article/details/52777721">解决Linux关闭终端(关闭SSH等)后运行的程序自动停止</a><br><a href="https://blog.csdn.net/davidhzq/article/details/102766881">在linux后台运行脚本命令和程序的方法大全</a></p>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><img src="https://s2.loli.net/2022/04/27/uKyGrtOgTzNWQin.png" alt="在这里插入图片描述">注意事项</h3><p>国内云服务器大多都要配置安全组的,以阿里云为例,配置规则里更改访问规则,从而打开需要用到的端口。</p>
 <h2 id="在校内主机安装frp-client"><a href="#在校内主机安装frp-client" class="headerlink" title="在校内主机安装frp-client"></a>在校内主机安装frp-client</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src  <span class="token comment">#进入此目录</span>
 <span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.38.0/frp_0.38.0_linux_amd64.tar.gz      <span class="token comment">#笔者这里用的版本和云服务器的一样,读者在Github选择自己合适的版本</span>
@@ -702,7 +702,7 @@ dashboard_port &#x3D; 6440     #流量监控程序的端口,搭建完成之后�
 <p>启动frp客户端</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./frpc <span class="token parameter variable">-c</span> ./frpc.ini <span class="token comment">#若需要关闭终端后仍继续运行,参考上文云服务器端命令</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="测试frp是否搭建成功"><a href="#测试frp是否搭建成功" class="headerlink" title="测试frp是否搭建成功"></a>测试frp是否搭建成功</h2><p>用Xshell连接,连接地址填 云服务器IP地址:6001,用户名和密码填校内主机的。如果ssh能够成功连接,则成功实现内网穿透。<br>frp官方提供的教程:<a target="_blank" rel="noopener" href="https://gofrp.org/docs/examples/ssh/">通过SSH访问内网机器</a></p>
+<h2 id="测试frp是否搭建成功"><a href="#测试frp是否搭建成功" class="headerlink" title="测试frp是否搭建成功"></a>测试frp是否搭建成功</h2><p>用Xshell连接,连接地址填 云服务器IP地址:6001,用户名和密码填校内主机的。如果ssh能够成功连接,则成功实现内网穿透。<br>frp官方提供的教程:<a href="https://gofrp.org/docs/examples/ssh/">通过SSH访问内网机器</a></p>
 <h1 id="校内主机实现代理服务器功能"><a href="#校内主机实现代理服务器功能" class="headerlink" title="校内主机实现代理服务器功能"></a>校内主机实现代理服务器功能</h1><h2 id="校内主机安装Squid软件"><a href="#校内主机安装Squid软件" class="headerlink" title="校内主机安装Squid软件"></a>校内主机安装Squid软件</h2><p>安装软件</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> squid <span class="token parameter variable">-y</span>
 yum <span class="token function">install</span> httpd-tools <span class="token parameter variable">-y</span>  
@@ -762,7 +762,7 @@ systemctl status squid.service
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://s2.loli.net/2022/04/27/dXsaZYW2DNJzjw4.png" alt="执行启动命令结果"></p>
-<p>参考教程:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/123048354">Centos7搭建Squid代理服务器</a></p>
+<p>参考教程:<a href="https://zhuanlan.zhihu.com/p/123048354">Centos7搭建Squid代理服务器</a></p>
 <h2 id="修改校内主机frp客户端配置文件frpc-ini"><a href="#修改校内主机frp客户端配置文件frpc-ini" class="headerlink" title="修改校内主机frp客户端配置文件frpc.ini"></a>修改校内主机frp客户端配置文件frpc.ini</h2><p>我们在4.1步骤里添加了校内主机3128端口为代理服务器的端口,所有到此端口的浏览器请求都会被此端口转发出去。<br>此时我们还得更改校内主机frp客户端配置文件frpc.ini,从而使云服务器所收到的浏览器请求转发到校内主机的3128端口。</p>
 <p>Xshell以root身份连接校内主机</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /usr/local/src/frp_0.38.0_linux_amd64/    <span class="token comment">#进入校内服务器的存放frp文件的目录</span>

@@ -252,7 +252,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+    <a href="https://www.travellings.cn" class="waves-effect waves-light">
       
       <i class="fas fa-subway" style="zoom: 0.6;"></i>
       
@@ -405,7 +405,7 @@
         
         <li class="m-nav-item">
 	  
-		<a target="_blank" rel="noopener" href="https://www.travellings.cn" class="waves-effect waves-light">
+		<a href="https://www.travellings.cn" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-subway"></i>
 			
@@ -665,7 +665,7 @@
     InitializeComponent();
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="InitializeComponent方法定义哪里"><a href="#InitializeComponent方法定义哪里" class="headerlink" title="InitializeComponent方法定义哪里"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnblogsfans/archive/2011/02/19/1958575.html">InitializeComponent方法定义哪里</a></h2><p>我们定位到那个方法转到定义,发现没反应。</p>
+<h2 id="InitializeComponent方法定义哪里"><a href="#InitializeComponent方法定义哪里" class="headerlink" title="InitializeComponent方法定义哪里"></a><a href="https://www.cnblogs.com/cnblogsfans/archive/2011/02/19/1958575.html">InitializeComponent方法定义哪里</a></h2><p>我们定位到那个方法转到定义,发现没反应。</p>
 <p>实际上这个方法是编译时WPF会为我自动生成,编译后在下面红色标注的地方打开MainWindow.g.cs,在这个文件可以找到这个方法的定义</p>
 <p><img src="https://images.cnblogs.com/cnblogs_com/cnblogsfans/201102/201102191634297448.png"></p>
 <p>在每个窗口建立后,都会同时产生程序代码文件,即.cs文件,以及与之相匹配的.Designer.CS文件,业务逻辑以及事件方法等被编写在.CS文件中,而界面设计规则被封装在.Designer.CS文件中</p>
@@ -674,9 +674,9 @@
 <p>partial 表示以下创建的是分布类代码<br>也就是说 一个类的定义代码 可以写在两个不同的页面<br>Form1.cs和Form1.Designer.cs</p>
 <p>注意:InitializeComponent()方法写在前面和后面是有区别的。InitializeComponent()方法是用来初始化窗体组件的,在InitializeComponent之前,窗体的各个控件还没有进行初始化,比如说窗体上有一个TextBoxUserName,在InitializeComponent之前它还只是一个TextBox类型的变量而已,如果在InitializeComponent之前调用这个TextBox的属性或方法,就会出错。再比如说你拖上取一个TextBox,它放在Form的位置,TextBox的一些属性。包括new 这个TextBox都放在那个函数里面处理的。</p>
 <p>我们可以看一下Form.Designer.cs,在那里找到InitializeComponent方法,您会发现窗体对象的初始化都是在那里做的。</p>
-<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>基本的类型转换:<a target="_blank" rel="noopener" href="https://www.runoob.com/csharp/csharp-type-conversion.html">https://www.runoob.com/csharp/csharp-type-conversion.html</a></p>
-<p>类型转换:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/minotauros/p/11440040.html">https://www.cnblogs.com/minotauros/p/11440040.html</a></p>
-<p>讲解的比较详细:<a target="_blank" rel="noopener" href="https://blog.csdn.net/wu_l_v/article/details/78989303">https://blog.csdn.net/wu_l_v/article/details/78989303</a></p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>基本的类型转换:<a href="https://www.runoob.com/csharp/csharp-type-conversion.html">https://www.runoob.com/csharp/csharp-type-conversion.html</a></p>
+<p>类型转换:<a href="https://www.cnblogs.com/minotauros/p/11440040.html">https://www.cnblogs.com/minotauros/p/11440040.html</a></p>
+<p>讲解的比较详细:<a href="https://blog.csdn.net/wu_l_v/article/details/78989303">https://blog.csdn.net/wu_l_v/article/details/78989303</a></p>
 <h1 id="C-文件读写"><a href="#C-文件读写" class="headerlink" title="C#文件读写"></a>C#文件读写</h1><h2 id="添加命名控件"><a href="#添加命名控件" class="headerlink" title="添加命名控件"></a>添加命名控件</h2><pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">System.IO;
 System.Text;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -738,10 +738,10 @@ public void Read()
 
 <h1 id="C-List"><a href="#C-List" class="headerlink" title="C# List"></a>C# List</h1><h2 id="LIST概述"><a href="#LIST概述" class="headerlink" title="LIST概述"></a><strong>LIST概述</strong></h2><p>**所属命名空间:**System.Collections.Generic</p>
 <p>public class List<T> : IList<T>, ICollection<T>, IEnumerable<T>, IList, ICollection, IEnumerable</p>
-<p><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">List</a>类是 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx">ArrayList</a> 类的泛型等效类。该类使用大小可按需动态增加的数组实现 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 泛型接口。</p>
+<p><a href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">List</a>类是 <a href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx">ArrayList</a> 类的泛型等效类。该类使用大小可按需动态增加的数组实现 <a href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 泛型接口。</p>
 <p><strong>泛型的好处</strong>: 它为使用c#语言编写面向对象程序增加了极大的效力和灵活性。不会强行对值类型进行装箱和拆箱,或对引用类型进行向下强制类型转换,所以性能得到提高。</p>
-<h2 id="性能注意事项"><a href="#性能注意事项" class="headerlink" title="性能注意事项:"></a><strong>性能注意事项:</strong></h2><p><strong>在决定使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> <strong>还是使用</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx"><strong>ArrayList</strong></a><strong>类(两者具有类似的功能)时,记住</strong><a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> 类在大多数情况下执行得更好并且是类型安全的。</p>
-<p>如果对<a target="_blank" rel="noopener" href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 类的类型 T 使用引用类型,则两个类的行为是完全相同的。但是,如果对类型 T 使用值类型,则需要考虑实现和装箱问题。</p>
+<h2 id="性能注意事项"><a href="#性能注意事项" class="headerlink" title="性能注意事项:"></a><strong>性能注意事项:</strong></h2><p><strong>在决定使用</strong><a href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> <strong>还是使用</strong><a href="http://msdn.microsoft.com/zh-cn/library/system.collections.arraylist.aspx"><strong>ArrayList</strong></a><strong>类(两者具有类似的功能)时,记住</strong><a href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx"><strong>IList</strong></a> 类在大多数情况下执行得更好并且是类型安全的。</p>
+<p>如果对<a href="http://msdn.microsoft.com/zh-cn/library/5y536ey6.aspx">IList</a> 类的类型 T 使用引用类型,则两个类的行为是完全相同的。但是,如果对类型 T 使用值类型,则需要考虑实现和装箱问题。</p>
 <p>“添加到 ArrayList 中的任何引用或值类型都将隐式地向上强制转换为 Object。如果项是值类型,则必须在将其添加到列表中时进行装箱操作,在检索时进行取消装箱操作。强制转换以及装箱和取消装箱操作都会降低性能;在必须对大型集合进行循环访问的情况下,装箱和取消装箱的影响非常明显。”</p>
 <h2 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a><strong>一般用法</strong></h2><p><strong>List</strong>的基础、常用方法:</p>
 <p><strong>声明:</strong></p>
@@ -861,7 +861,7 @@ Console.WriteLine(listFind);      &#x2F;&#x2F;输出是Hunter<span aria-hidden="
 <h3 id="List-FindLast方法"><a href="#List-FindLast方法" class="headerlink" title="List.FindLast方法"></a>List.FindLast方法</h3><p>搜索与指定谓词所定义的条件相匹配的元素,并返回整个 List 中的最后一个匹配元素。</p>
 <p>public T FindLast(Predicate<T> match);</p>
 <p>用法与List.Find相同。</p>
-<h3 id="List-TrueForAll方法"><a href="#List-TrueForAll方法" class="headerlink" title="List.TrueForAll方法"></a>List.TrueForAll方法</h3><p>确定是否 <a target="_blank" rel="noopener" href="http://msdn.microsoft.com/en-us/6sh2ey19(zh-cn,VS.85).aspx">List</a> 中的每个元素都与指定的谓词所定义的条件相匹配。</p>
+<h3 id="List-TrueForAll方法"><a href="#List-TrueForAll方法" class="headerlink" title="List.TrueForAll方法"></a>List.TrueForAll方法</h3><p>确定是否 <a href="http://msdn.microsoft.com/en-us/6sh2ey19(zh-cn,VS.85).aspx">List</a> 中的每个元素都与指定的谓词所定义的条件相匹配。</p>
 <p>public bool TrueForAll(Predicate<T> match);</p>
 <p>委托给拉姆达表达式:</p>
 <p>E.g.:</p>
@@ -1020,27 +1020,27 @@ str &#x3D; List.ToArray();<span aria-hidden="true" class="line-numbers-rows"><sp
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_86599791.htm">String.Split (Char[])</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_86599791.htm">String.Split (Char[])</a></td>
 <td align="left">返回包含此实例中的子字符串(由指定 Char 数组的元素分隔)的 String 数组。由 .NET Compact Framework 支持。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_d4a51604.htm">String.Split (Char[], Int32)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_d4a51604.htm">String.Split (Char[], Int32)</a></td>
 <td align="left">返回包含此实例中的子字符串(由指定 Char 数组的元素分隔)的 String 数组。参数指定返回的子字符串的最大数量。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_0b4c5fa1.htm">String.Split (Char[], StringSplitOptions)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_0b4c5fa1.htm">String.Split (Char[], StringSplitOptions)</a></td>
 <td align="left">返回包含此字符串中的子字符串(由指定的 Char 数组的元素分隔)的 String 数组。参数指定是否返回空数组元素。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_f66d5c6c.htm">String.Split (String[], StringSplitOptions)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_f66d5c6c.htm">String.Split (String[], StringSplitOptions)</a></td>
 <td align="left">返回包含此字符串中的子字符串(由指定的 String 数组的元素分隔)的 String 数组。参数指定是否返回空数组元素。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_7399acf4.htm">String.Split (Char[], Int32, StringSplitOptions)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_1_7399acf4.htm">String.Split (Char[], Int32, StringSplitOptions)</a></td>
 <td align="left">返回包含此字符串中的子字符串(由指定的 Char 数组的元素分隔)的 String 数组。参数指定要返回子字符串的最大数量,以及是否要返回空数组元素。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_42368699.htm">String.Split (String[], Int32, StringSplitOptions)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_String_Split_2_42368699.htm">String.Split (String[], Int32, StringSplitOptions)</a></td>
 <td align="left">返回包含此字符串中的子字符串(由指定的 String 数组的元素分隔)的 String 数组。参数指定要返回子字符串的最大数量,以及是否要返回空数组元素。</td>
 </tr>
 </tbody></table>
@@ -1088,23 +1088,23 @@ string []strArray &#x3D; str.Split(new String[]&#123;&quot;t&quot;,2,StringSplit
 </tr>
 </thead>
 <tbody><tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_16219e3a.htm">Regex.Split (String)</a></td>
-<td align="left">在由<a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/T_System_Text_RegularExpressions_Regex.htm">Regex</a> 构造函数中指定的正则表达式模式定义的位置拆分指定的输入字符串。由 .NET Compact Framework 支持。</td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_16219e3a.htm">Regex.Split (String)</a></td>
+<td align="left">在由<a href="http://blog.csdn.net/chen_zw/article/details/T_System_Text_RegularExpressions_Regex.htm">Regex</a> 构造函数中指定的正则表达式模式定义的位置拆分指定的输入字符串。由 .NET Compact Framework 支持。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_843a3b0f.htm">Regex.Split (String, Int32)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_843a3b0f.htm">Regex.Split (String, Int32)</a></td>
 <td align="left">在由 Regex 构造函数中指定的正则表达式定义的位置,将指定的输入字符串拆分指定的最大次数。由 .NET Compact Framework 支持。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_d460c748.htm">Regex.Split (String, String)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_d460c748.htm">Regex.Split (String, String)</a></td>
 <td align="left">在由正则表达式模式定义的位置拆分输入字符串。由 .NET Compact Framework 支持。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_1c9576da.htm">Regex.Split (String, Int32, Int32)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_1_1c9576da.htm">Regex.Split (String, Int32, Int32)</a></td>
 <td align="left">从输入字符串中的指定字符位置开始,在由 Regex 构造函数中指定的正则表达式定义的位置,将指定的输入字符串拆分指定的最大次数。由 .NET Compact Framework 支持。</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_2_385f6254.htm">Regex.Split (String, String, RegexOptions)</a></td>
+<td align="left"><a href="http://blog.csdn.net/chen_zw/article/details/M_System_Text_RegularExpressions_Regex_Split_2_385f6254.htm">Regex.Split (String, String, RegexOptions)</a></td>
 <td align="left">在由指定的正则表达式模式定义的位置拆分输入字符串。可指定选项来修改匹配的行为。</td>
 </tr>
 </tbody></table>
@@ -1176,15 +1176,15 @@ this.Content &#x3D; wBrowser ;<span aria-hidden="true" class="line-numbers-rows"
             proc.Start();
         &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="HeaderStringFormat-属性"><a href="#HeaderStringFormat-属性" class="headerlink" title="HeaderStringFormat 属性"></a>HeaderStringFormat 属性</h2><p>获取或设置一个撰写字符串,该字符串指定如果 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。</p>
+<h2 id="HeaderStringFormat-属性"><a href="#HeaderStringFormat-属性" class="headerlink" title="HeaderStringFormat 属性"></a>HeaderStringFormat 属性</h2><p>获取或设置一个撰写字符串,该字符串指定如果 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">[System.ComponentModel.Bindable(true)]
 public string HeaderStringFormat &#123; get; set; &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="属性值"><a href="#属性值" class="headerlink" title="属性值"></a>属性值</h4><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.string?view=netcore-3.1">String</a><br>一个撰写字符串,指定如果 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。 默认值为 <code>null</code>。</li>
-<li>属性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.bindableattribute?view=netcore-3.1">BindableAttribute</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.string?view=netcore-3.1">String</a><br>一个撰写字符串,指定如果 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1#System_Windows_Controls_HeaderedContentControl_Header">Header</a> 属性显示为字符串,应如何设置该属性的格式。 默认值为 <code>null</code>。</li>
+<li>属性<br><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.bindableattribute?view=netcore-3.1">BindableAttribute</a></li>
 </ul>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面的示例将绑定 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol?view=netcore-3.1">TabControl</a> 到对象的集合 <code>Student</code> 。 <code>Student</code>类具有一个 <code>Name</code> 属性和一个对象的集合 <code>Course</code> ,并实现了 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 返回 <code>Name</code> 学生或列出学生课程的字符串的方法。 该示例使用将 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 学生的名称放在 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1">Header</a> 从) 继承的每个 (的中 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> ,并使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol.contentstringformat?view=netcore-3.1">TabControl.ContentStringFormat</a> 来为的内容中的每个学生显示课程列表 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> 。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面的示例将绑定 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol?view=netcore-3.1">TabControl</a> 到对象的集合 <code>Student</code> 。 <code>Student</code>类具有一个 <code>Name</code> 属性和一个对象的集合 <code>Course</code> ,并实现了 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 返回 <code>Name</code> 学生或列出学生课程的字符串的方法。 该示例使用将 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 学生的名称放在 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.header?view=netcore-3.1">Header</a> 从) 继承的每个 (的中 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> ,并使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabcontrol.contentstringformat?view=netcore-3.1">TabControl.ContentStringFormat</a> 来为的内容中的每个学生显示课程列表 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.tabitem?view=netcore-3.1">TabItem</a> 。</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Grid&gt;
   &lt;Grid.Resources&gt;
     &lt;src:Students x:Key&#x3D;&quot;Students&quot;&#x2F;&gt;
@@ -1202,7 +1202,7 @@ public string HeaderStringFormat &#123; get; set; &#125;<span aria-hidden="true"
               ContentStringFormat&#x3D;&quot;cl&quot;&#x2F;&gt;
 &lt;&#x2F;Grid&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>下面的示例实现 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 方法以返回 <code>Name</code> 学生的或列出学生课程的字符串。</p>
+<p>下面的示例实现 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.iformattable.tostring?view=netcore-3.1">IFormattable.ToString</a> 方法以返回 <code>Name</code> 学生的或列出学生课程的字符串。</p>
 <pre class="line-numbers language-csharp" data-language="csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">ToString</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> format<span class="token punctuation">,</span> <span class="token class-name">IFormatProvider</span> formatProvider<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token comment">// 'n': print the name only.</span>
@@ -1233,7 +1233,7 @@ public string HeaderStringFormat &#123; get; set; &#125;<span aria-hidden="true"
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ToString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 可以是预定义的复合字符串格式。 有关字符串格式的详细信息,请参阅 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/formatting-types">格式设置类型</a>。 如果设置 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplate?view=netcore-3.1">HeaderTemplate</a> 了或的 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplateselector?view=netcore-3.1">HeaderTemplateSelector</a> 属性,则将 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 忽略属性。</p>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 可以是预定义的复合字符串格式。 有关字符串格式的详细信息,请参阅 <a href="https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/formatting-types">格式设置类型</a>。 如果设置 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplate?view=netcore-3.1">HeaderTemplate</a> 了或的 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headertemplateselector?view=netcore-3.1">HeaderTemplateSelector</a> 属性,则将 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol?view=netcore-3.1">HeaderedContentControl</a> <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformat?view=netcore-3.1">HeaderStringFormat</a> 忽略属性。</p>
 <h3 id="依赖项属性信息"><a href="#依赖项属性信息" class="headerlink" title="依赖项属性信息"></a>依赖项属性信息</h3><table>
 <thead>
 <tr>
@@ -1243,7 +1243,7 @@ public string HeaderStringFormat &#123; get; set; &#125;<span aria-hidden="true"
 </thead>
 <tbody><tr>
 <td align="left">标识符字段</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformatproperty?view=netcore-3.1">HeaderStringFormatProperty</a></td>
+<td align="left"><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.controls.headeredcontentcontrol.headerstringformatproperty?view=netcore-3.1">HeaderStringFormatProperty</a></td>
 </tr>
 <tr>
 <td align="left">元数据属性设置为<code>true</code></td>
@@ -1403,16 +1403,16 @@ WindowStartupLocation &#x3D; WindowStartupLocation.CenterScreen;&#x2F;&#x2F;WPF�
 <h2 id="WPF退出程序"><a href="#WPF退出程序" class="headerlink" title="WPF退出程序"></a>WPF退出程序</h2><p>当处于全屏模式下时,没有右上角的退出按钮,此时需要手动写button退出功能。<br>调用下面语句可以直接退出。</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">Application.Current.Shutdown();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="HandyControl与LiveCharts使用出现图形位置偏移问题"><a href="#HandyControl与LiveCharts使用出现图形位置偏移问题" class="headerlink" title="HandyControl与LiveCharts使用出现图形位置偏移问题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">HandyControl与LiveCharts使用出现图形位置偏移问题</a></h2><blockquote>
+<h1 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h1><h2 id="HandyControl与LiveCharts使用出现图形位置偏移问题"><a href="#HandyControl与LiveCharts使用出现图形位置偏移问题" class="headerlink" title="HandyControl与LiveCharts使用出现图形位置偏移问题"></a><a href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">HandyControl与LiveCharts使用出现图形位置偏移问题</a></h2><blockquote>
 <p><code>HandyControl</code>是一套<code>WPF</code>控件库,它几乎重写了所有原生样式,同时包含70余款自定义控件(正逐步增加)。</p>
 </blockquote>
-<p>此处为<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl"><code>HandyControl</code>源码传送门</a>,希望能对它能有所了解</p>
+<p>此处为<a href="https://github.com/HandyOrg/HandyControl"><code>HandyControl</code>源码传送门</a>,希望能对它能有所了解</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>由于<code>HandyControl</code>作为<code>WPF</code>的一款<code>UI</code>库,暂时没有考虑过增加,数据图形控件,对于需要数据统计图形展示的用户,可能引入<code>LiveCharts</code>做数据展示处理,运行之后,出现之前好好的控件,显示效果中,图形位置偏移走样问题。</p>
-<h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html#1527470209">现象</a></h3><p>引用<code>HandyControl</code>前,感觉生活很美好</p>
-<p><a target="_blank" rel="noopener" href="https://file.budbud.cn/handycontrol/path/livechart-right.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-right.png" alt="livechart-right"></a></p>
+<h3 id="现象"><a href="#现象" class="headerlink" title="现象"></a><a href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html#1527470209">现象</a></h3><p>引用<code>HandyControl</code>前,感觉生活很美好</p>
+<p><a href="https://file.budbud.cn/handycontrol/path/livechart-right.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-right.png" alt="livechart-right"></a></p>
 <p>引入<code>HandyControl</code>后,世界都懵逼了</p>
-<p><a target="_blank" rel="noopener" href="https://file.budbud.cn/handycontrol/path/livechart-wrong.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-wrong.png" alt="livechart-wrong"></a></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>由于<code>HandyControl</code>本身重写了几乎所有的原生样式,当然也包括了<code>Path</code>的默认样式,<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl/blob/28c464a8e2bc5318f3957a41dae799b824554232/src/Shared/HandyControl_Shared/Themes/Basic/Paths.xaml">详细修改处👉传送门</a></p>
+<p><a href="https://file.budbud.cn/handycontrol/path/livechart-wrong.png"><img src="https://file.budbud.cn/handycontrol/path/livechart-wrong.png" alt="livechart-wrong"></a></p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>由于<code>HandyControl</code>本身重写了几乎所有的原生样式,当然也包括了<code>Path</code>的默认样式,<a href="https://github.com/HandyOrg/HandyControl/blob/28c464a8e2bc5318f3957a41dae799b824554232/src/Shared/HandyControl_Shared/Themes/Basic/Paths.xaml">详细修改处👉传送门</a></p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Style TargetType&#x3D;&quot;Path&quot;&gt;
         &lt;Setter Property&#x3D;&quot;Stretch&quot; Value&#x3D;&quot;Uniform&quot;&#x2F;&gt;
 &lt;&#x2F;Style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -1420,7 +1420,7 @@ WindowStartupLocation &#x3D; WindowStartupLocation.CenterScreen;&#x2F;&#x2F;WPF�
 <h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>清除<code>HandyControl</code>影响,设置<code>Path</code>的<code>Style</code>为空,引入位置,一般在<code>App.xaml</code>中或者使用<code>LiveCharts</code>控件的<code>父级资源</code>中</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;Style TargetType&#x3D;&quot;Path&quot; BasedOn&#x3D;&quot;&#123;x:Null&#125;&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>解决方案出处:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">https://www.cnblogs.com/guanguanchangyu/p/12604090.html</a></p>
+<p>解决方案出处:<a href="https://www.cnblogs.com/guanguanchangyu/p/12604090.html">https://www.cnblogs.com/guanguanchangyu/p/12604090.html</a></p>
 <h1 id="错误error"><a href="#错误error" class="headerlink" title="错误error"></a>错误error</h1><h2 id="未将对象引用设置到对象的实例"><a href="#未将对象引用设置到对象的实例" class="headerlink" title="未将对象引用设置到对象的实例"></a>未将对象引用设置到对象的实例</h2><p>完整错误:System.NullReferenceException:未将对象引用设置到对象的实例</p>
 <p>错误场景:</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">public static int numberPeople()
@@ -1448,7 +1448,7 @@ WindowStartupLocation &#x3D; WindowStartupLocation.CenterScreen;&#x2F;&#x2F;WPF�
 <p>错误原因:出现这个问题是因为引用的对象是null或empty导致</p>
 <p>声明变量时:T t &#x3D; null;(T为类名),此时在栈上有一个地址。地址占4个字节,但地址没有任何指向,即指向内容为空。如果调用T的成员函数,出错:未将对象引用设置到对象实例</p>
 <h2 id="不能在变量声明中指定数组大小"><a href="#不能在变量声明中指定数组大小" class="headerlink" title="不能在变量声明中指定数组大小"></a>不能在变量声明中指定数组大小</h2><p>不能在变量声明中指定数组大小(请尝试使用“new”表达式初始化)</p>
-<p>将大小指定为数组声明的一部分时会发生此错误。 若要解决此错误,请使用 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/new-operator">new 运算符</a>表达式。</p>
+<p>将大小指定为数组声明的一部分时会发生此错误。 若要解决此错误,请使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/new-operator">new 运算符</a>表达式。</p>
 <p>下面的示例生成 CS0270:</p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">&#x2F;&#x2F; CS0270.cs  
 &#x2F;&#x2F; compile with: &#x2F;t:module  
@@ -1460,8 +1460,8 @@ public class Test
    &#x2F;&#x2F; int[] a &#x3D; new int[10];  
 &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="动态图表LiveCharts"><a href="#动态图表LiveCharts" class="headerlink" title="动态图表LiveCharts"></a>动态图表LiveCharts</h1><h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><p>基本图表图线建立:<a target="_blank" rel="noopener" href="http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html">http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html</a></p>
-<p>基本图形的数据绑定:<a target="_blank" rel="noopener" href="https://www.liangzl.com/get-article-detail-172477.html">https://www.liangzl.com/get-article-detail-172477.html</a></p>
+<h1 id="动态图表LiveCharts"><a href="#动态图表LiveCharts" class="headerlink" title="动态图表LiveCharts"></a>动态图表LiveCharts</h1><h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><p>基本图表图线建立:<a href="http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html">http://www.manongjc.com/detail/14-bpxrwoalubxfjxk.html</a></p>
+<p>基本图形的数据绑定:<a href="https://www.liangzl.com/get-article-detail-172477.html">https://www.liangzl.com/get-article-detail-172477.html</a></p>
 <pre class="line-numbers language-c#" data-language="c#"><code class="language-c#">mychart.Series &#x3D; new SeriesCollection
            &#123;
                new LineSeries
@@ -1611,7 +1611,7 @@ DataContext &#x3D; this;
   &lt;Button.Background&gt;Blue&lt;&#x2F;Button.Background&gt;
   blue button&lt;&#x2F;Button&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="WPF控件"><a href="#WPF控件" class="headerlink" title="WPF控件"></a>WPF控件</h1><h2 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Fred1987/p/6038608.html">Slider</a></h2><h3 id="设置整数"><a href="#设置整数" class="headerlink" title="设置整数"></a>设置整数</h3><p>这个控件上值默认是浮点数,改变它的值可以拖动滑块,也可以在具有焦点的时候使用键盘,还可以点击滑块两侧的空白处(类似滚动条),值的步进有两个属性控制LargeChange和SmallChange,默认值分别是1和0.1,所以会出现1.3543这种情况,不过完全可以自定义的,添加代码:</p>
+<h1 id="WPF控件"><a href="#WPF控件" class="headerlink" title="WPF控件"></a>WPF控件</h1><h2 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a><a href="https://www.cnblogs.com/Fred1987/p/6038608.html">Slider</a></h2><h3 id="设置整数"><a href="#设置整数" class="headerlink" title="设置整数"></a>设置整数</h3><p>这个控件上值默认是浮点数,改变它的值可以拖动滑块,也可以在具有焦点的时候使用键盘,还可以点击滑块两侧的空白处(类似滚动条),值的步进有两个属性控制LargeChange和SmallChange,默认值分别是1和0.1,所以会出现1.3543这种情况,不过完全可以自定义的,添加代码:</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">Ticks&#x3D;&quot;1 2 3 4 5&quot; &#x2F;&#x2F;这个就是步进值的设置
 IsSnapToTickEnabled&#x3D;&quot;True&quot; &#x2F;&#x2F;还要加上这一句才有效果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -1623,7 +1623,7 @@ IsSnapToTickEnabled&#x3D;&quot;True&quot;<span aria-hidden="true" class="line-nu
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">BorderBrush&#x3D;&quot;Black&quot;&#x2F;&#x2F;设置边框颜色
 BorderThickness&#x3D;&quot;2&quot;&#x2F;&#x2F;设置边框粗细<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="TextBlock"><a href="#TextBlock" class="headerlink" title="TextBlock"></a>TextBlock</h2><h3 id="TextBlock换行"><a href="#TextBlock换行" class="headerlink" title="TextBlock换行"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuzhenyi/archive/2013/01/13/2858797.html">TextBlock换行</a></h3><p>新建一个TextBlock作为最基础的一个控件,他所携带的功能相对于其他的控件要来的比较少,</p>
+<h2 id="TextBlock"><a href="#TextBlock" class="headerlink" title="TextBlock"></a>TextBlock</h2><h3 id="TextBlock换行"><a href="#TextBlock换行" class="headerlink" title="TextBlock换行"></a><a href="https://www.cnblogs.com/wuzhenyi/archive/2013/01/13/2858797.html">TextBlock换行</a></h3><p>新建一个TextBlock作为最基础的一个控件,他所携带的功能相对于其他的控件要来的比较少,</p>
 <p>比较值得关注的属性出了布局用的以外和数据绑定意外,就只剩下的Text属性来。</p>
 <p>TextBlock的默认内容属性是Text。</p>
 <p>对于换行来说,需要关注的也就是Text和Inline2个属性。</p>
@@ -1714,7 +1714,7 @@ TextBlock1.Inlines.Add(New Run(&quot;BBBB&quot;))<span aria-hidden="true" class=
        &lt;Button Grid.Row&#x3D;&quot;3&quot; Grid.Column&#x3D;&quot;1&quot; Content&#x3D;&quot;登录&quot; FontSize&#x3D;&quot;20&quot; Margin&#x3D;&quot;40,15&quot; &#x2F;&gt;
    &lt;&#x2F;Grid&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="简单对话框"><a href="#简单对话框" class="headerlink" title="简单对话框"></a>简单对话框</h3><p>来自:<a target="_blank" rel="noopener" href="https://blog.csdn.net/bondw/article/details/102762482">https://blog.csdn.net/bondw/article/details/102762482</a></p>
+<h3 id="简单对话框"><a href="#简单对话框" class="headerlink" title="简单对话框"></a>简单对话框</h3><p>来自:<a href="https://blog.csdn.net/bondw/article/details/102762482">https://blog.csdn.net/bondw/article/details/102762482</a></p>
 <p>效果图:</p>
 <p><img src="https://img-blog.csdnimg.cn/20191027002851125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JvbmR3,size_16,color_FFFFFF,t_70" alt="简单对话框demo"></p>
 <p>定义对话框模板SampleMessageDialog.xaml</p>
@@ -1777,7 +1777,7 @@ namespace test
 ......
 &lt;&#x2F;materialDesign:DialogHost&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="导入ttf"><a href="#导入ttf" class="headerlink" title="导入ttf"></a>导入ttf</h2><p>因为实现ImageButton接触ttf在wpf中的使用,ttf是图标按钮的集合文件。可在阿里<a target="_blank" rel="noopener" href="http://www.iconfont.cn网站选择下载.首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地.下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件.程序中引用该文件首先需将该字体包设置为resource,如fontfamily./">www.iconfont.cn网站选择下载。首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地。下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件。程序中引用该文件首先需将该字体包设置为Resource,如FontFamily。</a></p>
+<h2 id="导入ttf"><a href="#导入ttf" class="headerlink" title="导入ttf"></a>导入ttf</h2><p>因为实现ImageButton接触ttf在wpf中的使用,ttf是图标按钮的集合文件。可在阿里<a href="http://www.iconfont.cn网站选择下载.首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地.下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件.程序中引用该文件首先需将该字体包设置为resource,如fontfamily./">www.iconfont.cn网站选择下载。首先选择所需图标添加到购物车,选择完成后从购物车中选择“下载代码”,便可将其中的图标打包生成ttf文件并下载至本地。下载的文件夹中包含图一所示文件,其中iconfont.ttf是程序所需文件,打开该文件可看到“字体名称”,程序根据该名称查找ttf文件。程序中引用该文件首先需将该字体包设置为Resource,如FontFamily。</a></p>
 <p>c#代码中的引用格式为“#”+”字体名称”。iconfont.cn中下载的字体名称一般都是“iconfont”,所以引用时使用“#iconfont”即可,实例截取:component&#x2F;Resources&#x2F;#iconfont”。</p>
 <p><img src="https://images2015.cnblogs.com/blog/649940/201705/649940-20170519154738478-128340687.png" alt="img"></p>
 <p>图中的demo_unicode.html包含了ttf文件中的unicode编码,如图二所示。wpf中引用时,在xaml和xaml.cs中的方式有所不同。如arrow-left图标的编码是“&amp;#xe614;”,当在xaml中引用时需要直接复制该编码,而在代码(.cs文件)中引用时,格式为“\ue614”。</p>
@@ -1791,17 +1791,17 @@ namespace test
 &lt;&#x2F;Application.Resources&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>步骤2,在xaml中应用到目标,以设置MenuItem图标为例</p>
 <pre class="line-numbers language-xaml" data-language="xaml"><code class="language-xaml">&lt;MenuItem Name&#x3D;&quot;menuItem1&quot; Header&#x3D;&quot;Icon示例&quot; Icon&#x3D;&quot;&quot; FontFamily&#x3D;&quot;&#123;StaticResource IconFont&#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>当前项目常用图标地址:<a target="_blank" rel="noopener" href="http://www.iconfont.cn/collections/detail?cid=4215">http://www.iconfont.cn/collections/detail?cid=4215</a></p>
-<h2 id="PanuonUI-Silver"><a href="#PanuonUI-Silver" class="headerlink" title="PanuonUI.Silver"></a><strong><a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">PanuonUI.Silver</a></strong></h2><p>WPF 的第三方UI库,基于PanuonUI拓展开发的</p>
-<p>gitee:<a target="_blank" rel="noopener" href="https://gitee.com/panuon/PanuonUI.Silver">https://gitee.com/panuon/PanuonUI.Silver</a></p>
-<p>PanuonUI.Silver 2.0手册:<a target="_blank" rel="noopener" href="https://www.yuque.com/mochengvia/silver2.0">https://www.yuque.com/mochengvia/silver2.0</a></p>
+<p>当前项目常用图标地址:<a href="http://www.iconfont.cn/collections/detail?cid=4215">http://www.iconfont.cn/collections/detail?cid=4215</a></p>
+<h2 id="PanuonUI-Silver"><a href="#PanuonUI-Silver" class="headerlink" title="PanuonUI.Silver"></a><strong><a href="https://gitee.com/panuon/PanuonUI.Silver">PanuonUI.Silver</a></strong></h2><p>WPF 的第三方UI库,基于PanuonUI拓展开发的</p>
+<p>gitee:<a href="https://gitee.com/panuon/PanuonUI.Silver">https://gitee.com/panuon/PanuonUI.Silver</a></p>
+<p>PanuonUI.Silver 2.0手册:<a href="https://www.yuque.com/mochengvia/silver2.0">https://www.yuque.com/mochengvia/silver2.0</a></p>
 <h2 id="DMSkin"><a href="#DMSkin" class="headerlink" title="DMSkin"></a>DMSkin</h2><p>WPF的第三方库,看了下作者的基于自己的DMSkin写的示例程序,特别棒!</p>
-<p>已经fork到自己的仓库了: <a target="_blank" rel="noopener" href="https://github.com/AuntYang/DMSkin">https://github.com/AuntYang/DMSkin</a></p>
-<h2 id="HandyControl"><a href="#HandyControl" class="headerlink" title="HandyControl"></a><a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl">HandyControl</a></h2><p>WPF的第三方库,在GitHub上开源的中国开发者开发的第三方库,目前不是特别完善,但每个月都在更新。</p>
-<p>HandyControl:<a target="_blank" rel="noopener" href="https://github.com/HandyOrg/HandyControl">https://github.com/HandyOrg/HandyControl</a></p>
-<p>文档:<a target="_blank" rel="noopener" href="https://handyorg.github.io/handycontrol">https://handyorg.github.io/handycontrol</a></p>
-<h2 id="MahApps-Metro"><a href="#MahApps-Metro" class="headerlink" title=" MahApps.Metro"></a><strong><a target="_blank" rel="noopener" href="https://github.com/MahApps/MahApps.Metro"> MahApps.Metro</a></strong></h2><p>WPF的第三方库,同样在Github上开源的免费库,可以在Nuget上添加引用。</p>
-<p>MahApps.Metro:<a target="_blank" rel="noopener" href="https://github.com/MahApps/MahApps.Metro">https://github.com/MahApps/MahApps.Metro</a></p>
+<p>已经fork到自己的仓库了: <a href="https://github.com/AuntYang/DMSkin">https://github.com/AuntYang/DMSkin</a></p>
+<h2 id="HandyControl"><a href="#HandyControl" class="headerlink" title="HandyControl"></a><a href="https://github.com/HandyOrg/HandyControl">HandyControl</a></h2><p>WPF的第三方库,在GitHub上开源的中国开发者开发的第三方库,目前不是特别完善,但每个月都在更新。</p>
+<p>HandyControl:<a href="https://github.com/HandyOrg/HandyControl">https://github.com/HandyOrg/HandyControl</a></p>
+<p>文档:<a href="https://handyorg.github.io/handycontrol">https://handyorg.github.io/handycontrol</a></p>
+<h2 id="MahApps-Metro"><a href="#MahApps-Metro" class="headerlink" title=" MahApps.Metro"></a><strong><a href="https://github.com/MahApps/MahApps.Metro"> MahApps.Metro</a></strong></h2><p>WPF的第三方库,同样在Github上开源的免费库,可以在Nuget上添加引用。</p>
+<p>MahApps.Metro:<a href="https://github.com/MahApps/MahApps.Metro">https://github.com/MahApps/MahApps.Metro</a></p>
 
                 
             </div>
